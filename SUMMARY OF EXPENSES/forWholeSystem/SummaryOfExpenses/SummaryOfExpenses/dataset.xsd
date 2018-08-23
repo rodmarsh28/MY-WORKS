@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dataset" targetNamespace="http://tempuri.org/dataset.xsd" xmlns:mstns="http://tempuri.org/dataset.xsd" xmlns="http://tempuri.org/dataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dataset" msprop:Generator_UserDSName="dataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="sumReportTable" msprop:Generator_TableClassName="sumReportTableDataTable" msprop:Generator_TableVarName="tablesumReportTable" msprop:Generator_TablePropName="sumReportTable" msprop:Generator_RowDeletingName="sumReportTableRowDeleting" msprop:Generator_RowChangingName="sumReportTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportTableRowDeleted" msprop:Generator_UserTableName="sumReportTable" msprop:Generator_RowChangedName="sumReportTableRowChanged" msprop:Generator_RowEvArgName="sumReportTableRowChangeEvent" msprop:Generator_RowClassName="sumReportTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="_date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
+              <xs:element name="plateNo" msprop:Generator_ColumnVarNameInTable="columnplateNo" msprop:Generator_ColumnPropNameInRow="plateNo" msprop:Generator_ColumnPropNameInTable="plateNoColumn" msprop:Generator_UserColumnName="plateNo" type="xs:string" minOccurs="0" />
+              <xs:element name="vehicleModel" msprop:Generator_ColumnVarNameInTable="columnvehicleModel" msprop:Generator_ColumnPropNameInRow="vehicleModel" msprop:Generator_ColumnPropNameInTable="vehicleModelColumn" msprop:Generator_UserColumnName="vehicleModel" type="xs:string" minOccurs="0" />
+              <xs:element name="expenseType" msprop:Generator_ColumnVarNameInTable="columnexpenseType" msprop:Generator_ColumnPropNameInRow="expenseType" msprop:Generator_ColumnPropNameInTable="expenseTypeColumn" msprop:Generator_UserColumnName="expenseType" type="xs:string" minOccurs="0" />
+              <xs:element name="noofYearsUsed" msprop:Generator_ColumnVarNameInTable="columnnoofYearsUsed" msprop:Generator_ColumnPropNameInRow="noofYearsUsed" msprop:Generator_ColumnPropNameInTable="noofYearsUsedColumn" msprop:Generator_UserColumnName="noofYearsUsed" type="xs:string" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
+              <xs:element name="unitPrice" msprop:Generator_ColumnVarNameInTable="columnunitPrice" msprop:Generator_ColumnPropNameInRow="unitPrice" msprop:Generator_ColumnPropNameInTable="unitPriceColumn" msprop:Generator_UserColumnName="unitPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="totalPrice" msprop:Generator_ColumnVarNameInTable="columntotalPrice" msprop:Generator_ColumnPropNameInRow="totalPrice" msprop:Generator_ColumnPropNameInTable="totalPriceColumn" msprop:Generator_UserColumnName="totalPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="datePeriod" msprop:Generator_ColumnVarNameInTable="columndatePeriod" msprop:Generator_ColumnPropNameInRow="datePeriod" msprop:Generator_ColumnPropNameInTable="datePeriodColumn" msprop:Generator_UserColumnName="datePeriod" type="xs:string" minOccurs="0" />
+              <xs:element name="remarks" msprop:Generator_ColumnVarNameInTable="columnremarks" msprop:Generator_ColumnPropNameInRow="remarks" msprop:Generator_ColumnPropNameInTable="remarksColumn" msprop:Generator_UserColumnName="remarks" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sumReportforFuelTable" msprop:Generator_TableClassName="sumReportforFuelTableDataTable" msprop:Generator_TableVarName="tablesumReportforFuelTable" msprop:Generator_TablePropName="sumReportforFuelTable" msprop:Generator_RowDeletingName="sumReportforFuelTableRowDeleting" msprop:Generator_RowChangingName="sumReportforFuelTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportforFuelTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportforFuelTableRowDeleted" msprop:Generator_UserTableName="sumReportforFuelTable" msprop:Generator_RowChangedName="sumReportforFuelTableRowChanged" msprop:Generator_RowEvArgName="sumReportforFuelTableRowChangeEvent" msprop:Generator_RowClassName="sumReportforFuelTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="_date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
+              <xs:element name="plateNo" msprop:Generator_ColumnVarNameInTable="columnplateNo" msprop:Generator_ColumnPropNameInRow="plateNo" msprop:Generator_ColumnPropNameInTable="plateNoColumn" msprop:Generator_UserColumnName="plateNo" type="xs:string" minOccurs="0" />
+              <xs:element name="vehicleModel" msprop:Generator_ColumnVarNameInTable="columnvehicleModel" msprop:Generator_ColumnPropNameInRow="vehicleModel" msprop:Generator_ColumnPropNameInTable="vehicleModelColumn" msprop:Generator_UserColumnName="vehicleModel" type="xs:string" minOccurs="0" />
+              <xs:element name="expenseType" msprop:Generator_ColumnVarNameInTable="columnexpenseType" msprop:Generator_ColumnPropNameInRow="expenseType" msprop:Generator_ColumnPropNameInTable="expenseTypeColumn" msprop:Generator_UserColumnName="expenseType" type="xs:string" minOccurs="0" />
+              <xs:element name="prevOdometer" msdata:Caption="noofYearsUsed" msprop:Generator_ColumnVarNameInTable="columnprevOdometer" msprop:Generator_ColumnPropNameInRow="prevOdometer" msprop:Generator_ColumnPropNameInTable="prevOdometerColumn" msprop:Generator_UserColumnName="prevOdometer" type="xs:string" minOccurs="0" />
+              <xs:element name="currentOdometer" msprop:Generator_ColumnVarNameInTable="columncurrentOdometer" msprop:Generator_ColumnPropNameInRow="currentOdometer" msprop:Generator_ColumnPropNameInTable="currentOdometerColumn" msprop:Generator_UserColumnName="currentOdometer" type="xs:string" minOccurs="0" />
+              <xs:element name="KML" msprop:Generator_ColumnVarNameInTable="columnKML" msprop:Generator_ColumnPropNameInRow="KML" msprop:Generator_ColumnPropNameInTable="KMLColumn" msprop:Generator_UserColumnName="KML" type="xs:string" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
+              <xs:element name="unitPrice" msprop:Generator_ColumnVarNameInTable="columnunitPrice" msprop:Generator_ColumnPropNameInRow="unitPrice" msprop:Generator_ColumnPropNameInTable="unitPriceColumn" msprop:Generator_UserColumnName="unitPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="totalPrice" msprop:Generator_ColumnVarNameInTable="columntotalPrice" msprop:Generator_ColumnPropNameInRow="totalPrice" msprop:Generator_ColumnPropNameInTable="totalPriceColumn" msprop:Generator_UserColumnName="totalPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="datePeriod" msprop:Generator_ColumnVarNameInTable="columndatePeriod" msprop:Generator_ColumnPropNameInRow="datePeriod" msprop:Generator_ColumnPropNameInTable="datePeriodColumn" msprop:Generator_UserColumnName="datePeriod" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sumReportPerUnitTable" msprop:Generator_TableClassName="sumReportPerUnitTableDataTable" msprop:Generator_TableVarName="tablesumReportPerUnitTable" msprop:Generator_RowChangedName="sumReportPerUnitTableRowChanged" msprop:Generator_TablePropName="sumReportPerUnitTable" msprop:Generator_RowDeletingName="sumReportPerUnitTableRowDeleting" msprop:Generator_RowChangingName="sumReportPerUnitTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportPerUnitTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportPerUnitTableRowDeleted" msprop:Generator_RowClassName="sumReportPerUnitTableRow" msprop:Generator_UserTableName="sumReportPerUnitTable" msprop:Generator_RowEvArgName="sumReportPerUnitTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="_date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
+              <xs:element name="plateNo" msprop:Generator_ColumnVarNameInTable="columnplateNo" msprop:Generator_ColumnPropNameInRow="plateNo" msprop:Generator_ColumnPropNameInTable="plateNoColumn" msprop:Generator_UserColumnName="plateNo" type="xs:string" minOccurs="0" />
+              <xs:element name="vehicleModel" msprop:Generator_ColumnVarNameInTable="columnvehicleModel" msprop:Generator_ColumnPropNameInRow="vehicleModel" msprop:Generator_ColumnPropNameInTable="vehicleModelColumn" msprop:Generator_UserColumnName="vehicleModel" type="xs:string" minOccurs="0" />
+              <xs:element name="expenseType" msprop:Generator_ColumnVarNameInTable="columnexpenseType" msprop:Generator_ColumnPropNameInRow="expenseType" msprop:Generator_ColumnPropNameInTable="expenseTypeColumn" msprop:Generator_UserColumnName="expenseType" type="xs:string" minOccurs="0" />
+              <xs:element name="prevOdometer" msdata:Caption="noofYearsUsed" msprop:Generator_ColumnVarNameInTable="columnprevOdometer" msprop:Generator_ColumnPropNameInRow="prevOdometer" msprop:Generator_ColumnPropNameInTable="prevOdometerColumn" msprop:Generator_UserColumnName="prevOdometer" type="xs:string" minOccurs="0" />
+              <xs:element name="currentOdometer" msprop:Generator_ColumnVarNameInTable="columncurrentOdometer" msprop:Generator_ColumnPropNameInRow="currentOdometer" msprop:Generator_ColumnPropNameInTable="currentOdometerColumn" msprop:Generator_UserColumnName="currentOdometer" type="xs:string" minOccurs="0" />
+              <xs:element name="KML" msprop:Generator_ColumnVarNameInTable="columnKML" msprop:Generator_ColumnPropNameInRow="KML" msprop:Generator_ColumnPropNameInTable="KMLColumn" msprop:Generator_UserColumnName="KML" type="xs:string" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
+              <xs:element name="unitPrice" msprop:Generator_ColumnVarNameInTable="columnunitPrice" msprop:Generator_ColumnPropNameInRow="unitPrice" msprop:Generator_ColumnPropNameInTable="unitPriceColumn" msprop:Generator_UserColumnName="unitPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="totalPrice" msprop:Generator_ColumnVarNameInTable="columntotalPrice" msprop:Generator_ColumnPropNameInRow="totalPrice" msprop:Generator_ColumnPropNameInTable="totalPriceColumn" msprop:Generator_UserColumnName="totalPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="datePeriod" msprop:Generator_ColumnVarNameInTable="columndatePeriod" msprop:Generator_ColumnPropNameInRow="datePeriod" msprop:Generator_ColumnPropNameInTable="datePeriodColumn" msprop:Generator_UserColumnName="datePeriod" type="xs:string" minOccurs="0" />
+              <xs:element name="yearUsed" msprop:Generator_ColumnVarNameInTable="columnyearUsed" msprop:Generator_ColumnPropNameInRow="yearUsed" msprop:Generator_ColumnPropNameInTable="yearUsedColumn" msprop:Generator_UserColumnName="yearUsed" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
