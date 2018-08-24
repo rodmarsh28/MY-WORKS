@@ -12,7 +12,7 @@
   <xs:element name="dataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dataset" msprop:Generator_UserDSName="dataset">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="sumReportTable" msprop:Generator_TableClassName="sumReportTableDataTable" msprop:Generator_TableVarName="tablesumReportTable" msprop:Generator_TablePropName="sumReportTable" msprop:Generator_RowDeletingName="sumReportTableRowDeleting" msprop:Generator_RowChangingName="sumReportTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportTableRowDeleted" msprop:Generator_UserTableName="sumReportTable" msprop:Generator_RowChangedName="sumReportTableRowChanged" msprop:Generator_RowEvArgName="sumReportTableRowChangeEvent" msprop:Generator_RowClassName="sumReportTableRow">
+        <xs:element name="sumReportTable" msprop:Generator_TableClassName="sumReportTableDataTable" msprop:Generator_TableVarName="tablesumReportTable" msprop:Generator_RowChangedName="sumReportTableRowChanged" msprop:Generator_TablePropName="sumReportTable" msprop:Generator_RowDeletingName="sumReportTableRowDeleting" msprop:Generator_RowChangingName="sumReportTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportTableRowDeleted" msprop:Generator_RowClassName="sumReportTableRow" msprop:Generator_UserTableName="sumReportTable" msprop:Generator_RowEvArgName="sumReportTableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="_date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
@@ -28,7 +28,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sumReportforFuelTable" msprop:Generator_TableClassName="sumReportforFuelTableDataTable" msprop:Generator_TableVarName="tablesumReportforFuelTable" msprop:Generator_TablePropName="sumReportforFuelTable" msprop:Generator_RowDeletingName="sumReportforFuelTableRowDeleting" msprop:Generator_RowChangingName="sumReportforFuelTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportforFuelTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportforFuelTableRowDeleted" msprop:Generator_UserTableName="sumReportforFuelTable" msprop:Generator_RowChangedName="sumReportforFuelTableRowChanged" msprop:Generator_RowEvArgName="sumReportforFuelTableRowChangeEvent" msprop:Generator_RowClassName="sumReportforFuelTableRow">
+        <xs:element name="sumReportforFuelTable" msprop:Generator_TableClassName="sumReportforFuelTableDataTable" msprop:Generator_TableVarName="tablesumReportforFuelTable" msprop:Generator_RowChangedName="sumReportforFuelTableRowChanged" msprop:Generator_TablePropName="sumReportforFuelTable" msprop:Generator_RowDeletingName="sumReportforFuelTableRowDeleting" msprop:Generator_RowChangingName="sumReportforFuelTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportforFuelTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportforFuelTableRowDeleted" msprop:Generator_RowClassName="sumReportforFuelTableRow" msprop:Generator_UserTableName="sumReportforFuelTable" msprop:Generator_RowEvArgName="sumReportforFuelTableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="_date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
@@ -45,7 +45,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sumReportPerUnitTable" msprop:Generator_TableClassName="sumReportPerUnitTableDataTable" msprop:Generator_TableVarName="tablesumReportPerUnitTable" msprop:Generator_RowChangedName="sumReportPerUnitTableRowChanged" msprop:Generator_TablePropName="sumReportPerUnitTable" msprop:Generator_RowDeletingName="sumReportPerUnitTableRowDeleting" msprop:Generator_RowChangingName="sumReportPerUnitTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportPerUnitTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportPerUnitTableRowDeleted" msprop:Generator_RowClassName="sumReportPerUnitTableRow" msprop:Generator_UserTableName="sumReportPerUnitTable" msprop:Generator_RowEvArgName="sumReportPerUnitTableRowChangeEvent">
+        <xs:element name="sumReportPerUnitTable" msprop:Generator_TableClassName="sumReportPerUnitTableDataTable" msprop:Generator_TableVarName="tablesumReportPerUnitTable" msprop:Generator_TablePropName="sumReportPerUnitTable" msprop:Generator_RowDeletingName="sumReportPerUnitTableRowDeleting" msprop:Generator_RowChangingName="sumReportPerUnitTableRowChanging" msprop:Generator_RowEvHandlerName="sumReportPerUnitTableRowChangeEventHandler" msprop:Generator_RowDeletedName="sumReportPerUnitTableRowDeleted" msprop:Generator_UserTableName="sumReportPerUnitTable" msprop:Generator_RowChangedName="sumReportPerUnitTableRowChanged" msprop:Generator_RowEvArgName="sumReportPerUnitTableRowChangeEvent" msprop:Generator_RowClassName="sumReportPerUnitTableRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="_date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
@@ -60,6 +60,16 @@
               <xs:element name="totalPrice" msprop:Generator_ColumnVarNameInTable="columntotalPrice" msprop:Generator_ColumnPropNameInRow="totalPrice" msprop:Generator_ColumnPropNameInTable="totalPriceColumn" msprop:Generator_UserColumnName="totalPrice" type="xs:string" minOccurs="0" />
               <xs:element name="datePeriod" msprop:Generator_ColumnVarNameInTable="columndatePeriod" msprop:Generator_ColumnPropNameInRow="datePeriod" msprop:Generator_ColumnPropNameInTable="datePeriodColumn" msprop:Generator_UserColumnName="datePeriod" type="xs:string" minOccurs="0" />
               <xs:element name="yearUsed" msprop:Generator_ColumnVarNameInTable="columnyearUsed" msprop:Generator_ColumnPropNameInRow="yearUsed" msprop:Generator_ColumnPropNameInTable="yearUsedColumn" msprop:Generator_UserColumnName="yearUsed" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="_date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
+              <xs:element name="plateno" msprop:Generator_ColumnVarNameInTable="columnplateno" msprop:Generator_ColumnPropNameInRow="plateno" msprop:Generator_ColumnPropNameInTable="platenoColumn" msprop:Generator_UserColumnName="plateno" type="xs:string" minOccurs="0" />
+              <xs:element name="model" msprop:Generator_ColumnVarNameInTable="columnmodel" msprop:Generator_ColumnPropNameInRow="model" msprop:Generator_ColumnPropNameInTable="modelColumn" msprop:Generator_UserColumnName="model" type="xs:string" minOccurs="0" />
+              <xs:element name="amount" msprop:Generator_ColumnVarNameInTable="columnamount" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_UserColumnName="amount" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
