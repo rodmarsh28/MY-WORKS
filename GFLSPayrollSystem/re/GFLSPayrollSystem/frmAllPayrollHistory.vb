@@ -164,7 +164,7 @@
                     dt.Rows.Add(OleDBDR.Item(0),
                                 Format(OleDBDR.Item(1), "MMMM") & " " & Format(OleDBDR.Item(1), "dd") & " - " + Format(OleDBDR.Item(2), "dd") & " " & Format(OleDBDR.Item(2), "yyyy"),
                                 OleDBDR.Item(4) & ", " & OleDBDR.Item(5) & " " & OleDBDR.Item(6),
-                                OleDBDR.Item(7),
+                                Format(OleDBDR.Item(7), "0.0"),
                                 OleDBDR.Item(8),
                                 OleDBDR.Item(9),
                                 Format(OleDBDR.Item(10), "0.0"),

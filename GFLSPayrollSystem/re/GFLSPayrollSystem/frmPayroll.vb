@@ -331,7 +331,7 @@
             End If
         Else
 
-            basicpay = (txtDR.Text / 2) - (txtDR.Text / 26 / 8) * regularWorkedDays
+            basicpay = (txtDR.Text / 2)
             absentinamount = txtDR.Text / 26 / 8 * regularWorkedDays
             latecash = (txtDR.Text / 26 / 8 / 60) * late
             regularholiday = (txtDR.Text / 26) * regularHolidays
@@ -346,7 +346,7 @@
         End If
 
         Dim totgross As Double
-        totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash - latecash
+        totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash - absentinamount
         lblGrossPay.Text = Format(totgross, "0.00")
         grossPay = lblGrossPay.Text
 
