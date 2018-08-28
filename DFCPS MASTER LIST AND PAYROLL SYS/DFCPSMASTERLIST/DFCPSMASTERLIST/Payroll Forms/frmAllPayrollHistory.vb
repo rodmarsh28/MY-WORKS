@@ -15,6 +15,7 @@
                 With OleDBC
                     .Connection = conn
                     .CommandText = "delete tblPayroll where payrollID ='" & dgw.CurrentRow.Cells(0).Value & "' " & _
+                                    "delete tblBenefitsPaymentSum where payrollID ='" & dgw.CurrentRow.Cells(0).Value & "' " & _
                                     "delete tblPayrollofEmployees where payrollID ='" & dgw.CurrentRow.Cells(0).Value & "' "
                     .ExecuteNonQuery()
                 End With
@@ -47,7 +48,7 @@
                 While OleDBDR.Read
                     dgw.Rows.Add()
                     dgw.Item(0, c).Value = OleDBDR.Item(0)
-                    dgw.Item(1, c).Value = OleDBDR.Item(2) & " - " & OleDBDR.Item(3)
+                    dgw.Item(1, c).Value = Format(OleDBDR.Item(2), "MM/dd/yyyy") & " - " & Format(OleDBDR.Item(3), "MM/dd/yyyy")
                     dgw.Item(2, c).Value = Format(OleDBDR.Item(6), "N")
                     dgw.Item(3, c).Value = Format(OleDBDR.Item(7), "N")
                     dgw.Item(4, c).Value = Format(OleDBDR.Item(8), "N")
@@ -83,7 +84,7 @@
                 While OleDBDR.Read
                     dgw.Rows.Add()
                     dgw.Item(0, c).Value = OleDBDR.Item(0)
-                    dgw.Item(1, c).Value = OleDBDR.Item(2) & " - " & OleDBDR.Item(3)
+                    dgw.Item(1, c).Value = Format(OleDBDR.Item(2), "MM/dd/yyyy") & " - " & Format(OleDBDR.Item(3), "MM/dd/yyyy")
                     dgw.Item(2, c).Value = Format(OleDBDR.Item(6), "N")
                     dgw.Item(3, c).Value = Format(OleDBDR.Item(7), "N")
                     dgw.Item(4, c).Value = Format(OleDBDR.Item(8), "N")
@@ -110,66 +111,66 @@
             c = 0
             With OleDBC
                 .Connection = conn
-                .CommandText = "SELECT dbo.tblPayroll.payrollID,dbo.tblPayroll.dateFrom,dbo.tblPayroll.dateTo,dbo.tblEmployeesInfo.EmployeeID,dbo.tblEmployeesInfo.lastname," & _
-                                "dbo.tblEmployeesInfo.firstname,dbo.tblEmployeesInfo.middlename,dbo.tblPayrollofEmployees.absent,dbo.tblPayrollofEmployees.regHolidays," & _
-                                "dbo.tblPayrollofEmployees.NonWorkHolidays,dbo.tblPayrollofEmployees.leavePay,dbo.tblPayrollofEmployees.overtimeHRS," & _
-                                "dbo.tblPayrollofEmployees.lateUTMins,dbo.tblPayrollofEmployees.basicPay,dbo.tblPayrollofEmployees.absentInAmount,dbo.tblPayrollofEmployees.regHolidayPay," & _
-                                "dbo.tblPayrollofEmployees.nonWorkHolidayPay,dbo.tblPayrollofEmployees.leavePayCash,dbo.tblPayrollofEmployees.overtimePay,dbo.tblPayrollofEmployees.grossPay," & _
-                                "dbo.tblPayrollofEmployees.lateUndertimeDed,dbo.tblPayrollofEmployees.sssPrems,dbo.tblPayrollofEmployees.piPrems,dbo.tblPayrollofEmployees.phPrems," & _
-                                "dbo.tblPayrollofEmployees.sssLoans,dbo.tblPayrollofEmployees.piLoans,dbo.tblPayrollofEmployees.ledgerBalance,dbo.tblPayrollofEmployees.cashAdvance," & _
-                                "dbo.tblPayrollofEmployees.Deduction,dbo.tblPayrollofEmployees.Netpay,dbo.tblPayroll.totalDeduction," & _
-                                "dbo.tblPayroll.totalGrossPay,dbo.tblPayroll.totalNetpay FROM dbo.tblPayroll INNER JOIN dbo.tblPayrollofEmployees ON dbo.tblPayroll.payrollID = " & _
-                                "dbo.tblPayrollofEmployees.payrollID INNER JOIN dbo.tblPayrollofEmployees ON dbo.tblEmployeesInfo.EmployeeID = dbo.tblPayrollofEmployees.EmployeeID " & _
-                                " where dbo.tblPayroll.payrollID = '" & dgw.CurrentRow.Cells(0).Value & "'"
+                .CommandText = "SELECT payrollID,tblEmployeesInfo.employeeID,lastname,firstname,middlename,totalWorkedDays,absent,regHolidays,NonWorkHolidays,leavePay,overtimeHRS," & _
+                    "restdayReportHRS,lateUTMins,basicPay,regHolidayPay,nonWorkHolidayPay,leavePayCash,overtimePay,restdayReportAmount,lateUndertimeDed," & _
+                    "cashAdvance,wHoldingTax,sssPrems,piPrems,phPrems,sssLoans,piLoans,ledgerBalance,Deduction,grossPay,Netpay FROM tblPayrollofEmployees " & _
+                    "INNER JOIN tblEmployeesInfo ON tblPayrollofEmployees.employeeID = tblEmployeesInfo.employeeID" & _
+                                " where payrollID = '" & dgw.CurrentRow.Cells(0).Value & "'"
             End With
             OleDBDR = OleDBC.ExecuteReader
             Dim dt As New DataTable
             With dt
+                .Columns.Add("datarange")
+                .Columns.Add("date")
                 .Columns.Add("payrollID")
-                .Columns.Add("DATERANGE")
-                .Columns.Add("Name")
-                .Columns.Add("Worked Days")
-                .Columns.Add("Holidays")
-                .Columns.Add("NonWorkingHolidays")
-                .Columns.Add("leavepay")
-                .Columns.Add("overtime(HRS)")
-                .Columns.Add("lateundertime(min)")
-                .Columns.Add("Basic Pay")
-                .Columns.Add("AbsentInAmountS")
-                .Columns.Add("RegularHolidayCash")
-                .Columns.Add("NonWorkingHolidaysCash")
-                .Columns.Add("Leave Pay")
-                .Columns.Add("Overtime / Restday Report")
-                .Columns.Add("Gross Pay")
-                .Columns.Add("Late / Undertime")
-                .Columns.Add("SSS Premiums")
-                .Columns.Add("Pagibig Premiums")
-                .Columns.Add("Philhealth Premiums")
-                .Columns.Add("SSS Loans")
-                .Columns.Add("Pagibig Loans")
-                .Columns.Add("Philhealth Loans")
-                .Columns.Add("Cash Advance")
-                .Columns.Add("Total Deduction")
-                .Columns.Add("Net Pay")
-                .Columns.Add("DATE")
-                .Columns.Add("totalAllDed")
-                .Columns.Add("totalAllGross")
-                .Columns.Add("totalallNet")
-                .Columns.Add("PreparedBy")
+                .Columns.Add("empID")
+                .Columns.Add("name")
+                .Columns.Add("twd")
+                .Columns.Add("absent")
+                .Columns.Add("rh")
+                .Columns.Add("nwh")
+                .Columns.Add("lp")
+                .Columns.Add("ot")
+                .Columns.Add("rdr")
+                .Columns.Add("late")
+                .Columns.Add("bp")
+                .Columns.Add("rhp")
+                .Columns.Add("nwhp")
+                .Columns.Add("lpc")
+                .Columns.Add("otp")
+                .Columns.Add("rdrp")
+                .Columns.Add("latep")
+                .Columns.Add("ca")
+                .Columns.Add("tax")
+                .Columns.Add("sss")
+                .Columns.Add("pi")
+                .Columns.Add("ph")
+                .Columns.Add("sssl")
+                .Columns.Add("pil")
+                .Columns.Add("lb")
+                .Columns.Add("ded")
+                .Columns.Add("gp")
+                .Columns.Add("netpay")
+                .Columns.Add("preparedby")
+                
 
             End With
 
             If OleDBDR.HasRows Then
                 While OleDBDR.Read
-                    dt.Rows.Add(OleDBDR.Item(0),
-                                Format(OleDBDR.Item(1), "MMMM") & " " & Format(OleDBDR.Item(1), "dd") & " - " + Format(OleDBDR.Item(2), "dd") & " " & Format(OleDBDR.Item(2), "yyyy"),
-                                OleDBDR.Item(4) & ", " & OleDBDR.Item(5) & " " & OleDBDR.Item(6),
+                    dt.Rows.Add(dgw.CurrentRow.Cells(1).Value,
+                                Format(Now, "MM/dd/yyyy"),
+                                OleDBDR.Item(0),
+                                OleDBDR.Item(1),
+                                OleDBDR.Item(2) & ", " & OleDBDR.Item(3) & " " & OleDBDR.Item(4),
+                                Format(OleDBDR.Item(5), "N"),
+                                Format(OleDBDR.Item(6), "N"),
                                 Format(OleDBDR.Item(7), "N"),
-                                OleDBDR.Item(8),
-                                OleDBDR.Item(9),
-                                Format(OleDBDR.Item(10), "0.0"),
+                                Format(OleDBDR.Item(8), "N"),
+                                Format(OleDBDR.Item(9), "N"),
+                                Format(OleDBDR.Item(10), "N"),
                                 Format(OleDBDR.Item(11), "N"),
-                                Format(OleDBDR.Item(12), "0.0"),
+                                Format(OleDBDR.Item(12), "N"),
                                 Format(OleDBDR.Item(13), "N"),
                                 Format(OleDBDR.Item(14), "N"),
                                 Format(OleDBDR.Item(15), "N"),
@@ -187,12 +188,9 @@
                                 Format(OleDBDR.Item(27), "N"),
                                 Format(OleDBDR.Item(28), "N"),
                                 Format(OleDBDR.Item(29), "N"),
-                                Format(Now, "MM/dd/yyyy"),
                                 Format(OleDBDR.Item(30), "N"),
-                                Format(OleDBDR.Item(31), "N"),
-                                Format(OleDBDR.Item(32), "N"),
                                 frmMain.lblUsername.Text)
-                    c = c + 1
+                    
                 End While
             End If
             Dim rptDoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
@@ -220,74 +218,103 @@
 
             With OleDBC
                 .Connection = conn
-                .CommandText = "SELECT dbo.tblEmployeesInfo.EmployeeID,dbo.tblPayroll.datefrom,dbo.tblPayroll.dateto,dbo.tblEmployeesInfo.lastname," & _
-                                "dbo.tblEmployeesInfo.firstname,dbo.tblEmployeesInfo.middlename,dbo.tblEmployeesInfo.[position],dbo.tblEmployeesInfo.rate,dbo.tblEmployeesInfo.dateHired," & _
-                                "dbo.tblPayrollofEmployees.absent,dbo.tblPayrollofEmployees.regHolidays,dbo.tblPayrollofEmployees.NonWorkHolidays," & _
-                                "dbo.tblPayrollofEmployees.overtimeHRS,dbo.tblPayrollofEmployees.lateUTMins,dbo.tblPayrollofEmployees.basicPay," & _
-                                "dbo.tblPayrollofEmployees.absentInAmount,dbo.tblPayrollofEmployees.overtimePay," & _
-                                "dbo.tblPayrollofEmployees.regHolidayPay,dbo.tblPayrollofEmployees.nonWorkHolidayPay,dbo.tblPayrollofEmployees.lateUndertimeDed," & _
-                                "dbo.tblPayrollofEmployees.sssPrems,dbo.tblPayrollofEmployees.piPrems,dbo.tblPayrollofEmployees.phPrems,dbo.tblPayrollofEmployees.sssLoans," & _
-                                "dbo.tblPayrollofEmployees.piLoans,dbo.tblPayrollofEmployees.ledgerBalance,dbo.tblPayrollofEmployees.wHoldingTax,dbo.tblPayrollofEmployees.cashAdvance," & _
-                                "dbo.tblPayrollofEmployees.Deduction,dbo.tblPayrollofEmployees.grossPay,dbo.tblPayrollofEmployees.Netpay FROM dbo.tblPayrollofEmployees INNER JOIN dbo.dbo.tblPayrollofEmployees ON " & _
-                                "dbo.tblEmployeesInfo.EmployeeID = dbo.tblPayrollofEmployees.EmployeeID INNER JOIN dbo.tblPayroll ON dbo.tblPayroll.payrollID = dbo.tblPayrollofEmployees.payrollID" & _
-                                " where dbo.tblPayroll.payrollID = '" & dgw.CurrentRow.Cells(0).Value & "' "
+                .CommandText = "SELECT payrollID,tblEmployeesInfo.employeeID,lastname,firstname,middlename,position,rate,dateHired,totalWorkedDays,absent,regHolidays,NonWorkHolidays,leavePay,overtimeHRS," & _
+                    "restdayReportHRS,lateUTMins,basicPay,regHolidayPay,nonWorkHolidayPay,leavePayCash,overtimePay,restdayReportAmount,lateUndertimeDed," & _
+                    "cashAdvance,wHoldingTax,sssPrems,piPrems,phPrems,sssLoans,piLoans,ledgerBalance,Deduction,grossPay,Netpay FROM tblPayrollofEmployees " & _
+                    "INNER JOIN tblEmployeesInfo ON tblPayrollofEmployees.employeeID = tblEmployeesInfo.employeeID" & _
+                                " where payrollID = '" & dgw.CurrentRow.Cells(0).Value & "'"
             End With
-            OleDBDR = OleDBC.ExecuteReader
-            Dim dt As New DataTable
-            With dt
-                .Columns.Add("EmployeeID")
-                .Columns.Add("DATEPERIOD")
-                .Columns.Add("NAME")
-                .Columns.Add("POSITION")
-                .Columns.Add("RATE")
-                .Columns.Add("DATEHIRED")
-                .Columns.Add("REGWORKDAYS")
-                .Columns.Add("SPECHOLIDAYS")
-                .Columns.Add("NONWORKHOLIDAYS")
-                .Columns.Add("OVERTIME")
-                .Columns.Add("LATEUNDERTIME")
-                .Columns.Add("REGWORKCASH")
-                .Columns.Add("AbsentInAmount")
-                .Columns.Add("OVERTIMECASH")
-                .Columns.Add("SPECHOLIDAYCASH")
-                .Columns.Add("NONWORKHOLIDAYCASH")
-                .Columns.Add("LATEUNDERTIMECASH")
-                .Columns.Add("SSS")
-                .Columns.Add("PAGIBIG")
-                .Columns.Add("PHILHEALTH")
-                .Columns.Add("SSS LOANS")
-                .Columns.Add("PAGIBIG LOANS")
-                .Columns.Add("PHILHEALTH LOANS")
-                .Columns.Add("WHOLDINGTAX")
-                .Columns.Add("CASHADVANCE")
-                .Columns.Add("TOTALDEDUCTIONS")
-                .Columns.Add("GROSSPAY")
-                .Columns.Add("NETPAY")
+                OleDBDR = OleDBC.ExecuteReader
+                Dim dt As New DataTable
+                With dt
+                .Columns.Add("datarange")
+                .Columns.Add("date")
+                .Columns.Add("payrollID")
+                .Columns.Add("empID")
+                .Columns.Add("name")
+                .Columns.Add("pos")
+                .Columns.Add("rate")
+                .Columns.Add("dateHired")
+                .Columns.Add("twd")
+                .Columns.Add("absent")
+                .Columns.Add("rh")
+                .Columns.Add("nwh")
+                .Columns.Add("lp")
+                .Columns.Add("ot")
+                .Columns.Add("rdr")
+                .Columns.Add("late")
+                .Columns.Add("bp")
+                .Columns.Add("rhp")
+                .Columns.Add("nwhp")
+                .Columns.Add("lpc")
+                .Columns.Add("otp")
+                .Columns.Add("rdrp")
+                .Columns.Add("latep")
+                .Columns.Add("ca")
+                .Columns.Add("tax")
+                .Columns.Add("sss")
+                .Columns.Add("pi")
+                .Columns.Add("ph")
+                .Columns.Add("sssl")
+                .Columns.Add("pil")
+                .Columns.Add("lb")
+                .Columns.Add("ded")
+                .Columns.Add("gp")
+                .Columns.Add("netpay")
+                .Columns.Add("preparedby")
 
 
-            End With
+                End With
 
-            If OleDBDR.HasRows Then
-                While OleDBDR.Read
-                    c = 0
-                    While c < 2
-                        dt.Rows.Add(OleDBDR.Item(0), Format(OleDBDR.Item(1), "MMMM") & " " & Format(OleDBDR.Item(1), "dd") & " - " + Format(OleDBDR.Item(2), "dd") & " " & Format(OleDBDR.Item(2), "yyyy"),
-                                    OleDBDR.Item(3) & ", " & OleDBDR.Item(4) & " " & OleDBDR.Item(5), OleDBDR.Item(6), Format(OleDBDR.Item(7), "N"), Format(OleDBDR.Item(8), "MM/dd/yyyy"),
-                                    Format(OleDBDR.Item(9), "N"), Format(OleDBDR.Item(10), "0.0"), Format(OleDBDR.Item(11), "0.0"), Format(OleDBDR.Item(12), "N"), Format(OleDBDR.Item(13), "0.0"),
-                                    Format(OleDBDR.Item(14), "0.0"), Format(OleDBDR.Item(15), "N"), Format(OleDBDR.Item(16), "N"), Format(OleDBDR.Item(17), "N"),
-                                    Format(OleDBDR.Item(18), "N"), Format(OleDBDR.Item(19), "N"), Format(OleDBDR.Item(20), "N"), Format(OleDBDR.Item(21), "N"),
-                                     Format(OleDBDR.Item(22), "N"), Format(OleDBDR.Item(23), "N"), Format(OleDBDR.Item(24), "N"), Format(OleDBDR.Item(25), "N"),
-                                      Format(OleDBDR.Item(26), "N"), Format(OleDBDR.Item(27), "N"), Format(OleDBDR.Item(28), "N"), Format(OleDBDR.Item(29), "N"), Format(OleDBDR.Item(30), "N"))
-                        c = c + 1
+                If OleDBDR.HasRows Then
+                    While OleDBDR.Read
+                        c = 0
+                        While c < 2
+                        dt.Rows.Add(dgw.CurrentRow.Cells(1).Value,
+                            Format(Now, "MM/dd/yyyy"),
+                                OleDBDR.Item(0),
+                                OleDBDR.Item(1),
+                                OleDBDR.Item(2) & ", " & OleDBDR.Item(3) & " " & OleDBDR.Item(4),
+                                OleDBDR.Item(5),
+                                OleDBDR.Item(6),
+                                Format(OleDBDR.Item(7), "MM/dd/yyyy"),
+                                Format(OleDBDR.Item(8), "N"),
+                                Format(OleDBDR.Item(9), "N"),
+                                Format(OleDBDR.Item(10), "N"),
+                                Format(OleDBDR.Item(11), "N"),
+                                Format(OleDBDR.Item(12), "N"),
+                                Format(OleDBDR.Item(13), "N"),
+                                Format(OleDBDR.Item(14), "N"),
+                                Format(OleDBDR.Item(15), "N"),
+                                Format(OleDBDR.Item(16), "N"),
+                                Format(OleDBDR.Item(17), "N"),
+                                Format(OleDBDR.Item(18), "N"),
+                                Format(OleDBDR.Item(19), "N"),
+                                Format(OleDBDR.Item(20), "N"),
+                                Format(OleDBDR.Item(21), "N"),
+                                Format(OleDBDR.Item(22), "N"),
+                                Format(OleDBDR.Item(23), "N"),
+                                Format(OleDBDR.Item(24), "N"),
+                                Format(OleDBDR.Item(25), "N"),
+                                Format(OleDBDR.Item(26), "N"),
+                                Format(OleDBDR.Item(27), "N"),
+                                Format(OleDBDR.Item(28), "N"),
+                                Format(OleDBDR.Item(29), "N"),
+                                Format(OleDBDR.Item(30), "N"),
+                                Format(OleDBDR.Item(31), "N"),
+                                Format(OleDBDR.Item(32), "N"),
+                                Format(OleDBDR.Item(33), "N"),
+                                frmMain.lblUsername.Text)
+                            c = c + 1
+                        End While
                     End While
-                End While
-            End If
-            Dim rptDoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            rptDoc = New Payslip
-            rptDoc.SetDataSource(dt)
-            frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
-            frmLoading.Close()
-            frmReportViewer.ShowDialog()
+                End If
+                Dim rptDoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+                rptDoc = New Payslip
+                rptDoc.SetDataSource(dt)
+                frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
+                frmLoading.Close()
+                frmReportViewer.ShowDialog()
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -360,5 +387,9 @@
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub dgw_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgw.CellContentClick
+
     End Sub
 End Class

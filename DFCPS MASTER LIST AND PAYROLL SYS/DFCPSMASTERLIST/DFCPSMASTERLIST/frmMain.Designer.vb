@@ -25,9 +25,6 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lblDBstatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -51,36 +48,19 @@ Partial Class frmMain
         Me.DatabaseConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.PrintPremiumsSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip
         '
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel, Me.lblDBstatus, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.lblDate, Me.ToolStripStatusLabel5, Me.ToolStripStatusLabel6, Me.lblTime, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel7, Me.lblUsername})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel3, Me.lblDate, Me.ToolStripStatusLabel5, Me.ToolStripStatusLabel6, Me.lblTime, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel7, Me.lblUsername})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 404)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.Size = New System.Drawing.Size(1055, 24)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
-        '
-        'ToolStripStatusLabel
-        '
-        Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(111, 19)
-        Me.ToolStripStatusLabel.Text = "Database Status:"
-        '
-        'lblDBstatus
-        '
-        Me.lblDBstatus.Name = "lblDBstatus"
-        Me.lblDBstatus.Size = New System.Drawing.Size(102, 19)
-        Me.lblDBstatus.Text = "Not Connected"
-        '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(49, 19)
-        Me.ToolStripStatusLabel2.Text = "          "
         '
         'ToolStripStatusLabel3
         '
@@ -178,7 +158,7 @@ Partial Class frmMain
         '
         'PayrollToolStripMenuItem
         '
-        Me.PayrollToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPayrollToolStripMenuItem, Me.ViewAllPayrollToolStripMenuItem})
+        Me.PayrollToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPayrollToolStripMenuItem, Me.ViewAllPayrollToolStripMenuItem, Me.PrintPremiumsSummaryToolStripMenuItem})
         Me.PayrollToolStripMenuItem.Name = "PayrollToolStripMenuItem"
         Me.PayrollToolStripMenuItem.Size = New System.Drawing.Size(62, 23)
         Me.PayrollToolStripMenuItem.Text = "Payroll"
@@ -186,13 +166,13 @@ Partial Class frmMain
         'AddPayrollToolStripMenuItem
         '
         Me.AddPayrollToolStripMenuItem.Name = "AddPayrollToolStripMenuItem"
-        Me.AddPayrollToolStripMenuItem.Size = New System.Drawing.Size(186, 24)
+        Me.AddPayrollToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
         Me.AddPayrollToolStripMenuItem.Text = "Add Payroll"
         '
         'ViewAllPayrollToolStripMenuItem
         '
         Me.ViewAllPayrollToolStripMenuItem.Name = "ViewAllPayrollToolStripMenuItem"
-        Me.ViewAllPayrollToolStripMenuItem.Size = New System.Drawing.Size(186, 24)
+        Me.ViewAllPayrollToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
         Me.ViewAllPayrollToolStripMenuItem.Text = "All Payroll History"
         '
         'ConfigurationToolStripMenuItem
@@ -218,6 +198,12 @@ Partial Class frmMain
         '
         Me.Timer1.Enabled = True
         '
+        'PrintPremiumsSummaryToolStripMenuItem
+        '
+        Me.PrintPremiumsSummaryToolStripMenuItem.Name = "PrintPremiumsSummaryToolStripMenuItem"
+        Me.PrintPremiumsSummaryToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
+        Me.PrintPremiumsSummaryToolStripMenuItem.Text = "Print Premiums Summary"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -239,7 +225,6 @@ Partial Class frmMain
 
     End Sub
     Friend WithEvents ToolTip As System.Windows.Forms.ToolTip
-    Friend WithEvents ToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -251,8 +236,6 @@ Partial Class frmMain
     Friend WithEvents VIEWMASTERLISTToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewOngoingDesciplinaryActionPunishedToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewOngoingLeavEmployeesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents lblDBstatus As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel3 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents lblDate As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel5 As System.Windows.Forms.ToolStripStatusLabel
@@ -265,5 +248,6 @@ Partial Class frmMain
     Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel7 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents lblUsername As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents PrintPremiumsSummaryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

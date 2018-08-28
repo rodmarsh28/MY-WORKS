@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class Payslip
+Public Class premsSummary
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class Payslip
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "Payslip.rpt"
+            Return "premsSummary.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class Payslip
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "DFCPSMASTERLIST.Payslip.rpt"
+            Return "DFCPSMASTERLIST.premsSummary.rpt"
         End Get
         Set
             'Do nothing
@@ -94,7 +94,7 @@ Public Class Payslip
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedPayslip
+Public Class CachedpremsSummary
     Inherits Component
     Implements ICachedReport
     
@@ -136,7 +136,7 @@ Public Class CachedPayslip
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As Payslip = New Payslip()
+        Dim rpt As premsSummary = New premsSummary()
         rpt.Site = Me.Site
         Return rpt
     End Function

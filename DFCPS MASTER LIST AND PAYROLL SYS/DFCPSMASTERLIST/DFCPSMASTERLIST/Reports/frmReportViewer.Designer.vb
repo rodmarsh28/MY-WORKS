@@ -29,7 +29,7 @@ Partial Class frmReportViewer
         '
         Me.CrystalReportViewer1.ActiveViewIndex = -1
         Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.CachedPageNumberPerDoc = 10
+        'Me.CrystalReportViewer1.CachedPageNumberPerDoc = 10
         Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
         Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)

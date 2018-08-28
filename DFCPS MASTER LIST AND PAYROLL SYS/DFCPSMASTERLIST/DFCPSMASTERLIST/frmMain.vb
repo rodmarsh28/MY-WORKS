@@ -80,27 +80,27 @@ Public Class frmMain
     End Sub
 
     Private m_ChildFormNumber As Integer
-    Sub checkDB()
-        Try
-            If conn.State = ConnectionState.Open Then
-                OleDBC.Dispose()
-                conn.Close()
-            End If
-            lblDate.Text = Now.ToString("MM/dd/yyyy")
-            If conn.State <> ConnectionState.Open Then
-                strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=dfcpsMasterlistDB;server=localhost"
-                'strConnString = "Data Source=" & My.Settings.mServer & ";" & _
-                '          "Initial Catalog=" & My.Settings.mDBname & ";" & _
-                '          "User ID=" & My.Settings.mUserDB & ";" & _
-                '          "Password=" & My.Settings.mPassDB
-                conn.ConnectionString = strConnString
-                conn.Open()
-                lblDBstatus.Text = "Connected"
-            End If
-        Catch ex As Exception
-            lblDBstatus.Text = "Not Connected"
-        End Try
-    End Sub
+    'Sub checkDB()
+    '    Try
+    '        If conn.State = ConnectionState.Open Then
+    '            OleDBC.Dispose()
+    '            conn.Close()
+    '        End If
+    '        lblDate.Text = Now.ToString("MM/dd/yyyy")
+    '        If conn.State <> ConnectionState.Open Then
+    '            strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=dfcpsMasterlistDB;server=localhost"
+    '            'strConnString = "Data Source=" & My.Settings.mServer & ";" & _
+    '            '          "Initial Catalog=" & My.Settings.mDBname & ";" & _
+    '            '          "User ID=" & My.Settings.mUserDB & ";" & _
+    '            '          "Password=" & My.Settings.mPassDB
+    '            conn.ConnectionString = strConnString
+    '            conn.Open()
+    '            lblDBstatus.Text = "Connected"
+    '        End If
+    '    Catch ex As Exception
+    '        lblDBstatus.Text = "Not Connected"
+    '    End Try
+    'End Sub
 
     Private Sub AddEmployeesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddEmployeesToolStripMenuItem.Click
         frmAddEmployees.cmbAdd.Text = "Add"
@@ -124,7 +124,9 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        checkDB()
+        lblDate.Text = Format(Now, "MM/dd/yyyy")
+        lblUsername.Text = "Elvira Dela Serna"
+        'checkDB()
     End Sub
 
     'Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
@@ -146,5 +148,13 @@ Public Class frmMain
 
     Private Sub ViewAllPayrollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ViewAllPayrollToolStripMenuItem.Click
         frmAllPayrollHistory.ShowDialog()
+    End Sub
+
+    Private Sub PrintPremiumsSummaryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintPremiumsSummaryToolStripMenuItem.Click
+        frmPrintPremsPaymentSum.ShowDialog()
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        lblTime.Text = Format(Now, "hh:mm:ss tt")
     End Sub
 End Class
