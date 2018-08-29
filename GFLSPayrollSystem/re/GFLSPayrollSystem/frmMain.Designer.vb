@@ -43,6 +43,7 @@ Partial Class frmMain
         Me.lblUsername = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PPS = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,7 +104,7 @@ Partial Class frmMain
         '
         'TransactionToolStripMenuItem
         '
-        Me.TransactionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPayrollToolStripMenuItem})
+        Me.TransactionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPayrollToolStripMenuItem, Me.PPS})
         Me.TransactionToolStripMenuItem.Name = "TransactionToolStripMenuItem"
         Me.TransactionToolStripMenuItem.Size = New System.Drawing.Size(90, 23)
         Me.TransactionToolStripMenuItem.Text = "Transaction"
@@ -111,7 +112,7 @@ Partial Class frmMain
         'AddPayrollToolStripMenuItem
         '
         Me.AddPayrollToolStripMenuItem.Name = "AddPayrollToolStripMenuItem"
-        Me.AddPayrollToolStripMenuItem.Size = New System.Drawing.Size(148, 24)
+        Me.AddPayrollToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
         Me.AddPayrollToolStripMenuItem.Text = "Add Payroll"
         '
         'SettingToolStripMenuItem
@@ -165,6 +166,12 @@ Partial Class frmMain
         Me.PictureBox1.TabIndex = 9
         Me.PictureBox1.TabStop = False
         '
+        'PPS
+        '
+        Me.PPS.Name = "PPS"
+        Me.PPS.Size = New System.Drawing.Size(234, 24)
+        Me.PPS.Text = "Print Premiums Summary"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -205,5 +212,6 @@ Partial Class frmMain
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BackupDatabaseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents PPS As System.Windows.Forms.ToolStripMenuItem
 
 End Class

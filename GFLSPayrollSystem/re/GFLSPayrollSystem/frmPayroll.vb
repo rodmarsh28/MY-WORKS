@@ -14,8 +14,11 @@
     Dim grossPay As Double
     Dim late As Double
     Dim sss As Double
+    Dim sssER As Double
     Dim pagibig As Double
+    Dim pagibigER As Double
     Dim philhealth As Double
+    Dim philhealthER As Double
     Dim sssloan As Double
     Dim pagibigloan As Double
     Dim philhealthloan As Double
@@ -59,6 +62,9 @@
     Dim xsssprem As String
     Dim xpiprem As String
     Dim xphprem As String
+    Dim xsssER As String
+    Dim xpiER As String
+    Dim xphER As String
     Dim xsssloan As String
     Dim xpiloan As String
     Dim xledgerBalance As String
@@ -88,6 +94,9 @@
         txtSSS.Text = "0.00"
         txtPagibig.Text = "0.00"
         txtPhilhealth.Text = "0.00"
+        sssER = "0.00"
+        pagibigER = "0.00"
+        philhealthER = "0.00"
         txtSSSLoan.Text = "0.00"
         txtPagibigLoah.Text = "0.00"
         txtLedgerBalance.Text = "0.00"
@@ -366,142 +375,127 @@
                         txtPhilhealth.Text = "137.50"
                     ElseIf grossPay <= 39999 Then
                         txtPhilhealth.Text = Format(grossPay * 0.0275 / 2, "0.00")
+
                     Else
                         txtPhilhealth.Text = "550.00"
                     End If
                 Else
                     txtPhilhealth.Text = "0.00"
                 End If
+                philhealthER = txtPhilhealth.Text
                 If sssNo = True Then
                     If grossPay <= 1249.99 Then
                         txtSSS.Text = 36.3
+                        sssER = 83.7
                     ElseIf grossPay <= 1749.99 Then
                         txtSSS.Text = 54.5
+                        sssER = 120.5
                     ElseIf grossPay <= 2249.99 Then
                         txtSSS.Text = 72.7
+                        sssER = 157.3
                     ElseIf grossPay <= 2749.99 Then
                         txtSSS.Text = 90.8
+                        sssER = 194.2
                     ElseIf grossPay <= 3249.99 Then
                         txtSSS.Text = 109
+                        sssER = 231
                     ElseIf grossPay <= 3749.99 Then
                         txtSSS.Text = 127.2
+                        sssER = 267.8
                     ElseIf grossPay <= 4249.99 Then
                         txtSSS.Text = 145.3
+                        sssER = 304.7
                     ElseIf grossPay <= 4749.99 Then
                         txtSSS.Text = 163.5
+                        sssER = 341.5
                     ElseIf grossPay <= 5249.99 Then
                         txtSSS.Text = 181.7
+                        sssER = 378.3
                     ElseIf grossPay <= 5749.99 Then
                         txtSSS.Text = 199.8
+                        sssER = 415.2
                     ElseIf grossPay <= 6249.99 Then
                         txtSSS.Text = 218
+                        sssER = 452
                     ElseIf grossPay <= 6749.99 Then
                         txtSSS.Text = 236.2
+                        sssER = 488.8
                     ElseIf grossPay <= 7249.99 Then
                         txtSSS.Text = 254.3
+                        sssER = 525.7
                     ElseIf grossPay <= 7749.99 Then
                         txtSSS.Text = 272.5
+                        sssER = 562.5
+                    ElseIf grossPay <= 8249.99 Then
+                        txtSSS.Text = 290.7
+                        sssER = 599.3
                     ElseIf grossPay <= 8749.99 Then
                         txtSSS.Text = 308.8
+                        sssER = 636.2
                     ElseIf grossPay <= 9249.99 Then
                         txtSSS.Text = 327
+                        sssER = 673
                     ElseIf grossPay <= 9749.99 Then
                         txtSSS.Text = 345.2
+                        sssER = 709.8
                     ElseIf grossPay <= 10249.99 Then
                         txtSSS.Text = 363.3
+                        sssER = 746.7
                     ElseIf grossPay <= 10749.99 Then
                         txtSSS.Text = 381.5
+                        sssER = 783.5
                     ElseIf grossPay <= 11249.99 Then
                         txtSSS.Text = 399.7
+                        sssER = 820.3
                     ElseIf grossPay <= 11749.99 Then
                         txtSSS.Text = 417.8
+                        sssER = 857.2
                     ElseIf grossPay <= 12249.99 Then
                         txtSSS.Text = 436
+                        sssER = 894
                     ElseIf grossPay <= 12749.99 Then
                         txtSSS.Text = 454.2
+                        sssER = 930.8
                     ElseIf grossPay <= 13249.99 Then
                         txtSSS.Text = 472.3
+                        sssER = 967.7
                     ElseIf grossPay <= 13749.99 Then
                         txtSSS.Text = 490.5
+                        sssER = 1004.5
                     ElseIf grossPay <= 14249.99 Then
                         txtSSS.Text = 508.7
+                        sssER = 1041.3
                     ElseIf grossPay <= 14749.99 Then
                         txtSSS.Text = 526.8
+                        sssER = 1078.2
                     ElseIf grossPay <= 15249.99 Then
                         txtSSS.Text = 545
+                        sssER = 1135
                     ElseIf grossPay <= 15749.99 Then
                         txtSSS.Text = 563.2
+                        sssER = 1171.8
                     ElseIf grossPay <= 16249.99 Or grossPay >= 16249.99 Then
                         txtSSS.Text = 581.3
+                        sssER = 1208.7
                     End If
                 Else
                     txtSSS.Text = "0.00"
+                    sssER = 0.0
                 End If
                 If piNo = True Then
-                    If grossPay <= 8999.99 Then
-                        txtPagibig.Text = 100
-                    ElseIf grossPay <= 9999.99 Then
-                        txtPagibig.Text = 112.5
-                    ElseIf grossPay <= 10999.99 Then
-                        txtPagibig.Text = 125
-                    ElseIf grossPay <= 11999.99 Then
-                        txtPagibig.Text = 137.5
-                    ElseIf grossPay <= 12999.99 Then
-                        txtPagibig.Text = 150
-                    ElseIf grossPay <= 13999.99 Then
-                        txtPagibig.Text = 162.5
-                    ElseIf grossPay <= 14999.99 Then
-                        txtPagibig.Text = 175
-                    ElseIf grossPay <= 15999.99 Then
-                        txtPagibig.Text = 187.5
-                    ElseIf grossPay <= 16999.99 Then
-                        txtPagibig.Text = 200
-                    ElseIf grossPay <= 17999.99 Then
-                        txtPagibig.Text = 212.5
-                    ElseIf grossPay <= 18999.99 Then
-                        txtPagibig.Text = 225
-                    ElseIf grossPay <= 19999.99 Then
-                        txtPagibig.Text = 237.5
-                    ElseIf grossPay <= 20999.99 Then
-                        txtPagibig.Text = 250
-                    ElseIf grossPay <= 21999.99 Then
-                        txtPagibig.Text = 262.5
-                    ElseIf grossPay <= 22999.99 Then
-                        txtPagibig.Text = 275
-                    ElseIf grossPay <= 23999.99 Then
-                        txtPagibig.Text = 287.5
-                    ElseIf grossPay <= 24999.99 Then
-                        txtPagibig.Text = 300
-                    ElseIf grossPay <= 25999.99 Then
-                        txtPagibig.Text = 312.5
-                    ElseIf grossPay <= 26999.99 Then
-                        txtPagibig.Text = 325
-                    ElseIf grossPay <= 27999.99 Then
-                        txtPagibig.Text = 337.5
-                    ElseIf grossPay <= 28999.99 Then
-                        txtPagibig.Text = 350
-                    ElseIf grossPay <= 29999.99 Then
-                        txtPagibig.Text = 362.5
-                    ElseIf grossPay <= 30999.99 Then
-                        txtPagibig.Text = 375
-                    ElseIf grossPay <= 31999.99 Then
-                        txtPagibig.Text = 387.5
-                    ElseIf grossPay <= 32999.99 Then
-                        txtPagibig.Text = 400
-                    ElseIf grossPay <= 33999.99 Then
-                        txtPagibig.Text = 412.5
-                    ElseIf grossPay <= 34999.99 Then
-                        txtPagibig.Text = 425
-                    ElseIf grossPay <= 35000 Or grossPay >= 35000 Then
-                        txtPagibig.Text = 437.5
+                    If grossPay <= 1500 Then
+                        txtPagibig.Text = Format(grossPay * 0.02, "0.00")
+                        pagibigER = Format(grossPay * 0.01, "0.00")
+                    Else
+                        txtPagibig.Text = Format(grossPay * 0.02, "0.00")
+                        pagibigER = Format(grossPay * 0.02, "0.00")
                     End If
                 Else
                     txtPagibig.Text = "0.00"
+                    pagibigER = 0.0
                 End If
                 grossPay = grossPay - lastnetpay
             Else
-
-
                 txtSSS.Text = "0.00"
                 txtPagibig.Text = "0.00"
                 txtPhilhealth.Text = "0.00"
@@ -679,8 +673,15 @@
             xgp = dgw.Item(23, col).Value
             xdeductions = dgw.Item(24, col).Value
             xnp = dgw.Item(25, col).Value
+            xsssER = dgw.Item(26, col).Value
+            xpiER = dgw.Item(27, col).Value
+            xphER = dgw.Item(28, col).Value
             saveEmployeesPayroll()
+            If frmDateGenerator.isLastDay = True Then
+                saveEmployERContribution()
+            End If
             col = col + 1
+
         End While
     End Sub
     Sub saveEmployeesPayroll()
@@ -720,6 +721,30 @@
                     "','" & xgp & _
                     "','" & xdeductions & _
                     "','" & xnp & "')"
+                .ExecuteNonQuery()
+
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Sub saveEmployERContribution()
+        Try
+            If conn.State = ConnectionState.Open Then
+                OleDBC.Dispose()
+                conn.Close()
+            End If
+            If conn.State <> ConnectionState.Open Then
+                ConnectDatabase()
+            End If
+            With OleDBC
+                .Connection = conn
+                .CommandText = "DECLARE @id int " & _
+                    "select @id = (SELECT max(empPayrollTransNo)) " & _
+                    "from tblPayrollofEmployees " & _
+                    "INSERT into tblBenefitsPaymentSum values('" & lblPRID.Text & "',@id,'" & xsssER & _
+                    "','" & xpiER & _
+                    "','" & xphER & "')"
                 .ExecuteNonQuery()
             End With
         Catch ex As Exception
@@ -778,6 +803,9 @@
         dgw.Item(23, r).Value = lblGrossPay.Text
         dgw.Item(24, r).Value = lbldeductions.Text
         dgw.Item(25, r).Value = lblNetPay.Text
+        dgw.Item(26, r).Value = sssER
+        dgw.Item(27, r).Value = pagibigER
+        dgw.Item(28, r).Value = philhealthER
         dgw.ClearSelection()
 
         lblTotEmp.Text = dgw.RowCount
@@ -890,6 +918,10 @@
     End Sub
 
     Private Sub Label18_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label18.Click
+
+    End Sub
+
+    Private Sub Panel3_Paint_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel3.Paint
 
     End Sub
 End Class

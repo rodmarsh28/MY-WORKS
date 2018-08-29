@@ -12,7 +12,7 @@
   <xs:element name="dataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dataset" msprop:Generator_UserDSName="dataset">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PAYROLLTABLE" msprop:Generator_TableClassName="PAYROLLTABLEDataTable" msprop:Generator_TableVarName="tablePAYROLLTABLE" msprop:Generator_RowChangedName="PAYROLLTABLERowChanged" msprop:Generator_TablePropName="PAYROLLTABLE" msprop:Generator_RowDeletingName="PAYROLLTABLERowDeleting" msprop:Generator_RowChangingName="PAYROLLTABLERowChanging" msprop:Generator_RowEvHandlerName="PAYROLLTABLERowChangeEventHandler" msprop:Generator_RowDeletedName="PAYROLLTABLERowDeleted" msprop:Generator_RowClassName="PAYROLLTABLERow" msprop:Generator_UserTableName="PAYROLLTABLE" msprop:Generator_RowEvArgName="PAYROLLTABLERowChangeEvent">
+        <xs:element name="PAYROLLTABLE" msprop:Generator_TableClassName="PAYROLLTABLEDataTable" msprop:Generator_TableVarName="tablePAYROLLTABLE" msprop:Generator_TablePropName="PAYROLLTABLE" msprop:Generator_RowDeletingName="PAYROLLTABLERowDeleting" msprop:Generator_RowChangingName="PAYROLLTABLERowChanging" msprop:Generator_RowEvHandlerName="PAYROLLTABLERowChangeEventHandler" msprop:Generator_RowDeletedName="PAYROLLTABLERowDeleted" msprop:Generator_UserTableName="PAYROLLTABLE" msprop:Generator_RowChangedName="PAYROLLTABLERowChanged" msprop:Generator_RowEvArgName="PAYROLLTABLERowChangeEvent" msprop:Generator_RowClassName="PAYROLLTABLERow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="payrollID" msprop:Generator_ColumnVarNameInTable="columnpayrollID" msprop:Generator_ColumnPropNameInRow="payrollID" msprop:Generator_ColumnPropNameInTable="payrollIDColumn" msprop:Generator_UserColumnName="payrollID" type="xs:string" minOccurs="0" />
@@ -49,7 +49,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PAYSLIPTABLE" msprop:Generator_TableClassName="PAYSLIPTABLEDataTable" msprop:Generator_TableVarName="tablePAYSLIPTABLE" msprop:Generator_RowChangedName="PAYSLIPTABLERowChanged" msprop:Generator_TablePropName="PAYSLIPTABLE" msprop:Generator_RowDeletingName="PAYSLIPTABLERowDeleting" msprop:Generator_RowChangingName="PAYSLIPTABLERowChanging" msprop:Generator_RowEvHandlerName="PAYSLIPTABLERowChangeEventHandler" msprop:Generator_RowDeletedName="PAYSLIPTABLERowDeleted" msprop:Generator_RowClassName="PAYSLIPTABLERow" msprop:Generator_UserTableName="PAYSLIPTABLE" msprop:Generator_RowEvArgName="PAYSLIPTABLERowChangeEvent">
+        <xs:element name="PAYSLIPTABLE" msprop:Generator_TableClassName="PAYSLIPTABLEDataTable" msprop:Generator_TableVarName="tablePAYSLIPTABLE" msprop:Generator_TablePropName="PAYSLIPTABLE" msprop:Generator_RowDeletingName="PAYSLIPTABLERowDeleting" msprop:Generator_RowChangingName="PAYSLIPTABLERowChanging" msprop:Generator_RowEvHandlerName="PAYSLIPTABLERowChangeEventHandler" msprop:Generator_RowDeletedName="PAYSLIPTABLERowDeleted" msprop:Generator_UserTableName="PAYSLIPTABLE" msprop:Generator_RowChangedName="PAYSLIPTABLERowChanged" msprop:Generator_RowEvArgName="PAYSLIPTABLERowChangeEvent" msprop:Generator_RowClassName="PAYSLIPTABLERow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="EMPID" msprop:Generator_ColumnVarNameInTable="columnEMPID" msprop:Generator_ColumnPropNameInRow="EMPID" msprop:Generator_ColumnPropNameInTable="EMPIDColumn" msprop:Generator_UserColumnName="EMPID" type="xs:string" minOccurs="0" />
@@ -80,6 +80,22 @@
               <xs:element name="TOTALDEDUCTIONS" msprop:Generator_ColumnVarNameInTable="columnTOTALDEDUCTIONS" msprop:Generator_ColumnPropNameInRow="TOTALDEDUCTIONS" msprop:Generator_ColumnPropNameInTable="TOTALDEDUCTIONSColumn" msprop:Generator_UserColumnName="TOTALDEDUCTIONS" type="xs:string" minOccurs="0" />
               <xs:element name="GROSSPAY" msprop:Generator_ColumnVarNameInTable="columnGROSSPAY" msprop:Generator_ColumnPropNameInRow="GROSSPAY" msprop:Generator_ColumnPropNameInTable="GROSSPAYColumn" msprop:Generator_UserColumnName="GROSSPAY" type="xs:string" minOccurs="0" />
               <xs:element name="NETPAY" msprop:Generator_ColumnVarNameInTable="columnNETPAY" msprop:Generator_ColumnPropNameInRow="NETPAY" msprop:Generator_ColumnPropNameInTable="NETPAYColumn" msprop:Generator_UserColumnName="NETPAY" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="premsTable" msprop:Generator_TableClassName="premsTableDataTable" msprop:Generator_TableVarName="tablepremsTable" msprop:Generator_TablePropName="premsTable" msprop:Generator_RowDeletingName="premsTableRowDeleting" msprop:Generator_RowChangingName="premsTableRowChanging" msprop:Generator_RowEvHandlerName="premsTableRowChangeEventHandler" msprop:Generator_RowDeletedName="premsTableRowDeleted" msprop:Generator_UserTableName="premsTable" msprop:Generator_RowChangedName="premsTableRowChanged" msprop:Generator_RowEvArgName="premsTableRowChangeEvent" msprop:Generator_RowClassName="premsTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dateofprems" msprop:Generator_ColumnVarNameInTable="columndateofprems" msprop:Generator_ColumnPropNameInRow="dateofprems" msprop:Generator_ColumnPropNameInTable="dateofpremsColumn" msprop:Generator_UserColumnName="dateofprems" type="xs:string" minOccurs="0" />
+              <xs:element name="empid" msprop:Generator_ColumnVarNameInTable="columnempid" msprop:Generator_ColumnPropNameInRow="empid" msprop:Generator_ColumnPropNameInTable="empidColumn" msprop:Generator_UserColumnName="empid" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+              <xs:element name="sssee" msprop:Generator_ColumnVarNameInTable="columnsssee" msprop:Generator_ColumnPropNameInRow="sssee" msprop:Generator_ColumnPropNameInTable="ssseeColumn" msprop:Generator_UserColumnName="sssee" type="xs:string" minOccurs="0" />
+              <xs:element name="piee" msprop:Generator_ColumnVarNameInTable="columnpiee" msprop:Generator_ColumnPropNameInRow="piee" msprop:Generator_ColumnPropNameInTable="pieeColumn" msprop:Generator_UserColumnName="piee" type="xs:string" minOccurs="0" />
+              <xs:element name="phee" msprop:Generator_ColumnVarNameInTable="columnphee" msprop:Generator_ColumnPropNameInRow="phee" msprop:Generator_ColumnPropNameInTable="pheeColumn" msprop:Generator_UserColumnName="phee" type="xs:string" minOccurs="0" />
+              <xs:element name="ssser" msprop:Generator_ColumnVarNameInTable="columnssser" msprop:Generator_ColumnPropNameInRow="ssser" msprop:Generator_ColumnPropNameInTable="ssserColumn" msprop:Generator_UserColumnName="ssser" type="xs:string" minOccurs="0" />
+              <xs:element name="pier" msprop:Generator_ColumnVarNameInTable="columnpier" msprop:Generator_ColumnPropNameInRow="pier" msprop:Generator_ColumnPropNameInTable="pierColumn" msprop:Generator_UserColumnName="pier" type="xs:string" minOccurs="0" />
+              <xs:element name="pher" msprop:Generator_ColumnVarNameInTable="columnpher" msprop:Generator_ColumnPropNameInRow="pher" msprop:Generator_ColumnPropNameInTable="pherColumn" msprop:Generator_UserColumnName="pher" type="xs:string" minOccurs="0" />
+              <xs:element name="preparedby" msprop:Generator_ColumnVarNameInTable="columnpreparedby" msprop:Generator_ColumnPropNameInRow="preparedby" msprop:Generator_ColumnPropNameInTable="preparedbyColumn" msprop:Generator_UserColumnName="preparedby" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

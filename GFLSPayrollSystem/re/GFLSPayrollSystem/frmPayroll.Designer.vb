@@ -23,9 +23,11 @@ Partial Class frmPayroll
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPayroll))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPayroll))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -79,6 +81,7 @@ Partial Class frmPayroll
         Me.txtLeavepay = New System.Windows.Forms.TextBox()
         Me.txtNonWorkingHolidays = New System.Windows.Forms.TextBox()
         Me.txtRegularHolidays = New System.Windows.Forms.TextBox()
+        Me.txtregularWorkedDays = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -102,7 +105,6 @@ Partial Class frmPayroll
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.txtregularWorkedDays = New System.Windows.Forms.TextBox()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -129,6 +131,9 @@ Partial Class frmPayroll
         Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -425,8 +430,24 @@ Partial Class frmPayroll
         Me.dgw.AllowUserToAddRows = False
         Me.dgw.AllowUserToDeleteRows = False
         Me.dgw.BackgroundColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.471698!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgw.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column22, Me.Column8, Me.Column26, Me.Column9, Me.Column10, Me.Column11, Me.Column12, Me.Column13, Me.Column14, Me.Column15, Me.Column16, Me.Column17, Me.Column18, Me.Column23, Me.Column24, Me.Column25, Me.Column19, Me.Column20, Me.Column21})
+        Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column22, Me.Column8, Me.Column26, Me.Column9, Me.Column10, Me.Column11, Me.Column12, Me.Column13, Me.Column14, Me.Column15, Me.Column16, Me.Column17, Me.Column18, Me.Column23, Me.Column24, Me.Column25, Me.Column19, Me.Column20, Me.Column21, Me.Column27, Me.Column28, Me.Column29})
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.471698!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgw.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgw.GridColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.dgw.Location = New System.Drawing.Point(14, 321)
         Me.dgw.MultiSelect = False
@@ -719,6 +740,13 @@ Partial Class frmPayroll
         Me.txtRegularHolidays.Size = New System.Drawing.Size(100, 20)
         Me.txtRegularHolidays.TabIndex = 16
         '
+        'txtregularWorkedDays
+        '
+        Me.txtregularWorkedDays.Location = New System.Drawing.Point(229, 18)
+        Me.txtregularWorkedDays.Name = "txtregularWorkedDays"
+        Me.txtregularWorkedDays.Size = New System.Drawing.Size(100, 20)
+        Me.txtregularWorkedDays.TabIndex = 15
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -920,13 +948,6 @@ Partial Class frmPayroll
         Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
         Me.ContextMenuStrip2.Size = New System.Drawing.Size(61, 4)
         '
-        'txtregularWorkedDays
-        '
-        Me.txtregularWorkedDays.Location = New System.Drawing.Point(229, 18)
-        Me.txtregularWorkedDays.Name = "txtregularWorkedDays"
-        Me.txtregularWorkedDays.Size = New System.Drawing.Size(100, 20)
-        Me.txtregularWorkedDays.TabIndex = 15
-        '
         'Column1
         '
         Me.Column1.Frozen = True
@@ -1086,19 +1107,37 @@ Partial Class frmPayroll
         '
         'Column20
         '
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.Column20.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.Column20.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column20.HeaderText = "Deductions"
         Me.Column20.Name = "Column20"
         Me.Column20.ReadOnly = True
         '
         'Column21
         '
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.Column21.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.Column21.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column21.HeaderText = "Net Pay"
         Me.Column21.Name = "Column21"
         Me.Column21.ReadOnly = True
+        '
+        'Column27
+        '
+        Me.Column27.HeaderText = "sssER"
+        Me.Column27.Name = "Column27"
+        Me.Column27.ReadOnly = True
+        '
+        'Column28
+        '
+        Me.Column28.HeaderText = "piER"
+        Me.Column28.Name = "Column28"
+        Me.Column28.ReadOnly = True
+        '
+        'Column29
+        '
+        Me.Column29.HeaderText = "phER"
+        Me.Column29.Name = "Column29"
+        Me.Column29.ReadOnly = True
         '
         'frmPayroll
         '
@@ -1229,4 +1268,7 @@ Partial Class frmPayroll
     Friend WithEvents Column19 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column20 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column27 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column28 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column29 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

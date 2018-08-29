@@ -99,7 +99,6 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-       
         frmMode.ShowDialog()
         Dim username As String = InputBox("Please Enter Your Complete Name")
         If username = "" Then
@@ -107,6 +106,7 @@ Public Class frmMain
         Else
             lblUsername.Text = username
         End If
+        
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
@@ -123,5 +123,19 @@ Public Class frmMain
     Private Sub BackupDatabaseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BackupDatabaseToolStripMenuItem.Click
         frmBackupAndRestore.ShowDialog()
 
+    End Sub
+
+    Private Sub PPS_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PPS.Click
+        frmPrintPremsPaymentSum.ShowDialog()
+    End Sub
+
+    Private Sub TransactionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TransactionToolStripMenuItem.Click
+        If databaseMode = "GFLS" Then
+            PPS.Visible = True
+        ElseIf databaseMode = "AC Inc." Then
+            PPS.Visible = True
+        ElseIf databaseMode = "Utility" Then
+            PPS.Visible = False
+        End If
     End Sub
 End Class

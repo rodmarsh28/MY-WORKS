@@ -154,6 +154,12 @@
     <Compile Include="frmPayrollHistory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmPrintPremsPaymentSum.Designer.vb">
+      <DependentUpon>frmPrintPremsPaymentSum.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintPremsPaymentSum.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmReportViewer.Designer.vb">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
     </Compile>
@@ -175,6 +181,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Reports\ACpremsSummary.vb">
+      <DependentUpon>ACpremsSummary.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\GFLSpremsSummary.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GFLSpremsSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\Utility Payslip.vb">
       <DependentUpon>Utility Payslip.rpt</DependentUpon>
@@ -247,6 +265,9 @@
     <EmbeddedResource Include="frmPayrollHistory.resx">
       <DependentUpon>frmPayrollHistory.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintPremsPaymentSum.resx">
+      <DependentUpon>frmPrintPremsPaymentSum.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReportViewer.resx">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +276,14 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ACpremsSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ACpremsSummary.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GFLSpremsSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GFLSpremsSummary.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Utility Payslip.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

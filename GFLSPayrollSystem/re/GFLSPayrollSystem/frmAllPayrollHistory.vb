@@ -15,6 +15,7 @@
                 With OleDBC
                     .Connection = conn
                     .CommandText = "delete tblPayroll where payrollID ='" & dgw.CurrentRow.Cells(0).Value & "' " & _
+                                    "delete tblBenefitsPaymentSum where payrollID ='" & dgw.CurrentRow.Cells(0).Value & "' " & _
                                     "delete tblPayrollofEmployees where payrollID ='" & dgw.CurrentRow.Cells(0).Value & "' "
                     .ExecuteNonQuery()
                 End With
