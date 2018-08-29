@@ -13,6 +13,7 @@ Module modconn
     Public ds As DataSet
     Public conn As New SqlConnection
     Public strConnString As String
+    Public payrollType As String
     Public Sub ConnectDatabase()
         strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=dfcpsMasterlistDB;server=localhost"
         'strConnString = "Data Source=" & My.Settings.mServer & ";" & _

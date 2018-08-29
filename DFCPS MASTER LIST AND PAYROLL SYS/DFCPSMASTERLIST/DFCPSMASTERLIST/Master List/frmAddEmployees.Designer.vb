@@ -420,7 +420,7 @@ Partial Class frmAddEmployees
         '
         Me.txtField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtField.FormattingEnabled = True
-        Me.txtField.Items.AddRange(New Object() {"", "Work Hours", "Stay In"})
+        Me.txtField.Items.AddRange(New Object() {"Weekly", "15 Days"})
         Me.txtField.Location = New System.Drawing.Point(103, 171)
         Me.txtField.Name = "txtField"
         Me.txtField.Size = New System.Drawing.Size(129, 24)
@@ -431,9 +431,9 @@ Partial Class frmAddEmployees
         Me.Label22.AutoSize = True
         Me.Label22.Location = New System.Drawing.Point(13, 174)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(42, 17)
+        Me.Label22.Size = New System.Drawing.Size(87, 17)
         Me.Label22.TabIndex = 11
-        Me.Label22.Text = "Field:"
+        Me.Label22.Text = "Pay Method:"
         '
         'txtPHNo
         '
@@ -535,9 +535,9 @@ Partial Class frmAddEmployees
         Me.Label14.AutoSize = True
         Me.Label14.Location = New System.Drawing.Point(12, 102)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(91, 17)
+        Me.Label14.Size = New System.Drawing.Size(78, 17)
         Me.Label14.TabIndex = 0
-        Me.Label14.Text = "Pay. Method:"
+        Me.Label14.Text = "Rate Type:"
         '
         'txtSSSNo
         '

@@ -80,7 +80,7 @@
                 .Connection = conn
                 .CommandText = "select payrollID,DATENAME(month, dateto), YEAR(dateTo) " & _
                                 "from tblPayroll " & _
-                                "where dateto like '%31%' or dateto like '%30%' or dateto like '%29%' or dateto like '%28%' or dateto like '%27%'"
+                                "where dateto like '%31%' or dateto like '%30%' or dateto like '%29%' or dateto like '%28%' or dateto like '%27%' and remarks = 'Admin'"
 
             End With
             OleDBDR = OleDBC.ExecuteReader

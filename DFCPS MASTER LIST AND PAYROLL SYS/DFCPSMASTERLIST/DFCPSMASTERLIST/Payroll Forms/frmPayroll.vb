@@ -218,7 +218,9 @@
         ElseIf txtPayMethod.Text = "Monthly" Then
             regularWorkedDays = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 1 - CountSundays
             absent = txtregularWorkedDays.Text
-        Else
+        ElseIf txtPayMethod.Text = "Weekly" Then
+            regularWorkedDays = txtregularWorkedDays.Text
+            absent = 7 - txtregularWorkedDays.Text
         End If
 
         late = txtLate.Text
@@ -245,6 +247,14 @@
             leavepaycash = (txtDR.Text / 26) * leavePay
             overtimecash = txtDR.Text / 26 / 8 * 1.25 * overtime
             restDayReportAmount = txtDR.Text / 26 / 8 * 1.69 * restDayReport
+        ElseIf txtPayMethod.Text = "Weekly" Then
+            basicpay = txtDR.Text * regularWorkedDays
+            latecash = (txtDR.Text / 8 / 60) * late
+            regularholiday = txtDR.Text * regularHolidays
+            nonworkingholiday = txtDR.Text * 0.3 * nonWorkingHolidays
+            leavepaycash = txtDR.Text * leavePay
+            overtimecash = txtDR.Text / 8 * overtime
+            restDayReportAmount = txtDR.Text / 8 * restDayReport
         End If
 
         Dim totgross As Double
@@ -524,7 +534,7 @@
                             "','" & lblTotDed.Text & _
                             "','" & lblTotNet.Text & _
                             "','" & frmMain.lblUsername.Text & _
-                            "','" & "Payroll Generated:" & Today.ToString("MM/dd/yyyy") & "')"
+                            "','" & payrollType & "')"
                     .ExecuteNonQuery()
                 End With
                 dgwItemProcess()
@@ -772,7 +782,9 @@
         If frmDateGenerator.isLastDay = True Then
             txtSSSLoan.Enabled = False
             txtPagibigLoah.Enabled = False
-
+        ElseIf payrollType = "Labor" Then
+            txtSSSLoan.Enabled = False
+            txtPagibigLoah.Enabled = False
         Else
             txtSSSLoan.Enabled = True
             txtPagibigLoah.Enabled = True

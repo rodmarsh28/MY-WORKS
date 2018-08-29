@@ -35,6 +35,8 @@ Partial Class frmDateGenerator
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.cmbPType = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -43,13 +45,15 @@ Partial Class frmDateGenerator
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.Label5)
+        Me.Panel1.Controls.Add(Me.cmbPType)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Location = New System.Drawing.Point(7, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(234, 243)
+        Me.Panel1.Size = New System.Drawing.Size(234, 268)
         Me.Panel1.TabIndex = 53
         '
         'Panel2
@@ -149,7 +153,7 @@ Partial Class frmDateGenerator
         Me.Button3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(49, 190)
+        Me.Button3.Location = New System.Drawing.Point(49, 216)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(61, 31)
         Me.Button3.TabIndex = 51
@@ -165,7 +169,7 @@ Partial Class frmDateGenerator
         Me.Button2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(113, 190)
+        Me.Button2.Location = New System.Drawing.Point(113, 216)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(72, 31)
         Me.Button2.TabIndex = 52
@@ -173,17 +177,37 @@ Partial Class frmDateGenerator
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = False
         '
+        'cmbPType
+        '
+        Me.cmbPType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPType.FormattingEnabled = True
+        Me.cmbPType.Items.AddRange(New Object() {"Admin", "Labor"})
+        Me.cmbPType.Location = New System.Drawing.Point(90, 177)
+        Me.cmbPType.Name = "cmbPType"
+        Me.cmbPType.Size = New System.Drawing.Size(121, 21)
+        Me.cmbPType.TabIndex = 55
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(13, 180)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(73, 15)
+        Me.Label5.TabIndex = 56
+        Me.Label5.Text = "Payroll Type"
+        '
         'frmDateGenerator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(250, 253)
+        Me.ClientSize = New System.Drawing.Size(250, 278)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmDateGenerator"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmDateGenerator"
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -203,4 +227,6 @@ Partial Class frmDateGenerator
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents cmbPType As System.Windows.Forms.ComboBox
 End Class

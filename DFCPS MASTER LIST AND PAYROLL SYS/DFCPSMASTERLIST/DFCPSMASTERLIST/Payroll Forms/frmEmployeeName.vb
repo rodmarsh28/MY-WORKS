@@ -19,7 +19,7 @@
                 .CommandText = "SELECT dbo.tblEmployeesInfo.employeeID,dbo.tblEmployeesInfo.lastname,dbo.tblEmployeesInfo.firstname," & _
                     "dbo.tblEmployeesInfo.middlename,dbo.tblEmployeesInfo.[position],dbo.tblEmployeesInfo.payMethod,dbo.tblEmployeesInfo.dateHired," & _
                     "dbo.tblEmployeesInfo.rate,dbo.tblEmployeesInfo.allowBenefitsDeduction,dbo.tblEmployeesInfo.sssNo,dbo.tblEmployeesInfo.phNo," & _
-                    "dbo.tblEmployeesInfo.piNo FROM dbo.tblEmployeesInfo where EmployeeID = '" & dgw.CurrentRow.Cells(0).Value & "'"
+                    "dbo.tblEmployeesInfo.piNo,dbo.tblEmployeesInfo.Field FROM dbo.tblEmployeesInfo where EmployeeID = '" & dgw.CurrentRow.Cells(0).Value & "'"
             End With
             OleDBDR = OleDBC.ExecuteReader
             If OleDBDR.HasRows Then
@@ -31,11 +31,17 @@
                     frmPayroll.dtrDH.Value = OleDBDR.Item(6)
                     frmPayroll.rate = OleDBDR.Item(7)
                     frmPayroll.txtDR.Text = OleDBDR.Item(7)
+                    frmPayroll.field = OleDBDR.Item(12)
                     If frmPayroll.txtPayMethod.Text = "Monthly" Then
                         frmPayroll.lblRW.Text = "Absent(HRS)"
-                    Else
+                    
+                    ElseIf frmPayroll.txtPayMethod.Text = "Daily" Then
                         frmPayroll.lblRW.Text = "Regular Worked Days"
+                       
+                        
                     End If
+                   
+
                     frmPayroll.premDed = OleDBDR.Item(8)
                     sssData = OleDBDR.Item(9)
                     If sssData = "" Then
@@ -110,15 +116,17 @@
             End If
             Dim c As Integer
             c = 0
-            With OleDBC
-                .Connection = conn
-                '.CommandText = "select dbo.tblEmployeesInfo.EmployeeID,dbo.tblEmployeesInfo.lastname,dbo.tblEmployeesInfo.firstname,dbo.tblEmployeesInfo.middlename from dbo.tblEmployeesInfo INNER JOIN " & _
-                '                "dbo.tblPayrollofEmployees ON dbo.tblEmployeesInfo.EmployeeID = dbo.tblPayrollofEmployees.EmployeeID INNER JOIN dbo.tblPayroll ON dbo.tblPayrollofEmployees.payrollID = " & _
-                '                "dbo.tblPayroll.payrollID where '" & Format(frmPayroll.dtrFrom.Value, "MM/dd/yyyy") & "' between dbo.tblPayroll.DATEFROM and " & _
-                '                "dbo.tblPayroll.DATETO and dbo.tblPayrollofEmployees.EmployeeID  = '" & frmPayroll.txtemID.Text & "' or '" & Format(frmPayroll.dtrTo.Value, "MM/dd/yyyy") & _
-                '                "' between dbo.tblPayroll.DATEFROM and dbo.tblPayroll.DATETO and dbo.tblPayrollofEmployees.EmployeeID  = '" & frmPayroll.txtemID.Text & "'"
-                .CommandText = "select * from tblEmployeesInfo"
-            End With
+            If payrollType = "Admin" Then
+                With OleDBC
+                    .Connection = conn
+                    .CommandText = "select * from tblEmployeesInfo where Field <> 'Weekly'"
+                End With
+            Else
+                With OleDBC
+                    .Connection = conn
+                    .CommandText = "select * from tblEmployeesInfo where Field = 'Weekly'"
+                End With
+            End If
             OleDBDR = OleDBC.ExecuteReader
             dgw.Rows.Clear()
             If OleDBDR.HasRows Then
