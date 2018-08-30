@@ -211,6 +211,7 @@
         Dim fdate As DateTime = dtrTo.Value
         Dim sdate As DateTime = dtrFrom.Value
         Dim CountSundays As Integer = (1 + dtrTo.Value.Subtract(dtrFrom.Value).Days + (6 + CInt(dtrFrom.Value.DayOfWeek)) Mod 7) / 7
+        Dim totgross As Double
         If txtPayMethod.Text = "Daily" Then
             regularWorkedDays = txtregularWorkedDays.Text
             absent = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 1 - CountSundays
@@ -229,7 +230,6 @@
         leavePay = txtLeavepay.Text
         overtime = txtOvertime.Text
         restDayReport = txtRDR.Text
-
         late = txtLate.Text
         If txtPayMethod.Text = "Daily" Then
             basicpay = txtDR.Text * regularWorkedDays
@@ -239,30 +239,20 @@
             leavepaycash = txtDR.Text * leavePay
             overtimecash = txtDR.Text / 8 * 1.25 * overtime
             restDayReportAmount = txtDR.Text / 8 * 1.69 * restDayReport
+            totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash
         ElseIf txtPayMethod.Text = "Monthly" Then
-            basicpay = (txtDR.Text / 2) - (txtDR.Text / 26 * absent)
+            basicpay = txtDR.Text / 2
+            absentinamount = txtDR.Text / 26 * absent
             latecash = (txtDR.Text / 26 / 8 / 60) * late
             regularholiday = (txtDR.Text / 26) * regularHolidays
             nonworkingholiday = (txtDR.Text / 26) * 0.3 * nonWorkingHolidays
             leavepaycash = (txtDR.Text / 26) * leavePay
             overtimecash = txtDR.Text / 26 / 8 * 1.25 * overtime
             restDayReportAmount = txtDR.Text / 26 / 8 * 1.69 * restDayReport
-        ElseIf txtPayMethod.Text = "Weekly" Then
-            basicpay = txtDR.Text * regularWorkedDays
-            latecash = (txtDR.Text / 8 / 60) * late
-            regularholiday = txtDR.Text * regularHolidays
-            nonworkingholiday = txtDR.Text * 0.3 * nonWorkingHolidays
-            leavepaycash = txtDR.Text * leavePay
-            overtimecash = txtDR.Text / 8 * overtime
-            restDayReportAmount = txtDR.Text / 8 * restDayReport
+            totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash - absentinamount
         End If
-
-        Dim totgross As Double
-        totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash
         lblGrossPay.Text = Format(totgross, "0.00")
         grossPay = lblGrossPay.Text
-
-
         'Dim daydate As DateTime = dtrTo.Value
         If frmDateGenerator.isLastDay = True Then
             selectLastNetpay()

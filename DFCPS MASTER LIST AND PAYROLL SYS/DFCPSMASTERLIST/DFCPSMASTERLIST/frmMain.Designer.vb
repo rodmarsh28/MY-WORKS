@@ -44,11 +44,12 @@ Partial Class frmMain
         Me.PayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewAllPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintPremiumsSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConfigurationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DatabaseConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.PrintPremiumsSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BackupDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -120,7 +121,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddEmployeesToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddEmployeesToolStripMenuItem, Me.BackupDatabaseToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(41, 23)
         Me.FileToolStripMenuItem.Text = "File"
@@ -128,7 +129,7 @@ Partial Class frmMain
         'AddEmployeesToolStripMenuItem
         '
         Me.AddEmployeesToolStripMenuItem.Name = "AddEmployeesToolStripMenuItem"
-        Me.AddEmployeesToolStripMenuItem.Size = New System.Drawing.Size(172, 24)
+        Me.AddEmployeesToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.AddEmployeesToolStripMenuItem.Text = "Add Employees"
         '
         'TransactionToolStripMenuItem
@@ -175,6 +176,12 @@ Partial Class frmMain
         Me.ViewAllPayrollToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
         Me.ViewAllPayrollToolStripMenuItem.Text = "All Payroll History"
         '
+        'PrintPremiumsSummaryToolStripMenuItem
+        '
+        Me.PrintPremiumsSummaryToolStripMenuItem.Name = "PrintPremiumsSummaryToolStripMenuItem"
+        Me.PrintPremiumsSummaryToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
+        Me.PrintPremiumsSummaryToolStripMenuItem.Text = "Print Premiums Summary"
+        '
         'ConfigurationToolStripMenuItem
         '
         Me.ConfigurationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DatabaseConnectionToolStripMenuItem})
@@ -198,11 +205,11 @@ Partial Class frmMain
         '
         Me.Timer1.Enabled = True
         '
-        'PrintPremiumsSummaryToolStripMenuItem
+        'BackupDatabaseToolStripMenuItem
         '
-        Me.PrintPremiumsSummaryToolStripMenuItem.Name = "PrintPremiumsSummaryToolStripMenuItem"
-        Me.PrintPremiumsSummaryToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
-        Me.PrintPremiumsSummaryToolStripMenuItem.Text = "Print Premiums Summary"
+        Me.BackupDatabaseToolStripMenuItem.Name = "BackupDatabaseToolStripMenuItem"
+        Me.BackupDatabaseToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
+        Me.BackupDatabaseToolStripMenuItem.Text = "Backup Database"
         '
         'frmMain
         '
@@ -249,5 +256,6 @@ Partial Class frmMain
     Friend WithEvents ToolStripStatusLabel7 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents lblUsername As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents PrintPremiumsSummaryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BackupDatabaseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

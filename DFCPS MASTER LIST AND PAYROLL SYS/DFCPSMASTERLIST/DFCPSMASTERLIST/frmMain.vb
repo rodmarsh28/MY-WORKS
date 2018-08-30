@@ -157,4 +157,8 @@ Public Class frmMain
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         lblTime.Text = Format(Now, "hh:mm:ss tt")
     End Sub
+
+    Private Sub BackupDatabaseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BackupDatabaseToolStripMenuItem.Click
+        frmBackupDatabase.ShowDialog()
+    End Sub
 End Class

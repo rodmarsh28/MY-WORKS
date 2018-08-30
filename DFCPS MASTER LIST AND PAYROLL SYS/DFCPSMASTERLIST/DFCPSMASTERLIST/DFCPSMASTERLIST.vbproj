@@ -94,6 +94,12 @@
     <Compile Include="DataSet1.vb">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmBackupDatabase.Designer.vb">
+      <DependentUpon>frmBackupDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBackupDatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Payroll Forms\frmPrintPremsPaymentSum.Designer.vb">
       <DependentUpon>frmPrintPremsPaymentSum.vb</DependentUpon>
     </Compile>
@@ -200,6 +206,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Reports\PayslipForLabor.vb">
+      <DependentUpon>PayslipForLabor.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\frmReportViewer.Designer.vb">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
     </Compile>
@@ -228,6 +240,9 @@
   <ItemGroup>
     <EmbeddedResource Include="databaseConnection.resx">
       <DependentUpon>databaseConnection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackupDatabase.resx">
+      <DependentUpon>frmBackupDatabase.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll Forms\frmPrintPremsPaymentSum.resx">
       <DependentUpon>frmPrintPremsPaymentSum.vb</DependentUpon>
@@ -279,6 +294,10 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PayslipForLabor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PayslipForLabor.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReportViewer.resx">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
