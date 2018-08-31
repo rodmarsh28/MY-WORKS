@@ -43,6 +43,7 @@ Partial Class frmAllPayrollHistory
         Me.PrintPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintPayslipToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CancelPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdatePayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         CType(Me.dgw, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -187,27 +188,33 @@ Partial Class frmAllPayrollHistory
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrintPayrollToolStripMenuItem, Me.PrintPayslipToolStripMenuItem, Me.CancelPayrollToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrintPayrollToolStripMenuItem, Me.PrintPayslipToolStripMenuItem, Me.UpdatePayrollToolStripMenuItem, Me.CancelPayrollToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(164, 76)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(169, 122)
         '
         'PrintPayrollToolStripMenuItem
         '
         Me.PrintPayrollToolStripMenuItem.Name = "PrintPayrollToolStripMenuItem"
-        Me.PrintPayrollToolStripMenuItem.Size = New System.Drawing.Size(163, 24)
+        Me.PrintPayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
         Me.PrintPayrollToolStripMenuItem.Text = "Print Payroll"
         '
         'PrintPayslipToolStripMenuItem
         '
         Me.PrintPayslipToolStripMenuItem.Name = "PrintPayslipToolStripMenuItem"
-        Me.PrintPayslipToolStripMenuItem.Size = New System.Drawing.Size(163, 24)
+        Me.PrintPayslipToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
         Me.PrintPayslipToolStripMenuItem.Text = "Print Payslip"
         '
         'CancelPayrollToolStripMenuItem
         '
         Me.CancelPayrollToolStripMenuItem.Name = "CancelPayrollToolStripMenuItem"
-        Me.CancelPayrollToolStripMenuItem.Size = New System.Drawing.Size(163, 24)
+        Me.CancelPayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
         Me.CancelPayrollToolStripMenuItem.Text = "Cancel Payroll"
+        '
+        'UpdatePayrollToolStripMenuItem
+        '
+        Me.UpdatePayrollToolStripMenuItem.Name = "UpdatePayrollToolStripMenuItem"
+        Me.UpdatePayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
+        Me.UpdatePayrollToolStripMenuItem.Text = "Update Payroll"
         '
         'frmAllPayrollHistory
         '
@@ -252,4 +259,5 @@ Partial Class frmAllPayrollHistory
     Friend WithEvents PrintPayrollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PrintPayslipToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CancelPayrollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents UpdatePayrollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

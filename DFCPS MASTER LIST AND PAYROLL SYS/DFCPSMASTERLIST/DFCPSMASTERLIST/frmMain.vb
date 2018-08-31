@@ -108,7 +108,7 @@ Public Class frmMain
     End Sub
 
     Private Sub DatabaseConnectionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DatabaseConnectionToolStripMenuItem.Click
-        'databaseConnection.ShowDialog()
+        databaseConnection.ShowDialog()
     End Sub
 
     Private Sub VIEWMASTERLISTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles VIEWMASTERLISTToolStripMenuItem.Click

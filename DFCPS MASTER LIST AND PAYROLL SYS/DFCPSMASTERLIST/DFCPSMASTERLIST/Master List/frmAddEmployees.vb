@@ -207,6 +207,8 @@
                 deleteExistingChildrenInfo()
                 dgwItemProcess()
                 MsgBox("EMPLOYEES INFORMATION UPDATED", MsgBoxStyle.Information, "SUCCESS")
+                Me.Close()
+                frmMasterList.viewEmployees()
             Catch ex As Exception
                 MsgBox(ex.Message)
 

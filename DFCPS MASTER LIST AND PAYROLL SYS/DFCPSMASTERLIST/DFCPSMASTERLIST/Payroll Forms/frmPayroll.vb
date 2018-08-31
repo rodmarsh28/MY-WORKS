@@ -39,11 +39,11 @@
     Dim id As String
     Dim stats As Boolean
 
-    Dim totalEmployees As Integer = 0
-    Dim totalOT As Double = 0.0
-    Dim totalGrossPay As Double = 0.0
-    Dim totalDeductions As Double = 0.0
-    Dim totalNetpay As Double = 0.0
+    Public totalEmployees As Integer = 0
+    Public totalOT As Double = 0.0
+    Public totalGrossPay As Double = 0.0
+    Public totalDeductions As Double = 0.0
+    Public totalNetpay As Double = 0.0
 
     Dim xEmployeeID As String
     Dim xtotWorkDays As String
@@ -264,13 +264,62 @@
             If frmDateGenerator.isLastDay = True Then
                 grossPay = grossPay + lastnetpay
                 If phNo = True Then
-                    If grossPay <= 10000 Then
+                    If grossPay <= 8999.99 Then
+                        txtPhilhealth.Text = "100"
+                    ElseIf grossPay <= 9999.99 Then
+                        txtPhilhealth.Text = "112.50"
+                    ElseIf grossPay <= 10999.99 Then
+                        txtPhilhealth.Text = "125"
+                    ElseIf grossPay <= 11999.99 Then
                         txtPhilhealth.Text = "137.50"
-                    ElseIf grossPay <= 39999 Then
-                        txtPhilhealth.Text = Format(grossPay * 0.0275 / 2, "0.00")
-
+                    ElseIf grossPay <= 12999.99 Then
+                        txtPhilhealth.Text = "150"
+                    ElseIf grossPay <= 13999.99 Then
+                        txtPhilhealth.Text = "162.50"
+                    ElseIf grossPay <= 14999.99 Then
+                        txtPhilhealth.Text = "175"
+                    ElseIf grossPay <= 15999.99 Then
+                        txtPhilhealth.Text = "187.50"
+                    ElseIf grossPay <= 16999.99 Then
+                        txtPhilhealth.Text = "200"
+                    ElseIf grossPay <= 17999.99 Then
+                        txtPhilhealth.Text = "212.50"
+                    ElseIf grossPay <= 18999.99 Then
+                        txtPhilhealth.Text = "225"
+                    ElseIf grossPay <= 19999.99 Then
+                        txtPhilhealth.Text = "237.50"
+                    ElseIf grossPay <= 20999.99 Then
+                        txtPhilhealth.Text = "250"
+                    ElseIf grossPay <= 21999.99 Then
+                        txtPhilhealth.Text = "262.50"
+                    ElseIf grossPay <= 22999.99 Then
+                        txtPhilhealth.Text = "275"
+                    ElseIf grossPay <= 23999.99 Then
+                        txtPhilhealth.Text = "287.50"
+                    ElseIf grossPay <= 24999.99 Then
+                        txtPhilhealth.Text = "300"
+                    ElseIf grossPay <= 25999.99 Then
+                        txtPhilhealth.Text = "312.50"
+                    ElseIf grossPay <= 26999.99 Then
+                        txtPhilhealth.Text = "325"
+                    ElseIf grossPay <= 27999.99 Then
+                        txtPhilhealth.Text = "337.50"
+                    ElseIf grossPay <= 28999.99 Then
+                        txtPhilhealth.Text = "350"
+                    ElseIf grossPay <= 29999.99 Then
+                        txtPhilhealth.Text = "362.50"
+                    ElseIf grossPay <= 30999.99 Then
+                        txtPhilhealth.Text = "375"
+                    ElseIf grossPay <= 31999.99 Then
+                        txtPhilhealth.Text = "387.50"
+                    ElseIf grossPay <= 32999.99 Then
+                        txtPhilhealth.Text = "400"
+                    ElseIf grossPay <= 33999.99 Then
+                        txtPhilhealth.Text = "412.50"
+                    ElseIf grossPay <= 34999.99 Then
+                        txtPhilhealth.Text = "425"
                     Else
-                        txtPhilhealth.Text = "550.00"
+                        txtPhilhealth.Text = "437.50"
                     End If
                 Else
                     txtPhilhealth.Text = "0.00"
@@ -457,6 +506,12 @@
         If txtOvertime.Text = "" Then
             txtOvertime.Text = "0"
 
+        End If
+        If txtRDR.Text = "" Then
+            txtRDR.Text = "0"
+        End If
+        If txtLate.Text = "" Then
+            txtLate.Text = "0"
         End If
 
         If txtRDR.Text = "" Then
@@ -649,6 +704,25 @@
             MsgBox(ex.Message)
         End Try
     End Sub
+    Sub deleteExtPayroll()
+        Try
+            If conn.State = ConnectionState.Open Then
+                OleDBC.Dispose()
+                conn.Close()
+            End If
+            If conn.State <> ConnectionState.Open Then
+                ConnectDatabase()
+            End If
+            With OleDBC
+                .Connection = conn
+                .CommandText = "delete tblPayroll where payrollID ='" & lblPRID.Text & "' " & _
+                             "delete tblPayrollofEmployees where payrollID ='" & lblPRID.Text & "' "
+                .ExecuteNonQuery()
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Sub addtoDGV()
         Dim r As Integer = dgw.Rows.Count
         dgw.Rows.Add()
@@ -748,11 +822,19 @@
 
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         If dgw.Rows.Count <> 0 Then
-            save()
+            If payrollMode = "Add" Then
+                save()
+            ElseIf payrollMode = "Update" Then
+                deleteExtPayroll()
+                save()
+                frmAllPayrollHistory.ShowAllPayrollHistory()
+            End If
+
+
         Else
             MsgBox("You Dont have calculated Payroll of Employees", MsgBoxStyle.Critical, "error")
         End If
-        'selectExist()
+            'selectExist()
     End Sub
 
     Private Sub btnClose_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
@@ -764,32 +846,36 @@
     End Sub
 
     Private Sub frmPayroll_Load_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clear()
-        Button1.Focus()
-        frmEmployeeName.searchExisting()
-        frmEmployeeName.showEmployee()
-        generatePayrollID()
-        If frmDateGenerator.isLastDay = True Then
-            txtSSSLoan.Enabled = False
-            txtPagibigLoah.Enabled = False
-        ElseIf payrollType = "Labor" Then
-            txtSSSLoan.Enabled = False
-            txtPagibigLoah.Enabled = False
-        Else
-            txtSSSLoan.Enabled = True
-            txtPagibigLoah.Enabled = True
+        If payrollMode = "Update" Then
+        ElseIf payrollMode = "Add" Then
+            clear()
+            Button1.Focus()
+            frmEmployeeName.searchExisting()
+            frmEmployeeName.showEmployee()
+            generatePayrollID()
+            If frmDateGenerator.isLastDay = True Then
+                txtSSSLoan.Enabled = False
+                txtPagibigLoah.Enabled = False
+            ElseIf payrollType = "Labor" Then
+                txtSSSLoan.Enabled = False
+                txtPagibigLoah.Enabled = False
+            Else
+                txtSSSLoan.Enabled = True
+                txtPagibigLoah.Enabled = True
 
+            End If
+            lblTotEmp.Text = dgw.RowCount
+            totalOT = 0.0
+            totalGrossPay = 0.0
+            totalDeductions = 0.0
+            totalNetpay = 0.0
+
+            lblTotOT.Text = Format(totalOT, "N")
+            lblTotGP.Text = Format(totalGrossPay, "N")
+            lblTotDed.Text = Format(totalDeductions, "N")
+            lblTotNet.Text = Format(totalNetpay, "N")
         End If
-        lblTotEmp.Text = dgw.RowCount
-        totalOT = 0.0
-        totalGrossPay = 0.0
-        totalDeductions = 0.0
-        totalNetpay = 0.0
-
-        lblTotOT.Text = Format(totalOT, "N")
-        lblTotGP.Text = Format(totalGrossPay, "N")
-        lblTotDed.Text = Format(totalDeductions, "N")
-        lblTotNet.Text = Format(totalNetpay, "N")
+       
     End Sub
 
     Private Sub DeleteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteToolStripMenuItem.Click
@@ -811,5 +897,9 @@
             dgw.Rows.Remove(row)
             dgw.ClearSelection()
         Next
+    End Sub
+
+    Private Sub dgw_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgw.CellContentClick
+
     End Sub
 End Class

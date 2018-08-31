@@ -33,7 +33,7 @@
                     frmPayroll.txtDR.Text = OleDBDR.Item(7)
                     frmPayroll.field = OleDBDR.Item(12)
                     If frmPayroll.txtPayMethod.Text = "Monthly" Then
-                        frmPayroll.lblRW.Text = "Absent(HRS)"
+                        frmPayroll.lblRW.Text = "Absent"
                     
                     ElseIf frmPayroll.txtPayMethod.Text = "Daily" Then
                         frmPayroll.lblRW.Text = "Regular Worked Days"

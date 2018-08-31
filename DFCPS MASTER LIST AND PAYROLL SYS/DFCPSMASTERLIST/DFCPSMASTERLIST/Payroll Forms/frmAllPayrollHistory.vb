@@ -1,5 +1,6 @@
 ﻿Public Class frmAllPayrollHistory
     Dim payrollMaxID As String
+    Dim payrollRemarks As String
     Sub deletePayroll()
         If MsgBox("Delete Payroll?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "WARNING") = MsgBoxResult.Yes Then
             Try
@@ -320,6 +321,93 @@
             MsgBox(ex.Message)
         End Try
     End Sub
+    Sub updatePayroll()
+        Try
+            If conn.State = ConnectionState.Open Then
+                OleDBC.Dispose()
+                conn.Close()
+            End If
+            If conn.State <> ConnectionState.Open Then
+                ConnectDatabase()
+            End If
+            Dim c As Integer
+            c = 0
+            With OleDBC
+                .Connection = conn
+                .CommandText = "SELECT dbo.tblPayrollofEmployees.payrollID,dbo.tblPayroll.dateFrom,dbo.tblPayroll.dateTo,dbo.tblPayroll.totalEmployees," & _
+                    "dbo.tblPayroll.totalOvertime,dbo.tblPayroll.totalGrossPay,dbo.tblPayroll.totalDeduction,dbo.tblPayroll.totalNetpay," & _
+                    "dbo.tblPayrollofEmployees.employeeID,dbo.tblEmployeesInfo.lastname,dbo.tblEmployeesInfo.firstname,dbo.tblEmployeesInfo.middlename," & _
+                    "dbo.tblPayrollofEmployees.totalWorkedDays,dbo.tblPayrollofEmployees.absent,dbo.tblPayrollofEmployees.regHolidays," & _
+                    "dbo.tblPayrollofEmployees.NonWorkHolidays,dbo.tblPayrollofEmployees.leavePay,dbo.tblPayrollofEmployees.overtimeHRS," & _
+                    "dbo.tblPayrollofEmployees.restdayReportHRS,dbo.tblPayrollofEmployees.lateUTMins,dbo.tblPayrollofEmployees.basicPay," & _
+                    "dbo.tblPayrollofEmployees.regHolidayPay,dbo.tblPayrollofEmployees.nonWorkHolidayPay,dbo.tblPayrollofEmployees.leavePayCash," & _
+                    "dbo.tblPayrollofEmployees.overtimePay,dbo.tblPayrollofEmployees.restdayReportAmount,dbo.tblPayrollofEmployees.lateUndertimeDed," & _
+                    "dbo.tblPayrollofEmployees.cashAdvance,dbo.tblPayrollofEmployees.wHoldingTax,dbo.tblPayrollofEmployees.sssPrems,dbo.tblPayrollofEmployees.piPrems," & _
+                    "dbo.tblPayrollofEmployees.phPrems,dbo.tblPayrollofEmployees.sssLoans,dbo.tblPayrollofEmployees.piLoans,dbo.tblPayrollofEmployees.ledgerBalance," & _
+                    "dbo.tblPayrollofEmployees.grossPay,dbo.tblPayrollofEmployees.Deduction,dbo.tblPayrollofEmployees.Netpay FROM dbo.tblPayrollofEmployees " & _
+                    "INNER JOIN dbo.tblPayroll ON dbo.tblPayrollofEmployees.payrollID = dbo.tblPayroll.payrollID INNER JOIN dbo.tblEmployeesInfo ON " & _
+                    "dbo.tblPayrollofEmployees.employeeID = dbo.tblEmployeesInfo.employeeID " & _
+                    "where dbo.tblPayrollofEmployees.payrollID = '" & dgw.CurrentRow.Cells(0).Value & "'"
+
+
+            End With
+            OleDBDR = OleDBC.ExecuteReader
+            frmPayroll.dgw.Rows.Clear()
+            If OleDBDR.HasRows Then
+                While OleDBDR.Read
+                    frmPayroll.lblPRID.Text = OleDBDR.Item(0)
+                    frmPayroll.dtrFrom.Value = OleDBDR.Item(1)
+                    frmPayroll.dtrTo.Value = OleDBDR.Item(2)
+                    frmPayroll.lblTotEmp.Text = OleDBDR.Item(3)
+
+                    frmPayroll.totalOT = Format(OleDBDR.Item(4), "N")
+                    frmPayroll.totalGrossPay = Format(OleDBDR.Item(5), "N")
+                    frmPayroll.totalDeductions = Format(OleDBDR.Item(6), "N")
+                    frmPayroll.totalNetpay = Format(OleDBDR.Item(7), "N")
+
+                    frmPayroll.lblTotOT.Text = frmPayroll.totalOT
+                    frmPayroll.lblTotGP.Text = frmPayroll.totalGrossPay
+                    frmPayroll.lblTotDed.Text = frmPayroll.totalDeductions
+                    frmPayroll.lblTotNet.Text = frmPayroll.totalNetpay
+                    
+                    frmPayroll.dgw.Rows.Add()
+                    frmPayroll.dgw.Item(0, c).Value = OleDBDR.Item(8)
+                    frmPayroll.dgw.Item(1, c).Value = OleDBDR.Item(9) & ", " & OleDBDR.Item(10) & " " & OleDBDR.Item(11) & "."
+                    frmPayroll.dgw.Item(2, c).Value = OleDBDR.Item(12)
+                    frmPayroll.dgw.Item(3, c).Value = OleDBDR.Item(13)
+                    frmPayroll.dgw.Item(4, c).Value = OleDBDR.Item(14)
+                    frmPayroll.dgw.Item(5, c).Value = OleDBDR.Item(15)
+                    frmPayroll.dgw.Item(6, c).Value = OleDBDR.Item(16)
+                    frmPayroll.dgw.Item(7, c).Value = Format(OleDBDR.Item(17), "N")
+                    frmPayroll.dgw.Item(8, c).Value = Format(OleDBDR.Item(18), "N")
+                    frmPayroll.dgw.Item(9, c).Value = Format(OleDBDR.Item(19), "N")
+                    frmPayroll.dgw.Item(10, c).Value = Format(OleDBDR.Item(20), "N")
+                    frmPayroll.dgw.Item(11, c).Value = Format(OleDBDR.Item(21), "N")
+                    frmPayroll.dgw.Item(12, c).Value = Format(OleDBDR.Item(22), "N")
+                    frmPayroll.dgw.Item(13, c).Value = Format(OleDBDR.Item(23), "N")
+                    frmPayroll.dgw.Item(14, c).Value = Format(OleDBDR.Item(24), "N")
+                    frmPayroll.dgw.Item(15, c).Value = Format(OleDBDR.Item(25), "N")
+                    frmPayroll.dgw.Item(16, c).Value = Format(OleDBDR.Item(26), "N")
+                    frmPayroll.dgw.Item(17, c).Value = Format(OleDBDR.Item(27), "N")
+                    frmPayroll.dgw.Item(18, c).Value = Format(OleDBDR.Item(28), "N")
+                    frmPayroll.dgw.Item(19, c).Value = Format(OleDBDR.Item(29), "N")
+                    frmPayroll.dgw.Item(20, c).Value = Format(OleDBDR.Item(30), "N")
+                    frmPayroll.dgw.Item(21, c).Value = Format(OleDBDR.Item(31), "N")
+                    frmPayroll.dgw.Item(22, c).Value = Format(OleDBDR.Item(32), "N")
+                    frmPayroll.dgw.Item(23, c).Value = Format(OleDBDR.Item(33), "N")
+                    frmPayroll.dgw.Item(24, c).Value = Format(OleDBDR.Item(34), "N")
+                    frmPayroll.dgw.Item(25, c).Value = Format(OleDBDR.Item(35), "N")
+                    frmPayroll.dgw.Item(26, c).Value = Format(OleDBDR.Item(36), "N")
+                    frmPayroll.dgw.Item(27, c).Value = Format(OleDBDR.Item(37), "N")
+                    c = c + 1
+                End While
+                frmPayroll.dgw.ClearSelection()
+                frmPayroll.ShowDialog()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 
 
     Private Sub frmAllPayrollHistory_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
@@ -376,6 +464,32 @@
     Private Sub frmAllPayrollHistory_Load_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ShowAllPayrollHistory()
     End Sub
+    Sub selectIfWeekly()
+        Try
+            If conn.State = ConnectionState.Open Then
+                OleDBC.Dispose()
+                conn.Close()
+            End If
+            If conn.State <> ConnectionState.Open Then
+                ConnectDatabase()
+            End If
+            Dim c As Integer
+            c = 0
+            With OleDBC
+                .Connection = conn
+                .CommandText = "select remarks from tblPayroll where payrollID = '" & dgw.CurrentRow.Cells(0).Value & "'"
+
+            End With
+            OleDBDR = OleDBC.ExecuteReader
+            If OleDBDR.HasRows Then
+                If OleDBDR.Read Then
+                    payrollRemarks = OleDBDR.Item(0)
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 
 
     Private Sub dgw_CellMouseDown1(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles dgw.CellMouseDown
@@ -390,6 +504,17 @@
     End Sub
 
     Private Sub dgw_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgw.CellContentClick
+
+    End Sub
+
+    Private Sub UpdatePayrollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdatePayrollToolStripMenuItem.Click
+        selectIfWeekly()
+        If payrollRemarks = "Labor" Then
+            payrollMode = "Update"
+            updatePayroll()
+        Else
+            MsgBox("You cant Update this payroll", MsgBoxStyle.Critical, "Error")
+        End If
 
     End Sub
 End Class

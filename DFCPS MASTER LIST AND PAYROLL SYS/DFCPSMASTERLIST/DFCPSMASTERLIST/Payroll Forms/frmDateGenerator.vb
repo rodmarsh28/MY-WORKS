@@ -4,6 +4,7 @@
 
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        payrollMode = "Add"
         If cmbPType.Text <> "" Then
             Dim Year As DateTime = DateTimePicker2.Value
             Dim Month As DateTime = DateTimePicker2.Value
