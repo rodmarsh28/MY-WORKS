@@ -164,7 +164,7 @@
                                 OleDBDR.Item(0),
                                 OleDBDR.Item(1),
                                 OleDBDR.Item(2) & ", " & OleDBDR.Item(3) & " " & OleDBDR.Item(4),
-                                Format(OleDBDR.Item(5), "N"),
+                                Format(OleDBDR.Item(5) + OleDBDR.Item(7), "N"),
                                 Format(OleDBDR.Item(6), "N"),
                                 Format(OleDBDR.Item(7), "N"),
                                 Format(OleDBDR.Item(8), "N"),
@@ -509,12 +509,12 @@
 
     Private Sub UpdatePayrollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdatePayrollToolStripMenuItem.Click
         selectIfWeekly()
-        If payrollRemarks = "Labor" Then
-            payrollMode = "Update"
-            updatePayroll()
-        Else
-            MsgBox("You cant Update this payroll", MsgBoxStyle.Critical, "Error")
-        End If
+        'If payrollRemarks = "Labor" Then
+        payrollMode = "Update"
+        updatePayroll()
+        'Else
+        'MsgBox("You cant Update this payroll", MsgBoxStyle.Critical, "Error")
+        'End If
 
     End Sub
 End Class

@@ -278,10 +278,13 @@
                 While OleDBDR.Read
                     c = 0
                     While c < 2
-                        dt.Rows.Add(OleDBDR.Item(0), Format(OleDBDR.Item(1), "MMMM") & " " & Format(OleDBDR.Item(1), "dd") & " - " + Format(OleDBDR.Item(2), "dd") & " " & Format(OleDBDR.Item(2), "yyyy"),
-                                    OleDBDR.Item(3) & ", " & OleDBDR.Item(4) & " " & OleDBDR.Item(5), OleDBDR.Item(6), Format(OleDBDR.Item(7), "N"), Format(OleDBDR.Item(8), "MM/dd/yyyy"),
+                        dt.Rows.Add(OleDBDR.Item(0),
+                                    Format(OleDBDR.Item(1), "MMMM") & " " & Format(OleDBDR.Item(1), "dd") & " - " + Format(OleDBDR.Item(2), "dd") & " " & Format(OleDBDR.Item(2), "yyyy"),
+                                    OleDBDR.Item(3) & ", " & OleDBDR.Item(4) & " " & OleDBDR.Item(5),
+                                    OleDBDR.Item(6),
+                                    Format(OleDBDR.Item(7), "N"), Format(OleDBDR.Item(8), "MM/dd/yyyy"),
                                     Format(OleDBDR.Item(9), "0.0"), Format(OleDBDR.Item(10), "0.0"), Format(OleDBDR.Item(11), "0.0"), Format(OleDBDR.Item(12), "0.0"), Format(OleDBDR.Item(13), "0.0"),
-                                    Format(OleDBDR.Item(14), "0.0"), Format(OleDBDR.Item(15), "N"), Format(OleDBDR.Item(16), "N"), Format(OleDBDR.Item(17), "N"),
+                                    Format(OleDBDR.Item(14), "N"), Format(OleDBDR.Item(15), "N"), Format(OleDBDR.Item(16), "N"), Format(OleDBDR.Item(17), "N"),
                                     Format(OleDBDR.Item(18), "N"), Format(OleDBDR.Item(19), "N"), Format(OleDBDR.Item(20), "N"), Format(OleDBDR.Item(21), "N"),
                                      Format(OleDBDR.Item(22), "N"), Format(OleDBDR.Item(23), "N"), Format(OleDBDR.Item(24), "N"), Format(OleDBDR.Item(25), "N"),
                                       Format(OleDBDR.Item(26), "N"), Format(OleDBDR.Item(27), "N"), Format(OleDBDR.Item(28), "N"), Format(OleDBDR.Item(29), "N"), Format(OleDBDR.Item(30), "N"))

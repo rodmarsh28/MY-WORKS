@@ -250,16 +250,7 @@
         If databaseMode = "Utility" Then
             txtSSSLoan.Enabled = False
             txtPagibigLoah.Enabled = False
-        Else
-            If frmDateGenerator.isLastDay = True Then
-                txtSSSLoan.Enabled = False
-                txtPagibigLoah.Enabled = False
-
-            Else
-                txtSSSLoan.Enabled = True
-                txtPagibigLoah.Enabled = True
-
-            End If
+       
         End If
         lblTotEmp.Text = dgw.RowCount
         totalOT = 0.0
@@ -379,62 +370,13 @@
                     'Else
                     '    txtPhilhealth.Text = "550.00"
                     'End If
-                    If grossPay <= 8999.99 Then
-                        txtPhilhealth.Text = "100"
-                    ElseIf grossPay <= 9999.99 Then
-                        txtPhilhealth.Text = "112.50"
-                    ElseIf grossPay <= 10999.99 Then
-                        txtPhilhealth.Text = "125"
-                    ElseIf grossPay <= 11999.99 Then
+                    If grossPay <= 10000 Then
                         txtPhilhealth.Text = "137.50"
-                    ElseIf grossPay <= 12999.99 Then
-                        txtPhilhealth.Text = "150"
-                    ElseIf grossPay <= 13999.99 Then
-                        txtPhilhealth.Text = "162.50"
-                    ElseIf grossPay <= 14999.99 Then
-                        txtPhilhealth.Text = "175"
-                    ElseIf grossPay <= 15999.99 Then
-                        txtPhilhealth.Text = "187.50"
-                    ElseIf grossPay <= 16999.99 Then
-                        txtPhilhealth.Text = "200"
-                    ElseIf grossPay <= 17999.99 Then
-                        txtPhilhealth.Text = "212.50"
-                    ElseIf grossPay <= 18999.99 Then
-                        txtPhilhealth.Text = "225"
-                    ElseIf grossPay <= 19999.99 Then
-                        txtPhilhealth.Text = "237.50"
-                    ElseIf grossPay <= 20999.99 Then
-                        txtPhilhealth.Text = "250"
-                    ElseIf grossPay <= 21999.99 Then
-                        txtPhilhealth.Text = "262.50"
-                    ElseIf grossPay <= 22999.99 Then
-                        txtPhilhealth.Text = "275"
-                    ElseIf grossPay <= 23999.99 Then
-                        txtPhilhealth.Text = "287.50"
-                    ElseIf grossPay <= 24999.99 Then
-                        txtPhilhealth.Text = "300"
-                    ElseIf grossPay <= 25999.99 Then
-                        txtPhilhealth.Text = "312.50"
-                    ElseIf grossPay <= 26999.99 Then
-                        txtPhilhealth.Text = "325"
-                    ElseIf grossPay <= 27999.99 Then
-                        txtPhilhealth.Text = "337.50"
-                    ElseIf grossPay <= 28999.99 Then
-                        txtPhilhealth.Text = "350"
-                    ElseIf grossPay <= 29999.99 Then
-                        txtPhilhealth.Text = "362.50"
-                    ElseIf grossPay <= 30999.99 Then
-                        txtPhilhealth.Text = "375"
-                    ElseIf grossPay <= 31999.99 Then
-                        txtPhilhealth.Text = "387.50"
-                    ElseIf grossPay <= 32999.99 Then
-                        txtPhilhealth.Text = "400"
-                    ElseIf grossPay <= 33999.99 Then
-                        txtPhilhealth.Text = "412.50"
-                    ElseIf grossPay <= 34999.99 Then
-                        txtPhilhealth.Text = "425"
+                    ElseIf grossPay <= 39999 Then
+                        txtPhilhealth.Text = Format(grossPay * 0.0275 / 2, "0.00")
+
                     Else
-                        txtPhilhealth.Text = "437.50"
+                        txtPhilhealth.Text = "550.00"
                     End If
                 Else
                     txtPhilhealth.Text = "0.00"

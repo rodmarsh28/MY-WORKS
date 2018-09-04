@@ -125,7 +125,7 @@ Public Class frmMain
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         lblDate.Text = Format(Now, "MM/dd/yyyy")
-        lblUsername.Text = "Elvira Dela Serna"
+        lblUsername.Text = "Rodmar A. Dumago"
         'checkDB()
     End Sub
 
