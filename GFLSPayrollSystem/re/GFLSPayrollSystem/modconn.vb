@@ -16,11 +16,11 @@ Module modconn
     Public databaseMode As String
     Public Sub ConnectDatabase()
         If databaseMode = "GFLS" Then
-            strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=GFLSPAYROLLDB;server=localhost"
+            strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=GFLSPAYROLLDB;server=localhost\sqlexpress"
         ElseIf databaseMode = "AC Inc." Then
-            strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=ACPAYROLLDB;server=localhost"
+            strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=ACPAYROLLDB;server=localhost\sqlexpress"
         ElseIf databaseMode = "Utility" Then
-            strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=UTILITYDB;server=localhost"
+            strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=UTILITYDB;server=localhost\sqlexpress"
         End If
         'strConnString = "Data Source=" & My.Settings.mServer & ";" & _
         '                "Initial Catalog=" & My.Settings.mDBname & ";" & _
