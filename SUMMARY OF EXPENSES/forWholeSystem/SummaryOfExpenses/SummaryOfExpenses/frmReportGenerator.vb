@@ -299,9 +299,50 @@
             MsgBox(ex.Message)
         End Try
     End Sub
+    Sub chartReport()
+        Try
+            If conn.State = ConnectionState.Open Then
+                OleDBC.Dispose()
+                conn.Close()
+            End If
+            If conn.State <> ConnectionState.Open Then
+                ConnectDatabase()
+            End If
+            With OleDBC
+                .Connection = conn
+                .CommandText = "SELECT tblsummaryexpenses.date,tblvehicle.plateNo,tblvehicle.vehicleModel,tblsummaryexpenses.totalPrice " & _
+                    "FROM tblsummaryexpenses INNER JOIN tblvehicle ON tblsummaryexpenses.vID = tblvehicle.vID "
+
+            End With
+            OleDBDR = OleDBC.ExecuteReader
+            Dim dt As New DataTable
+            With dt
+                .Columns.Add("date")
+                .Columns.Add("plateno")
+                .Columns.Add("model")
+                .Columns.Add("amount")
+            End With
+
+            If OleDBDR.HasRows Then
+                While OleDBDR.Read
+                    dt.Rows.Add(Format(OleDBDR.Item(0), "MM/dd/yyyy"),
+                                OleDBDR.Item(2) & " (" & OleDBDR.Item(1) & ")",
+                                OleDBDR.Item(2),
+                                Format(OleDBDR.Item(3), "N"))
+
+                End While
+            End If
+            Dim rptDoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+            rptDoc = New analytical_Report
+            rptDoc.SetDataSource(dt)
+            CrystalReportViewer1.ReportSource = rptDoc
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
-        Me.Close()
+        chartReport()
     End Sub
 
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click

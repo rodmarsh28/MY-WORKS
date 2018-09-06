@@ -193,6 +193,12 @@
     <Compile Include="PlateList.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Report\analytical Report.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>analytical Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\SummaryReportforSalariesWages.vb">
       <DependentUpon>SummaryReportforSalariesWages.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -257,6 +263,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlateList.resx">
       <DependentUpon>PlateList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\analytical Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>analytical Report.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\SummaryReportforSalariesWages.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

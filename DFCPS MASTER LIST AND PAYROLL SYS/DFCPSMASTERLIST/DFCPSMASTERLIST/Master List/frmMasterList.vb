@@ -31,6 +31,7 @@
                     dgw.Item(6, c).Value = OleDBDR.Item(8)
                     c = c + 1
                 End While
+                dgw.ClearSelection()
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

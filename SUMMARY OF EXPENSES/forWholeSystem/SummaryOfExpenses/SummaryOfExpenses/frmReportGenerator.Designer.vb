@@ -137,7 +137,7 @@ Partial Class frmReportGenerator
         '
         Me.btnprev.Location = New System.Drawing.Point(109, 144)
         Me.btnprev.Name = "btnprev"
-        Me.btnprev.Size = New System.Drawing.Size(89, 30)
+        Me.btnprev.Size = New System.Drawing.Size(89, 38)
         Me.btnprev.TabIndex = 27
         Me.btnprev.Text = "Preview"
         Me.btnprev.UseVisualStyleBackColor = True
@@ -146,13 +146,16 @@ Partial Class frmReportGenerator
         '
         Me.btnClose.Location = New System.Drawing.Point(204, 144)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(89, 30)
+        Me.btnClose.Size = New System.Drawing.Size(89, 38)
         Me.btnClose.TabIndex = 28
-        Me.btnClose.Text = "Close"
+        Me.btnClose.Text = "All Expenses Chart"
         Me.btnClose.UseVisualStyleBackColor = True
         '
         'Report
         '
+        Me.Report.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Report.Controls.Add(Me.CrystalReportViewer1)
         Me.Report.Location = New System.Drawing.Point(361, 12)
         Me.Report.Name = "Report"
@@ -193,7 +196,6 @@ Partial Class frmReportGenerator
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.txtPlate)
         Me.Controls.Add(Me.Label1)
-        Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmReportGenerator"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

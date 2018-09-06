@@ -16,8 +16,11 @@
     Dim grossPay As Double
     Dim late As Double
     Dim sss As Double
+    Dim sssER As Double
     Dim pagibig As Double
+    Dim pagibigER As Double
     Dim philhealth As Double
+    Dim philhealthER As Double
     Dim sssloan As Double
     Dim pagibigloan As Double
     Dim philhealthloan As Double
@@ -36,11 +39,11 @@
     Dim id As String
     Dim stats As Boolean
 
-    Dim totalEmployees As Integer = 0
-    Dim totalOT As Double = 0.0
-    Dim totalGrossPay As Double = 0.0
-    Dim totalDeductions As Double = 0.0
-    Dim totalNetpay As Double = 0.0
+    Public totalEmployees As Integer = 0
+    Public totalOT As Double = 0.0
+    Public totalGrossPay As Double = 0.0
+    Public totalDeductions As Double = 0.0
+    Public totalNetpay As Double = 0.0
 
     Dim xEmployeeID As String
     Dim xtotWorkDays As String
@@ -61,14 +64,18 @@
     Dim xca As String
     Dim xtax As String
     Dim xsssprem As String
+    Dim xsssER As String
     Dim xpiprem As String
+    Dim xpiER As String
     Dim xphprem As String
+    Dim xphER As String
     Dim xsssloan As String
     Dim xpiloan As String
     Dim xledgerBalance As String
     Dim xgp As String
     Dim xdeductions As String
     Dim xnp As String
+    Dim rtx As Double
 
     Sub clear()
         txtregularWorkedDays.Text = "0"
@@ -81,8 +88,11 @@
 
         txtLate.Text = "0"
         txtSSS.Text = "0.00"
+        sssER = 0.0
         txtPagibig.Text = "0.00"
+        pagibigER = 0.0
         txtPhilhealth.Text = "0.00"
+        philhealthER = 0.0
         txtSSSLoan.Text = "0.00"
         txtPagibigLoah.Text = "0.00"
         txtLedgerBalance.Text = "0.00"
@@ -106,90 +116,8 @@
         lblTotDed.Text = "0.00"
         lblTotNet.Text = "0.00"
     End Sub
-    Sub printPayroll()
-        Try
-            If conn.State = ConnectionState.Open Then
-                OleDBC.Dispose()
-                conn.Close()
-            End If
-            If conn.State <> ConnectionState.Open Then
-                ConnectDatabase()
-            End If
-            Dim c As Integer
-            c = 0
-            With OleDBC
-                .Connection = conn
-                .CommandText = "SELECT dbo.tblPayroll.payrollID,dbo.tblPayroll.dateFrom,dbo.tblPayroll.dateTo,dbo.tblEmployeesInfo.EmployeeID,dbo.tblEmployeesInfo.lastname," & _
-                                "dbo.tblEmployeesInfo.firstname,dbo.tblEmployeesInfo.middlename,dbo.tblPayrollofEmployees.absent,dbo.tblPayrollofEmployees.regHolidays," & _
-                                "dbo.tblPayrollofEmployees.NonWorkHolidays,dbo.tblPayrollofEmployees.leavePay,dbo.tblPayrollofEmployees.overtimeHRS," & _
-                                "dbo.tblPayrollofEmployees.lateUTMins,dbo.tblPayrollofEmployees.basicPay,dbo.tblPayrollofEmployees.regHolidayPay," & _
-                                "dbo.tblPayrollofEmployees.nonWorkHolidayPay,dbo.tblPayrollofEmployees.leavePayCash,dbo.tblPayrollofEmployees.overtimePay," & _
-                                "dbo.tblPayrollofEmployees.lateUndertimeDed,dbo.tblPayrollofEmployees.sssPrems,dbo.tblPayrollofEmployees.piPrems,dbo.tblPayrollofEmployees.phPrems," & _
-                                "dbo.tblPayrollofEmployees.sssLoans,dbo.tblPayrollofEmployees.piLoans,dbo.tblPayrollofEmployees.phLoans,dbo.tblPayrollofEmployees.cashAdvance," & _
-                                "dbo.tblPayrollofEmployees.grossPay,dbo.tblPayrollofEmployees.Deduction,dbo.tblPayrollofEmployees.Netpay,dbo.tblPayroll.totalDeduction," & _
-                                "dbo.tblPayroll.totalGrossPay,dbo.tblPayroll.totalNetpay FROM dbo.tblPayroll INNER JOIN dbo.tblPayrollofEmployees ON dbo.tblPayroll.payrollID = " & _
-                                "dbo.tblPayrollofEmployees.payrollID INNER JOIN dbo.tblEmployeesInfo ON dbo.tblEmployeesInfo.EmployeeID = dbo.tblPayrollofEmployees.EmployeeID " & _
-                                " where dbo.tblPayroll.payrollID = '" & lblPRID.Text & "'"
-            End With
-            OleDBDR = OleDBC.ExecuteReader
-            Dim dt As New DataTable
-            With dt
-                .Columns.Add("payrollID")
-                .Columns.Add("DATERANGE")
-                .Columns.Add("Name")
-                .Columns.Add("Worked Days")
-                .Columns.Add("Holidays")
-                .Columns.Add("NonWorkingHolidays")
-                .Columns.Add("leavepay")
-                .Columns.Add("overtime(HRS)")
-                .Columns.Add("lateundertime(min)")
-                .Columns.Add("Basic Pay")
-                .Columns.Add("RegularHolidayCash")
-                .Columns.Add("NonWorkingHolidaysCash")
-                .Columns.Add("Leave Pay")
-                .Columns.Add("Overtime / Restday Report")
-                .Columns.Add("Gross Pay")
-                .Columns.Add("Late / Undertime")
-                .Columns.Add("SSS Premiums")
-                .Columns.Add("Pagibig Premiums")
-                .Columns.Add("Philhealth Premiums")
-                .Columns.Add("SSS Loans")
-                .Columns.Add("Pagibig Loans")
-                .Columns.Add("Philhealth Loans")
-                .Columns.Add("Cash Advance")
-                .Columns.Add("Total Deduction")
-                .Columns.Add("Net Pay")
-                .Columns.Add("DATE")
-                .Columns.Add("totalAllDed")
-                .Columns.Add("totalAllGross")
-                .Columns.Add("totalallNet")
-                .Columns.Add("PreparedBy")
+    
 
-            End With
-
-            If OleDBDR.HasRows Then
-                While OleDBDR.Read
-                    dt.Rows.Add(OleDBDR.Item(0), Format(OleDBDR.Item(1), "MMMM") & " " & Format(OleDBDR.Item(1), "dd") & " - " + Format(OleDBDR.Item(2), "dd") & " " & Format(OleDBDR.Item(2), "yyyy"),
-                                OleDBDR.Item(4) & ", " & OleDBDR.Item(5) & " " & OleDBDR.Item(6), OleDBDR.Item(7), OleDBDR.Item(8), OleDBDR.Item(9),
-                                OleDBDR.Item(10), Format(OleDBDR.Item(11), "0.0"), Format(OleDBDR.Item(12), "0.0"), Format(OleDBDR.Item(13), "0.00"), Format(OleDBDR.Item(14), "0.00"),
-                                Format(OleDBDR.Item(15), "0.00"), Format(OleDBDR.Item(16), "0.00"), Format(OleDBDR.Item(17), "0.00"), Format(OleDBDR.Item(18), "0.00"),
-                                Format(OleDBDR.Item(19), "0.00"), Format(OleDBDR.Item(20), "0.00"), Format(OleDBDR.Item(21), "0.00"), Format(OleDBDR.Item(22), "0.00"),
-                                Format(OleDBDR.Item(23), "0.00"), Format(OleDBDR.Item(24), "0.00"), Format(OleDBDR.Item(25), "0.00"), Format(OleDBDR.Item(26), "0.00"),
-                                Format(OleDBDR.Item(27), "0.00"), Format(OleDBDR.Item(28), "0.00"), Format(Now, "MM/dd/yyyy"), Format(OleDBDR.Item(29), "0.00"),
-                                Format(OleDBDR.Item(30), "0.00"), Format(OleDBDR.Item(31), "0.00"), frmMain.lblUsername.Text)
-                    c = c + 1
-                End While
-            End If
-            Dim rptDoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            rptDoc = New Payroll
-            rptDoc.SetDataSource(dt)
-            frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
-            frmReportViewer.ShowDialog()
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
     Sub generatePayrollID()
         Dim StrID As String
         Try
@@ -284,14 +212,17 @@
         Dim fdate As DateTime = dtrTo.Value
         Dim sdate As DateTime = dtrFrom.Value
         Dim CountSundays As Integer = (1 + dtrTo.Value.Subtract(dtrFrom.Value).Days + (6 + CInt(dtrFrom.Value.DayOfWeek)) Mod 7) / 7
+        Dim totgross As Double
         If txtPayMethod.Text = "Daily" Then
             regularWorkedDays = txtregularWorkedDays.Text
-            absent = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 1 - CountSundays
+            absent = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text - CountSundays
 
         ElseIf txtPayMethod.Text = "Monthly" Then
-            regularWorkedDays = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 1 - CountSundays
+            regularWorkedDays = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 2 - CountSundays - txtRegularHolidays.Text
             absent = txtregularWorkedDays.Text
-        Else
+        ElseIf txtPayMethod.Text = "Weekly" Then
+            regularWorkedDays = txtregularWorkedDays.Text
+            absent = 7 - txtregularWorkedDays.Text
         End If
 
         late = txtLate.Text
@@ -300,183 +231,170 @@
         leavePay = txtLeavepay.Text
         overtime = txtOvertime.Text
         restDayReport = txtRDR.Text
-
         late = txtLate.Text
         If txtPayMethod.Text = "Daily" Then
             basicpay = txtDR.Text * regularWorkedDays
             latecash = (txtDR.Text / 8 / 60) * late
             regularholiday = txtDR.Text * regularHolidays
             nonworkingholiday = txtDR.Text * 0.3 * nonWorkingHolidays
-            leavepaycash = txtDR.Text * leavePay
-            overtimecash = txtDR.Text / 8 * 1.25 * overtime
-            restDayReportAmount = txtDR.Text / 8 * 1.69 * restDayReport
+            leavepaycash = leavePay
+            overtimecash = txtDR.Text / 8 * overtime
+            restDayReportAmount = txtDR.Text / 8 * 1.3 * restDayReport
+            totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash
         ElseIf txtPayMethod.Text = "Monthly" Then
-            basicpay = (txtDR.Text / 2) - (txtDR.Text / 26 * absent)
+            basicpay = txtDR.Text / 2
+            absentinamount = txtDR.Text / 26 * absent
             latecash = (txtDR.Text / 26 / 8 / 60) * late
-            regularholiday = (txtDR.Text / 26) * regularHolidays
-            nonworkingholiday = (txtDR.Text / 26) * 0.3 * nonWorkingHolidays
-            leavepaycash = (txtDR.Text / 26) * leavePay
-            overtimecash = txtDR.Text / 26 / 8 * 1.25 * overtime
-            restDayReportAmount = txtDR.Text / 26 / 8 * 1.69 * restDayReport
+            regularholiday = txtDR.Text / 313 * 12 * txtRegularHolidays.Text
+            nonworkingholiday = txtDR.Text / 313 * 12 * 0.3 * txtNonWorkingHolidays.Text
+            leavepaycash = leavePay
+            overtimecash = txtDR.Text / 313 * 12 / 8 * overtime
+            restDayReportAmount = txtDR.Text / 313 * 12 / 8 * 1.3 * restDayReport
+            totgross = basicpay + leavepaycash + overtimecash + restDayReportAmount - latecash - absentinamount
         End If
-
-        Dim totgross As Double
-        totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash
         lblGrossPay.Text = Format(totgross, "0.00")
         grossPay = lblGrossPay.Text
-
-
-        'Dim daydate As DateTime = dtrTo.Value
+        Dim daydate As DateTime = dtrTo.Value
         If frmDateGenerator.isLastDay = True Then
             selectLastNetpay()
 
         End If
-
         If premDed = "Yes" Then
 
             If frmDateGenerator.isLastDay = True Then
-                grossPay = grossPay + lastnetpay
+                If txtPayMethod.Text = "Monthly" Then
+                    rtx = txtDR.Text
+                ElseIf txtPayMethod.Text = "Daily" Then
+                    rtx = txtDR.Text * 26
+                End If
+                grossPay = grossPay
+
                 If phNo = True Then
-                    If grossPay <= 10000 Then
+                    If rtx <= 10000 Then
                         txtPhilhealth.Text = "137.50"
-                    ElseIf grossPay <= 39999 Then
-                        txtPhilhealth.Text = Format(grossPay * 0.0275 / 2, "0.00")
+                    ElseIf rtx <= 39999 Then
+                        txtPhilhealth.Text = Format(rtx * 0.0275 / 2, "0.00")
+
                     Else
                         txtPhilhealth.Text = "550.00"
                     End If
                 Else
                     txtPhilhealth.Text = "0.00"
                 End If
+                philhealthER = txtPhilhealth.Text
                 If sssNo = True Then
-                    If grossPay <= 1249.99 Then
+                    If rtx <= 1249.99 Then
                         txtSSS.Text = 36.3
-                    ElseIf grossPay <= 1749.99 Then
+                        sssER = 83.7
+                    ElseIf rtx <= 1749.99 Then
                         txtSSS.Text = 54.5
-                    ElseIf grossPay <= 2249.99 Then
+                        sssER = 120.5
+                    ElseIf rtx <= 2249.99 Then
                         txtSSS.Text = 72.7
-                    ElseIf grossPay <= 2749.99 Then
+                        sssER = 157.3
+                    ElseIf rtx <= 2749.99 Then
                         txtSSS.Text = 90.8
-                    ElseIf grossPay <= 3249.99 Then
+                        sssER = 194.2
+                    ElseIf rtx <= 3249.99 Then
                         txtSSS.Text = 109
-                    ElseIf grossPay <= 3749.99 Then
+                        sssER = 231
+                    ElseIf rtx <= 3749.99 Then
                         txtSSS.Text = 127.2
-                    ElseIf grossPay <= 4249.99 Then
+                        sssER = 267.8
+                    ElseIf rtx <= 4249.99 Then
                         txtSSS.Text = 145.3
-                    ElseIf grossPay <= 4749.99 Then
+                        sssER = 304.7
+                    ElseIf rtx <= 4749.99 Then
                         txtSSS.Text = 163.5
-                    ElseIf grossPay <= 5249.99 Then
+                        sssER = 341.5
+                    ElseIf rtx <= 5249.99 Then
                         txtSSS.Text = 181.7
-                    ElseIf grossPay <= 5749.99 Then
+                        sssER = 378.3
+                    ElseIf rtx <= 5749.99 Then
                         txtSSS.Text = 199.8
-                    ElseIf grossPay <= 6249.99 Then
+                        sssER = 415.2
+                    ElseIf rtx <= 6249.99 Then
                         txtSSS.Text = 218
-                    ElseIf grossPay <= 6749.99 Then
+                        sssER = 452
+                    ElseIf rtx <= 6749.99 Then
                         txtSSS.Text = 236.2
-                    ElseIf grossPay <= 7249.99 Then
+                        sssER = 488.8
+                    ElseIf rtx <= 7249.99 Then
                         txtSSS.Text = 254.3
-                    ElseIf grossPay <= 7749.99 Then
+                        sssER = 525.7
+                    ElseIf rtx <= 7749.99 Then
                         txtSSS.Text = 272.5
-                    ElseIf grossPay <= 8749.99 Then
+                        sssER = 562.5
+                    ElseIf rtx <= 8249.99 Then
+                        txtSSS.Text = 290.7
+                        sssER = 599.3
+                    ElseIf rtx <= 8749.99 Then
                         txtSSS.Text = 308.8
-                    ElseIf grossPay <= 9249.99 Then
+                        sssER = 636.2
+                    ElseIf rtx <= 9249.99 Then
                         txtSSS.Text = 327
-                    ElseIf grossPay <= 9749.99 Then
+                        sssER = 673
+                    ElseIf rtx <= 9749.99 Then
                         txtSSS.Text = 345.2
-                    ElseIf grossPay <= 10249.99 Then
+                        sssER = 709.8
+                    ElseIf rtx <= 10249.99 Then
                         txtSSS.Text = 363.3
-                    ElseIf grossPay <= 10749.99 Then
+                        sssER = 746.7
+                    ElseIf rtx <= 10749.99 Then
                         txtSSS.Text = 381.5
-                    ElseIf grossPay <= 11249.99 Then
+                        sssER = 783.5
+                    ElseIf rtx <= 11249.99 Then
                         txtSSS.Text = 399.7
-                    ElseIf grossPay <= 11749.99 Then
+                        sssER = 820.3
+                    ElseIf rtx <= 11749.99 Then
                         txtSSS.Text = 417.8
-                    ElseIf grossPay <= 12249.99 Then
+                        sssER = 857.2
+                    ElseIf rtx <= 12249.99 Then
                         txtSSS.Text = 436
-                    ElseIf grossPay <= 12749.99 Then
+                        sssER = 894
+                    ElseIf rtx <= 12749.99 Then
                         txtSSS.Text = 454.2
-                    ElseIf grossPay <= 13249.99 Then
+                        sssER = 930.8
+                    ElseIf rtx <= 13249.99 Then
                         txtSSS.Text = 472.3
-                    ElseIf grossPay <= 13749.99 Then
+                        sssER = 967.7
+                    ElseIf rtx <= 13749.99 Then
                         txtSSS.Text = 490.5
-                    ElseIf grossPay <= 14249.99 Then
+                        sssER = 1004.5
+                    ElseIf rtx <= 14249.99 Then
                         txtSSS.Text = 508.7
-                    ElseIf grossPay <= 14749.99 Then
+                        sssER = 1041.3
+                    ElseIf rtx <= 14749.99 Then
                         txtSSS.Text = 526.8
-                    ElseIf grossPay <= 15249.99 Then
+                        sssER = 1078.2
+                    ElseIf rtx <= 15249.99 Then
                         txtSSS.Text = 545
-                    ElseIf grossPay <= 15749.99 Then
+                        sssER = 1135
+                    ElseIf rtx <= 15749.99 Then
                         txtSSS.Text = 563.2
-                    ElseIf grossPay <= 16249.99 Or grossPay >= 16249.99 Then
+                        sssER = 1171.8
+                    ElseIf rtx <= 16249.99 Or rtx >= 16249.99 Then
                         txtSSS.Text = 581.3
+                        sssER = 1208.7
                     End If
                 Else
                     txtSSS.Text = "0.00"
+                    sssER = 0.0
                 End If
                 If piNo = True Then
-                    If grossPay <= 8999.99 Then
-                        txtPagibig.Text = 100
-                    ElseIf grossPay <= 9999.99 Then
-                        txtPagibig.Text = 112.5
-                    ElseIf grossPay <= 10999.99 Then
-                        txtPagibig.Text = 125
-                    ElseIf grossPay <= 11999.99 Then
-                        txtPagibig.Text = 137.5
-                    ElseIf grossPay <= 12999.99 Then
-                        txtPagibig.Text = 150
-                    ElseIf grossPay <= 13999.99 Then
-                        txtPagibig.Text = 162.5
-                    ElseIf grossPay <= 14999.99 Then
-                        txtPagibig.Text = 175
-                    ElseIf grossPay <= 15999.99 Then
-                        txtPagibig.Text = 187.5
-                    ElseIf grossPay <= 16999.99 Then
-                        txtPagibig.Text = 200
-                    ElseIf grossPay <= 17999.99 Then
-                        txtPagibig.Text = 212.5
-                    ElseIf grossPay <= 18999.99 Then
-                        txtPagibig.Text = 225
-                    ElseIf grossPay <= 19999.99 Then
-                        txtPagibig.Text = 237.5
-                    ElseIf grossPay <= 20999.99 Then
-                        txtPagibig.Text = 250
-                    ElseIf grossPay <= 21999.99 Then
-                        txtPagibig.Text = 262.5
-                    ElseIf grossPay <= 22999.99 Then
-                        txtPagibig.Text = 275
-                    ElseIf grossPay <= 23999.99 Then
-                        txtPagibig.Text = 287.5
-                    ElseIf grossPay <= 24999.99 Then
-                        txtPagibig.Text = 300
-                    ElseIf grossPay <= 25999.99 Then
-                        txtPagibig.Text = 312.5
-                    ElseIf grossPay <= 26999.99 Then
-                        txtPagibig.Text = 325
-                    ElseIf grossPay <= 27999.99 Then
-                        txtPagibig.Text = 337.5
-                    ElseIf grossPay <= 28999.99 Then
-                        txtPagibig.Text = 350
-                    ElseIf grossPay <= 29999.99 Then
-                        txtPagibig.Text = 362.5
-                    ElseIf grossPay <= 30999.99 Then
-                        txtPagibig.Text = 375
-                    ElseIf grossPay <= 31999.99 Then
-                        txtPagibig.Text = 387.5
-                    ElseIf grossPay <= 32999.99 Then
-                        txtPagibig.Text = 400
-                    ElseIf grossPay <= 33999.99 Then
-                        txtPagibig.Text = 412.5
-                    ElseIf grossPay <= 34999.99 Then
-                        txtPagibig.Text = 425
-                    ElseIf grossPay <= 35000 Or grossPay >= 35000 Then
-                        txtPagibig.Text = 437.5
-                    End If
+
+                    txtPagibig.Text = 100.0
+                    pagibigER = 100.0
+
+                    txtPagibig.Text = 100.0
+                    pagibigER = 100.0
+
                 Else
                     txtPagibig.Text = "0.00"
+                    pagibigER = 0.0
                 End If
-                grossPay = grossPay - lastnetpay
+                grossPay = grossPay
             Else
-
-
                 txtSSS.Text = "0.00"
                 txtPagibig.Text = "0.00"
                 txtPhilhealth.Text = "0.00"
@@ -546,6 +464,12 @@
             txtOvertime.Text = "0"
 
         End If
+        If txtRDR.Text = "" Then
+            txtRDR.Text = "0"
+        End If
+        If txtLate.Text = "" Then
+            txtLate.Text = "0"
+        End If
 
         If txtRDR.Text = "" Then
             txtRDR.Text = "0"
@@ -612,7 +536,7 @@
                             "','" & lblTotDed.Text & _
                             "','" & lblTotNet.Text & _
                             "','" & frmMain.lblUsername.Text & _
-                            "','" & "Payroll Generated:" & Today.ToString("MM/dd/yyyy") & "')"
+                            "','" & payrollType & "')"
                     .ExecuteNonQuery()
                 End With
                 dgwItemProcess()
@@ -659,7 +583,13 @@
             xgp = dgw.Item(25, col).Value
             xdeductions = dgw.Item(26, col).Value
             xnp = dgw.Item(27, col).Value
+            xsssER = dgw.Item(28, col).Value
+            xpiER = dgw.Item(29, col).Value
+            xphER = dgw.Item(30, col).Value
             saveEmployeesPayroll()
+            If frmDateGenerator.isLastDay = True Then
+                saveEmployERContribution()
+            End If
             col = col + 1
         End While
     End Sub
@@ -708,12 +638,54 @@
             MsgBox(ex.Message)
         End Try
     End Sub
+    Sub saveEmployERContribution()
+        Try
+            If conn.State = ConnectionState.Open Then
+                OleDBC.Dispose()
+                conn.Close()
+            End If
+            If conn.State <> ConnectionState.Open Then
+                ConnectDatabase()
+            End If
+            With OleDBC
+                .Connection = conn
+                .CommandText = "DECLARE @id int " & _
+                    "select @id = (SELECT max(empPayrollTransNo)) " & _
+                    "from tblPayrollofEmployees " & _
+                    "INSERT into tblBenefitsPaymentSum values('" & lblPRID.Text & "',@id,'" & xsssER & _
+                    "','" & xpiER & _
+                    "','" & xphER & "')"
+                .ExecuteNonQuery()
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Sub deleteExtPayroll()
+        Try
+            If conn.State = ConnectionState.Open Then
+                OleDBC.Dispose()
+                conn.Close()
+            End If
+            If conn.State <> ConnectionState.Open Then
+                ConnectDatabase()
+            End If
+            With OleDBC
+                .Connection = conn
+                .CommandText = "delete tblPayroll where payrollID ='" & lblPRID.Text & "' " & _
+                             "delete tblPayrollofEmployees where payrollID ='" & lblPRID.Text & "' "
+                .ExecuteNonQuery()
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Sub addtoDGV()
         Dim r As Integer = dgw.Rows.Count
         dgw.Rows.Add()
         dgw.Item(0, r).Value = txtemID.Text
         dgw.Item(1, r).Value = txtName.Text
-        dgw.Item(2, r).Value = txtregularWorkedDays.Text
+        dgw.Item(2, r).Value = regularWorkedDays
         dgw.Item(3, r).Value = absent
         dgw.Item(4, r).Value = txtRegularHolidays.Text
         dgw.Item(5, r).Value = txtNonWorkingHolidays.Text
@@ -739,6 +711,9 @@
         dgw.Item(25, r).Value = lblGrossPay.Text
         dgw.Item(26, r).Value = lbldeductions.Text
         dgw.Item(27, r).Value = lblNetPay.Text
+        dgw.Item(28, r).Value = sssER
+        dgw.Item(29, r).Value = pagibigER
+        dgw.Item(30, r).Value = philhealthER
         dgw.ClearSelection()
 
         lblTotEmp.Text = dgw.RowCount
@@ -804,11 +779,19 @@
 
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         If dgw.Rows.Count <> 0 Then
-            save()
+            If payrollMode = "Add" Then
+                save()
+            ElseIf payrollMode = "Update" Then
+                deleteExtPayroll()
+                save()
+                frmAllPayrollHistory.ShowAllPayrollHistory()
+            End If
+
+
         Else
             MsgBox("You Dont have calculated Payroll of Employees", MsgBoxStyle.Critical, "error")
         End If
-        'selectExist()
+            'selectExist()
     End Sub
 
     Private Sub btnClose_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
@@ -820,30 +803,36 @@
     End Sub
 
     Private Sub frmPayroll_Load_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clear()
-        Button1.Focus()
-        frmEmployeeName.searchExisting()
-        frmEmployeeName.showEmployee()
-        generatePayrollID()
-        If frmDateGenerator.isLastDay = True Then
-            txtSSSLoan.Enabled = False
-            txtPagibigLoah.Enabled = False
+        If payrollMode = "Update" Then
+        ElseIf payrollMode = "Add" Then
+            clear()
+            Button1.Focus()
+            frmEmployeeName.searchExisting()
+            frmEmployeeName.showEmployee()
+            generatePayrollID()
+            If frmDateGenerator.isLastDay = True Then
+                txtSSSLoan.Enabled = False
+                txtPagibigLoah.Enabled = False
+            ElseIf payrollType = "Labor" Then
+                txtSSSLoan.Enabled = False
+                txtPagibigLoah.Enabled = False
+            Else
+                txtSSSLoan.Enabled = True
+                txtPagibigLoah.Enabled = True
 
-        Else
-            txtSSSLoan.Enabled = True
-            txtPagibigLoah.Enabled = True
+            End If
+            lblTotEmp.Text = dgw.RowCount
+            totalOT = 0.0
+            totalGrossPay = 0.0
+            totalDeductions = 0.0
+            totalNetpay = 0.0
 
+            lblTotOT.Text = Format(totalOT, "N")
+            lblTotGP.Text = Format(totalGrossPay, "N")
+            lblTotDed.Text = Format(totalDeductions, "N")
+            lblTotNet.Text = Format(totalNetpay, "N")
         End If
-        lblTotEmp.Text = dgw.RowCount
-        totalOT = 0.0
-        totalGrossPay = 0.0
-        totalDeductions = 0.0
-        totalNetpay = 0.0
-
-        lblTotOT.Text = Format(totalOT, "N")
-        lblTotGP.Text = Format(totalGrossPay, "N")
-        lblTotDed.Text = Format(totalDeductions, "N")
-        lblTotNet.Text = Format(totalNetpay, "N")
+       
     End Sub
 
     Private Sub DeleteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteToolStripMenuItem.Click
@@ -865,5 +854,9 @@
             dgw.Rows.Remove(row)
             dgw.ClearSelection()
         Next
+    End Sub
+
+    Private Sub dgw_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgw.CellContentClick
+
     End Sub
 End Class
