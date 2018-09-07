@@ -164,7 +164,7 @@
                                 OleDBDR.Item(0),
                                 OleDBDR.Item(1),
                                 OleDBDR.Item(2) & ", " & OleDBDR.Item(3) & " " & OleDBDR.Item(4),
-                                Format(OleDBDR.Item(5) + OleDBDR.Item(7), "N"),
+                                Format(OleDBDR.Item(5), "N"),
                                 Format(OleDBDR.Item(6), "N"),
                                 Format(OleDBDR.Item(7), "N"),
                                 Format(OleDBDR.Item(8), "N"),
@@ -195,9 +195,14 @@
                 End While
             End If
             Dim rptDoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+            Dim rptDoc1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
             rptDoc = New Payroll
+            rptDoc1 = New Payrollpt2
             rptDoc.SetDataSource(dt)
+            rptDoc1.SetDataSource(dt)
             frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
+            frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc1
+
             frmLoading.Close()
             frmReportViewer.ShowDialog()
 
