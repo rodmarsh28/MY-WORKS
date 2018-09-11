@@ -200,7 +200,7 @@
             rptDoc = New Payroll
             rptDoc1 = New Payrollpt2
             rptDoc2 = New PayrollReport
-            rptDoc.SetDataSource(dt)
+            rptDoc2.SetDataSource(dt)
             'rptDoc1.SetDataSource(dt)
             'frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
             'frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc1

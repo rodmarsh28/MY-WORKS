@@ -215,10 +215,10 @@
         Dim totgross As Double
         If txtPayMethod.Text = "Daily" Then
             regularWorkedDays = txtregularWorkedDays.Text
-            absent = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text - CountSundays
+            absent = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) + 1 - txtregularWorkedDays.Text - CountSundays
 
         ElseIf txtPayMethod.Text = "Monthly" Then
-            regularWorkedDays = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 2 - CountSundays - txtRegularHolidays.Text
+            regularWorkedDays = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 2 - CountSundays
             absent = txtregularWorkedDays.Text
         ElseIf txtPayMethod.Text = "Weekly" Then
             regularWorkedDays = txtregularWorkedDays.Text
@@ -238,7 +238,7 @@
             regularholiday = txtDR.Text * regularHolidays
             nonworkingholiday = txtDR.Text * 0.3 * nonWorkingHolidays
             leavepaycash = leavePay
-            overtimecash = txtDR.Text / 8 * overtime
+            overtimecash = txtDR.Text / 8 * 1.25 * overtime
             restDayReportAmount = txtDR.Text / 8 * 1.3 * restDayReport
             totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash
         ElseIf txtPayMethod.Text = "Monthly" Then
@@ -248,9 +248,9 @@
             regularholiday = txtDR.Text / 313 * 12 * txtRegularHolidays.Text
             nonworkingholiday = txtDR.Text / 313 * 12 * 0.3 * txtNonWorkingHolidays.Text
             leavepaycash = leavePay
-            overtimecash = txtDR.Text / 313 * 12 / 8 * overtime
+            overtimecash = txtDR.Text / 313 * 12 / 8 * 1.25 * overtime
             restDayReportAmount = txtDR.Text / 313 * 12 / 8 * 1.3 * restDayReport
-            totgross = basicpay + leavepaycash + overtimecash + restDayReportAmount - latecash - absentinamount
+            totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash - absentinamount
         End If
         lblGrossPay.Text = Format(totgross, "0.00")
         grossPay = lblGrossPay.Text
