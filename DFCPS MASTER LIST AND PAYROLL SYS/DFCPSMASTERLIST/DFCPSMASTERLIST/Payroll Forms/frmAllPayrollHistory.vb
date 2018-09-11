@@ -195,16 +195,9 @@
                 End While
             End If
             Dim rptDoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            Dim rptDoc1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            Dim rptDoc2 As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            rptDoc = New Payroll
-            rptDoc1 = New Payrollpt2
-            rptDoc2 = New PayrollReport
+            rptDoc = New PayrollReport
             rptDoc.SetDataSource(dt)
-            'rptDoc1.SetDataSource(dt)
-            'frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
-            'frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc1
-            frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc2
+            frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
             frmLoading.Close()
             frmReportViewer.ShowDialog()
 

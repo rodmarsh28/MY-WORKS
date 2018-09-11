@@ -16,11 +16,11 @@ Module modconn
     Public payrollType As String
     Public payrollMode As String
     Public Sub ConnectDatabase()
-        'strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=dfcpsMasterlistDB;server=localhost"
-        strConnString = "Data Source=" & My.Settings.mServer & ";" & _
-                        "Initial Catalog=" & My.Settings.mDBname & ";" & _
-                        "User ID=" & My.Settings.mUserDB & ";" & _
-                        "Password=" & My.Settings.mPassDB
+        strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=dfcpsMasterlistDB;server=localhost"
+        'strConnString = "Data Source=" & My.Settings.mServer & ";" & _
+        '                "Initial Catalog=" & My.Settings.mDBname & ";" & _
+        '                "User ID=" & My.Settings.mUserDB & ";" & _
+        '                "Password=" & My.Settings.mPassDB
         conn.ConnectionString = strConnString
         conn.Open()
     End Sub

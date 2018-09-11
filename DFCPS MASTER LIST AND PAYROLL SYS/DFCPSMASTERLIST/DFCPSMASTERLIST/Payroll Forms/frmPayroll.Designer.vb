@@ -107,10 +107,14 @@ Partial Class frmPayroll
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -165,7 +169,7 @@ Partial Class frmPayroll
         Me.Label1.BackColor = System.Drawing.Color.SteelBlue
         Me.Label1.Location = New System.Drawing.Point(47, 170)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 15)
+        Me.Label1.Size = New System.Drawing.Size(41, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Name :"
         '
@@ -192,7 +196,7 @@ Partial Class frmPayroll
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.Location = New System.Drawing.Point(373, 52)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(75, 13)
+        Me.Label28.Size = New System.Drawing.Size(63, 12)
         Me.Label28.TabIndex = 63
         Me.Label28.Text = "DD/MM/YYYY"
         '
@@ -202,7 +206,7 @@ Partial Class frmPayroll
         Me.lblPRID.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPRID.Location = New System.Drawing.Point(98, 34)
         Me.lblPRID.Name = "lblPRID"
-        Me.lblPRID.Size = New System.Drawing.Size(80, 17)
+        Me.lblPRID.Size = New System.Drawing.Size(71, 15)
         Me.lblPRID.TabIndex = 2
         Me.lblPRID.Text = "PR-00000"
         '
@@ -211,7 +215,7 @@ Partial Class frmPayroll
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(19, 35)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(82, 15)
+        Me.Label4.Size = New System.Drawing.Size(76, 13)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "PAYROLL ID :"
         '
@@ -221,7 +225,7 @@ Partial Class frmPayroll
         Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.Location = New System.Drawing.Point(277, 52)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(75, 13)
+        Me.Label27.Size = New System.Drawing.Size(63, 12)
         Me.Label27.TabIndex = 62
         Me.Label27.Text = "DD/MM/YYYY"
         '
@@ -232,7 +236,7 @@ Partial Class frmPayroll
         Me.Label18.ForeColor = System.Drawing.Color.White
         Me.Label18.Location = New System.Drawing.Point(516, 17)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(264, 40)
+        Me.Label18.Size = New System.Drawing.Size(236, 35)
         Me.Label18.TabIndex = 0
         Me.Label18.Text = "Add Payroll"
         '
@@ -251,7 +255,7 @@ Partial Class frmPayroll
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.Location = New System.Drawing.Point(225, 35)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(45, 16)
+        Me.Label24.Size = New System.Drawing.Size(38, 13)
         Me.Label24.TabIndex = 1
         Me.Label24.Text = "Date:"
         '
@@ -261,7 +265,7 @@ Partial Class frmPayroll
         Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.Location = New System.Drawing.Point(351, 32)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(13, 16)
+        Me.Label26.Size = New System.Drawing.Size(11, 13)
         Me.Label26.TabIndex = 32
         Me.Label26.Text = "-"
         '
@@ -280,7 +284,7 @@ Partial Class frmPayroll
         Me.Label2.BackColor = System.Drawing.Color.SteelBlue
         Me.Label2.Location = New System.Drawing.Point(47, 200)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 15)
+        Me.Label2.Size = New System.Drawing.Size(50, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Position :"
         '
@@ -385,7 +389,7 @@ Partial Class frmPayroll
         Me.Label33.ForeColor = System.Drawing.Color.White
         Me.Label33.Location = New System.Drawing.Point(703, 293)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(75, 15)
+        Me.Label33.Size = New System.Drawing.Size(68, 13)
         Me.Label33.TabIndex = 70
         Me.Label33.Text = "Total Netpay"
         '
@@ -395,7 +399,7 @@ Partial Class frmPayroll
         Me.Label32.ForeColor = System.Drawing.Color.White
         Me.Label32.Location = New System.Drawing.Point(514, 293)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(99, 15)
+        Me.Label32.Size = New System.Drawing.Size(88, 13)
         Me.Label32.TabIndex = 69
         Me.Label32.Text = "Total Deductions"
         '
@@ -405,7 +409,7 @@ Partial Class frmPayroll
         Me.Label31.ForeColor = System.Drawing.Color.White
         Me.Label31.Location = New System.Drawing.Point(340, 293)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(92, 15)
+        Me.Label31.Size = New System.Drawing.Size(82, 13)
         Me.Label31.TabIndex = 68
         Me.Label31.Text = "Total Gross Pay"
         '
@@ -415,7 +419,7 @@ Partial Class frmPayroll
         Me.Label29.ForeColor = System.Drawing.Color.White
         Me.Label29.Location = New System.Drawing.Point(175, 293)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(86, 15)
+        Me.Label29.Size = New System.Drawing.Size(76, 13)
         Me.Label29.TabIndex = 67
         Me.Label29.Text = "Total Overtime"
         '
@@ -425,7 +429,7 @@ Partial Class frmPayroll
         Me.Label30.ForeColor = System.Drawing.Color.White
         Me.Label30.Location = New System.Drawing.Point(21, 293)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(98, 15)
+        Me.Label30.Size = New System.Drawing.Size(85, 13)
         Me.Label30.TabIndex = 29
         Me.Label30.Text = "Total Employees"
         '
@@ -435,7 +439,7 @@ Partial Class frmPayroll
         Me.dgw.AllowUserToDeleteRows = False
         Me.dgw.BackgroundColor = System.Drawing.Color.White
         Me.dgw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column28, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column27, Me.Column22, Me.Column8, Me.Column9, Me.Column10, Me.Column11, Me.Column12, Me.Column26, Me.Column13, Me.Column14, Me.Column15, Me.Column16, Me.Column17, Me.Column18, Me.Column23, Me.Column24, Me.Column25, Me.Column19, Me.Column20, Me.Column21, Me.Column29, Me.Column30, Me.Column31})
+        Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column28, Me.Column32, Me.Column33, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column27, Me.Column22, Me.Column8, Me.Column9, Me.Column10, Me.Column11, Me.Column12, Me.Column26, Me.Column13, Me.Column14, Me.Column15, Me.Column16, Me.Column17, Me.Column18, Me.Column23, Me.Column24, Me.Column25, Me.Column19, Me.Column20, Me.Column21, Me.Column29, Me.Column30, Me.Column31})
         Me.dgw.GridColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.dgw.Location = New System.Drawing.Point(14, 321)
         Me.dgw.MultiSelect = False
@@ -492,7 +496,7 @@ Partial Class frmPayroll
         Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label25.Location = New System.Drawing.Point(135, 183)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(75, 13)
+        Me.Label25.Size = New System.Drawing.Size(63, 12)
         Me.Label25.TabIndex = 61
         Me.Label25.Text = "DD/MM/YYYY"
         '
@@ -536,7 +540,7 @@ Partial Class frmPayroll
         Me.Label15.AutoSize = True
         Me.Label15.Location = New System.Drawing.Point(37, 19)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(136, 15)
+        Me.Label15.Size = New System.Drawing.Size(118, 13)
         Me.Label15.TabIndex = 29
         Me.Label15.Text = "Late / Undertime (Mins)"
         '
@@ -552,7 +556,7 @@ Partial Class frmPayroll
         Me.Label16.AutoSize = True
         Me.Label16.Location = New System.Drawing.Point(37, 176)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(94, 15)
+        Me.Label16.Size = New System.Drawing.Size(82, 13)
         Me.Label16.TabIndex = 27
         Me.Label16.Text = "Ledger Balance"
         '
@@ -561,7 +565,7 @@ Partial Class frmPayroll
         Me.lbldeductions.AutoSize = True
         Me.lbldeductions.Location = New System.Drawing.Point(205, 225)
         Me.lbldeductions.Name = "lbldeductions"
-        Me.lbldeductions.Size = New System.Drawing.Size(58, 15)
+        Me.lbldeductions.Size = New System.Drawing.Size(58, 13)
         Me.lbldeductions.TabIndex = 26
         Me.lbldeductions.Text = "                 "
         '
@@ -570,7 +574,7 @@ Partial Class frmPayroll
         Me.Label19.AutoSize = True
         Me.Label19.Location = New System.Drawing.Point(47, 228)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(99, 15)
+        Me.Label19.Size = New System.Drawing.Size(88, 13)
         Me.Label19.TabIndex = 25
         Me.Label19.Text = "Total Deductions"
         '
@@ -586,7 +590,7 @@ Partial Class frmPayroll
         Me.Label17.AutoSize = True
         Me.Label17.Location = New System.Drawing.Point(37, 200)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(84, 15)
+        Me.Label17.Size = New System.Drawing.Size(77, 13)
         Me.Label17.TabIndex = 23
         Me.Label17.Text = "Cash Advance"
         '
@@ -635,7 +639,7 @@ Partial Class frmPayroll
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(37, 151)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(84, 15)
+        Me.Label10.Size = New System.Drawing.Size(72, 13)
         Me.Label10.TabIndex = 14
         Me.Label10.Text = "Pag-ibig Loan"
         '
@@ -644,7 +648,7 @@ Partial Class frmPayroll
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(36, 123)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(62, 15)
+        Me.Label11.Size = New System.Drawing.Size(55, 13)
         Me.Label11.TabIndex = 13
         Me.Label11.Text = "SSS Loan"
         '
@@ -653,7 +657,7 @@ Partial Class frmPayroll
         Me.Label12.AutoSize = True
         Me.Label12.Location = New System.Drawing.Point(37, 72)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(113, 15)
+        Me.Label12.Size = New System.Drawing.Size(93, 13)
         Me.Label12.TabIndex = 12
         Me.Label12.Text = "Pag-ibig Premiums"
         '
@@ -662,7 +666,7 @@ Partial Class frmPayroll
         Me.Label13.AutoSize = True
         Me.Label13.Location = New System.Drawing.Point(36, 98)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(124, 15)
+        Me.Label13.Size = New System.Drawing.Size(103, 13)
         Me.Label13.TabIndex = 11
         Me.Label13.Text = "PhilHealth Premiums"
         '
@@ -671,13 +675,15 @@ Partial Class frmPayroll
         Me.Label14.AutoSize = True
         Me.Label14.Location = New System.Drawing.Point(37, 46)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(91, 15)
+        Me.Label14.Size = New System.Drawing.Size(76, 13)
         Me.Label14.TabIndex = 10
         Me.Label14.Text = "SSS Premiums"
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.SteelBlue
+        Me.GroupBox1.Controls.Add(Me.Button4)
+        Me.GroupBox1.Controls.Add(Me.Button3)
         Me.GroupBox1.Controls.Add(Me.txtRDR)
         Me.GroupBox1.Controls.Add(Me.Label34)
         Me.GroupBox1.Controls.Add(Me.lblGrossPay)
@@ -711,7 +717,7 @@ Partial Class frmPayroll
         Me.Label34.AutoSize = True
         Me.Label34.Location = New System.Drawing.Point(26, 152)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(125, 15)
+        Me.Label34.Size = New System.Drawing.Size(110, 13)
         Me.Label34.TabIndex = 29
         Me.Label34.Text = "Restday Report ( hrs )"
         '
@@ -720,7 +726,7 @@ Partial Class frmPayroll
         Me.lblGrossPay.AutoSize = True
         Me.lblGrossPay.Location = New System.Drawing.Point(253, 182)
         Me.lblGrossPay.Name = "lblGrossPay"
-        Me.lblGrossPay.Size = New System.Drawing.Size(55, 15)
+        Me.lblGrossPay.Size = New System.Drawing.Size(55, 13)
         Me.lblGrossPay.TabIndex = 28
         Me.lblGrossPay.Text = "                "
         '
@@ -729,7 +735,7 @@ Partial Class frmPayroll
         Me.Label21.AutoSize = True
         Me.Label21.Location = New System.Drawing.Point(39, 182)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(62, 15)
+        Me.Label21.Size = New System.Drawing.Size(55, 13)
         Me.Label21.TabIndex = 27
         Me.Label21.Text = "Gross Pay"
         '
@@ -773,7 +779,7 @@ Partial Class frmPayroll
         Me.Label9.AutoSize = True
         Me.Label9.Location = New System.Drawing.Point(26, 125)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(90, 15)
+        Me.Label9.Size = New System.Drawing.Size(78, 13)
         Me.Label9.TabIndex = 14
         Me.Label9.Text = "Overtime ( hrs )"
         '
@@ -782,7 +788,7 @@ Partial Class frmPayroll
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(26, 99)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(68, 15)
+        Me.Label8.Size = New System.Drawing.Size(59, 13)
         Me.Label8.TabIndex = 13
         Me.Label8.Text = "Adjustment"
         '
@@ -791,25 +797,25 @@ Partial Class frmPayroll
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(26, 73)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(178, 15)
+        Me.Label7.Size = New System.Drawing.Size(188, 13)
         Me.Label7.TabIndex = 12
-        Me.Label7.Text = "Special / Non Working Holidays"
+        Me.Label7.Text = "Special / Non Working Holidays ( hrs )"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(26, 47)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(101, 15)
+        Me.Label5.Size = New System.Drawing.Size(116, 13)
         Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Regular Holidays"
+        Me.Label5.Text = "Regular Holidays ( hrs )"
         '
         'lblRW
         '
         Me.lblRW.AutoSize = True
         Me.lblRW.Location = New System.Drawing.Point(26, 25)
         Me.lblRW.Name = "lblRW"
-        Me.lblRW.Size = New System.Drawing.Size(126, 15)
+        Me.lblRW.Size = New System.Drawing.Size(112, 13)
         Me.lblRW.TabIndex = 9
         Me.lblRW.Text = "Regular Worked Days"
         '
@@ -827,7 +833,7 @@ Partial Class frmPayroll
         Me.Label22.BackColor = System.Drawing.Color.SteelBlue
         Me.Label22.Location = New System.Drawing.Point(41, 135)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(78, 15)
+        Me.Label22.Size = New System.Drawing.Size(70, 13)
         Me.Label22.TabIndex = 43
         Me.Label22.Text = "Pay Method :"
         '
@@ -855,7 +861,7 @@ Partial Class frmPayroll
         Me.Label20.BackColor = System.Drawing.Color.SteelBlue
         Me.Label20.Location = New System.Drawing.Point(215, 135)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(39, 15)
+        Me.Label20.Size = New System.Drawing.Size(36, 13)
         Me.Label20.TabIndex = 40
         Me.Label20.Text = "Rate :"
         '
@@ -872,7 +878,7 @@ Partial Class frmPayroll
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(41, 48)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(80, 15)
+        Me.Label6.Size = New System.Drawing.Size(70, 13)
         Me.Label6.TabIndex = 38
         Me.Label6.Text = "Employee ID:"
         '
@@ -907,7 +913,7 @@ Partial Class frmPayroll
         Me.Label3.BackColor = System.Drawing.Color.SteelBlue
         Me.Label3.Location = New System.Drawing.Point(41, 166)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(72, 15)
+        Me.Label3.Size = New System.Drawing.Size(64, 13)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Date Hired :"
         '
@@ -929,7 +935,7 @@ Partial Class frmPayroll
         Me.lblNetPay.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNetPay.Location = New System.Drawing.Point(1179, 24)
         Me.lblNetPay.Name = "lblNetPay"
-        Me.lblNetPay.Size = New System.Drawing.Size(25, 25)
+        Me.lblNetPay.Size = New System.Drawing.Size(21, 24)
         Me.lblNetPay.TabIndex = 30
         Me.lblNetPay.Text = "0"
         '
@@ -939,7 +945,7 @@ Partial Class frmPayroll
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.Location = New System.Drawing.Point(1085, 24)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(109, 25)
+        Me.Label23.Size = New System.Drawing.Size(94, 24)
         Me.Label23.TabIndex = 29
         Me.Label23.Text = "Net Pay :"
         '
@@ -956,18 +962,36 @@ Partial Class frmPayroll
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(128, 28)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(114, 26)
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(127, 24)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
         Me.DeleteToolStripMenuItem.Text = "Remove"
         '
         'ContextMenuStrip2
         '
         Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
         Me.ContextMenuStrip2.Size = New System.Drawing.Size(61, 4)
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(333, 43)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(22, 23)
+        Me.Button3.TabIndex = 31
+        Me.Button3.Text = "C"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(333, 68)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(22, 23)
+        Me.Button4.TabIndex = 32
+        Me.Button4.Text = "C"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Column1
         '
@@ -987,7 +1011,7 @@ Partial Class frmPayroll
         '
         'Column3
         '
-        Me.Column3.HeaderText = "total Worked Days"
+        Me.Column3.HeaderText = "Regular Worked Days"
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
         '
@@ -997,15 +1021,27 @@ Partial Class frmPayroll
         Me.Column28.Name = "Column28"
         Me.Column28.ReadOnly = True
         '
+        'Column32
+        '
+        Me.Column32.HeaderText = "RH Days Counted"
+        Me.Column32.Name = "Column32"
+        Me.Column32.ReadOnly = True
+        '
+        'Column33
+        '
+        Me.Column33.HeaderText = "NWH Days Counted"
+        Me.Column33.Name = "Column33"
+        Me.Column33.ReadOnly = True
+        '
         'Column4
         '
-        Me.Column4.HeaderText = "RH"
+        Me.Column4.HeaderText = "RH Report (HRS)"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
         'Column5
         '
-        Me.Column5.HeaderText = "NWH"
+        Me.Column5.HeaderText = "NWH Report (HRS)"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         Me.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -1274,10 +1310,14 @@ Partial Class frmPayroll
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents txtRDR As System.Windows.Forms.TextBox
     Friend WithEvents Label34 As System.Windows.Forms.Label
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column28 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column32 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column33 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn

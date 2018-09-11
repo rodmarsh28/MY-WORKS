@@ -37,6 +37,7 @@
                     frmPayroll.txtPagibigLoah.Enabled = True
                     frmPayroll.txtLedgerBalance.Enabled = True
                 End If
+                frmPayroll.countsunday()
                 frmPayroll.ShowDialog()
             End If
         Else
