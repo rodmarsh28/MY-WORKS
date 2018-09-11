@@ -23,8 +23,8 @@ Partial Class frmReportViewer
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.Payroll1 = New DFCPSMASTERLIST.Payroll()
-        Me.Payroll2 = New DFCPSMASTERLIST.Payroll()
+        Me.reportDocument1 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+        Me.reportDocument2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
         Me.SuspendLayout()
         '
         'CrystalReportViewer1
@@ -51,6 +51,6 @@ Partial Class frmReportViewer
 
     End Sub
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
-    Friend WithEvents Payroll1 As DFCPSMASTERLIST.Payroll
-    Friend WithEvents Payroll2 As DFCPSMASTERLIST.Payroll
+    Friend WithEvents reportDocument1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
+    Friend WithEvents reportDocument2 As CrystalDecisions.CrystalReports.Engine.ReportDocument
 End Class
