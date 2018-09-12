@@ -252,6 +252,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Payroll Forms\payrollLabor.Designer.vb">
+      <DependentUpon>payrollLabor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll Forms\payrollLabor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reports\Payrollpt2.vb">
       <DependentUpon>Payrollpt2.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -352,6 +358,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll Forms\payrollLabor.resx">
+      <DependentUpon>payrollLabor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Payrollpt2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

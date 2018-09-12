@@ -292,7 +292,7 @@
         If txtPayMethod.Text = "Daily" Then
             basicpay = txtDR.Text * regularWorkedDays
             latecash = (txtDR.Text / 8 / 60) * late
-            regularholiday = txtDR.Text / 8 * regularHolidays + (txtDR.Text * rhdays)
+            regularholiday = txtDR.Text / 8 * regularHolidays + (txtDR.Text * txtrhd.Text)
             nonworkingholiday = txtDR.Text / 8 * 0.3 * nonWorkingHolidays + (txtDR.Text / 8 * nonWorkingHolidays)
             leavepaycash = leavePay
             overtimecash = txtDR.Text / 8 * overtime
@@ -302,8 +302,8 @@
             basicpay = txtDR.Text / 2
             absentinamount = txtDR.Text / 313 * 12 * absent
             latecash = (txtDR.Text / 26 / 8 / 60) * late
-            regularholiday = txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text + (txtDR.Text / 313 * 12 * rhdays)
-            nonworkingholiday = txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text + (txtDR.Text / 313 * 12 * nwhdays)
+            regularholiday = txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text + (txtDR.Text / 313 * 12 * txtrhd.Text)
+            nonworkingholiday = txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text + (txtDR.Text / 313 * 12 * txtnwhd.Text)
             leavepaycash = leavePay
             overtimecash = txtDR.Text / 313 * 12 / 8 * overtime
             restDayReportAmount = txtDR.Text / 313 * 12 / 8 * 1.3 * restDayReport
@@ -749,8 +749,8 @@
         dgw.Item(1, r).Value = txtName.Text
         dgw.Item(2, r).Value = regularWorkedDays
         dgw.Item(3, r).Value = absent
-        dgw.Item(4, r).Value = rhdays
-        dgw.Item(5, r).Value = nwhdays
+        dgw.Item(4, r).Value = txtrhd.Text
+        dgw.Item(5, r).Value = txtnwhd.Text
         dgw.Item(6, r).Value = txtRegularHolidays.Text
         dgw.Item(7, r).Value = txtNonWorkingHolidays.Text
         dgw.Item(8, r).Value = txtLeavepay.Text
