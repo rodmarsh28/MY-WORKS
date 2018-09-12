@@ -54,6 +54,7 @@
                     dgw.Item(3, c).Value = Format(OleDBDR.Item(7), "N")
                     dgw.Item(4, c).Value = Format(OleDBDR.Item(8), "N")
                     dgw.Item(5, c).Value = OleDBDR.Item(9)
+                    dgw.Item(6, c).Value = Format(OleDBDR.Item(2), "MMMM") & " " & Format(OleDBDR.Item(2), "dd") & " - " + Format(OleDBDR.Item(3), "dd") & " " & Format(OleDBDR.Item(3), "yyyy")
                     c = c + 1
                 End While
                 dgw.ClearSelection()
@@ -90,6 +91,7 @@
                     dgw.Item(3, c).Value = Format(OleDBDR.Item(7), "N")
                     dgw.Item(4, c).Value = Format(OleDBDR.Item(8), "N")
                     dgw.Item(5, c).Value = OleDBDR.Item(9)
+                    dgw.Item(6, c).Value = Format(OleDBDR.Item(2), "MMMM") & " " & Format(OleDBDR.Item(2), "dd") & " - " + Format(OleDBDR.Item(3), "dd") & " " & Format(OleDBDR.Item(3), "yyyy")
                     c = c + 1
                 End While
                 dgw.ClearSelection()
@@ -112,11 +114,11 @@
             c = 0
             With OleDBC
                 .Connection = conn
-                .CommandText = "SELECT payrollID,tblEmployeesInfo.employeeID,lastname,firstname,middlename,totalWorkedDays,absent,regHolidays,NonWorkHolidays,leavePay,overtimeHRS," & _
+                .CommandText = "SELECT payrollID,tblEmployeesInfo.employeeID,lastname,firstname,middlename,rate,position,totalWorkedDays,absent,rhd,nwhd,regHolidays,NonWorkHolidays,leavePay,overtimeHRS," & _
                     "restdayReportHRS,lateUTMins,basicPay,regHolidayPay,nonWorkHolidayPay,leavePayCash,overtimePay,restdayReportAmount,lateUndertimeDed," & _
                     "cashAdvance,wHoldingTax,sssPrems,piPrems,phPrems,sssLoans,piLoans,ledgerBalance,Deduction,grossPay,Netpay FROM tblPayrollofEmployees " & _
                     "INNER JOIN tblEmployeesInfo ON tblPayrollofEmployees.employeeID = tblEmployeesInfo.employeeID" & _
-                                " where payrollID = '" & dgw.CurrentRow.Cells(0).Value & "'"
+                                " where payrollID = '" & dgw.CurrentRow.Cells(0).Value & "' order by lastname asc"
             End With
             OleDBDR = OleDBC.ExecuteReader
             Dim dt As New DataTable
@@ -126,8 +128,12 @@
                 .Columns.Add("payrollID")
                 .Columns.Add("empID")
                 .Columns.Add("name")
+                .Columns.Add("rate")
+                .Columns.Add("position")
                 .Columns.Add("twd")
                 .Columns.Add("absent")
+                .Columns.Add("rhd")
+                .Columns.Add("nwhd")
                 .Columns.Add("rh")
                 .Columns.Add("nwh")
                 .Columns.Add("lp")
@@ -154,18 +160,19 @@
                 .Columns.Add("netpay")
                 .Columns.Add("preparedby")
                 
+                
 
             End With
 
             If OleDBDR.HasRows Then
                 While OleDBDR.Read
-                    dt.Rows.Add(dgw.CurrentRow.Cells(1).Value,
+                    dt.Rows.Add(UCase(dgw.CurrentRow.Cells(6).Value),
                                 Format(Now, "MM/dd/yyyy"),
                                 OleDBDR.Item(0),
                                 OleDBDR.Item(1),
                                 OleDBDR.Item(2) & ", " & OleDBDR.Item(3) & " " & OleDBDR.Item(4),
                                 Format(OleDBDR.Item(5), "N"),
-                                Format(OleDBDR.Item(6), "N"),
+                                OleDBDR.Item(6),
                                 Format(OleDBDR.Item(7), "N"),
                                 Format(OleDBDR.Item(8), "N"),
                                 Format(OleDBDR.Item(9), "N"),
@@ -190,21 +197,18 @@
                                 Format(OleDBDR.Item(28), "N"),
                                 Format(OleDBDR.Item(29), "N"),
                                 Format(OleDBDR.Item(30), "N"),
+                                Format(OleDBDR.Item(31), "N"),
+                                Format(OleDBDR.Item(32), "N"),
+                                Format(OleDBDR.Item(33), "N"),
+                                Format(OleDBDR.Item(34), "N"),
                                 frmMain.lblUsername.Text)
                     
                 End While
             End If
             Dim rptDoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            Dim rptDoc1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            Dim rptDoc2 As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            rptDoc = New Payroll
-            rptDoc1 = New Payrollpt2
-            rptDoc2 = New PayrollReport
+            rptDoc = New PayrollReport
             rptDoc.SetDataSource(dt)
-            'rptDoc1.SetDataSource(dt)
-            'frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
-            'frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc1
-            frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc2
+            frmReportViewer.CrystalReportViewer1.ReportSource = rptDoc
             frmLoading.Close()
             frmReportViewer.ShowDialog()
 
@@ -270,6 +274,7 @@
                 .Columns.Add("gp")
                 .Columns.Add("netpay")
                 .Columns.Add("preparedby")
+              
 
 
                 End With
@@ -278,7 +283,7 @@
                     While OleDBDR.Read
                         c = 0
                         While c < 2
-                        dt.Rows.Add(dgw.CurrentRow.Cells(1).Value,
+                        dt.Rows.Add(UCase(dgw.CurrentRow.Cells(6).Value),
                             Format(Now, "MM/dd/yyyy"),
                                 OleDBDR.Item(0),
                                 OleDBDR.Item(1),

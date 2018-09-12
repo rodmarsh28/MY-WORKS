@@ -30,10 +30,11 @@
                     frmPayroll.txtPayMethod.Text = OleDBDR.Item(5)
                     frmPayroll.dtrDH.Value = OleDBDR.Item(6)
                     frmPayroll.rate = OleDBDR.Item(7)
-                    frmPayroll.txtDR.Text = OleDBDR.Item(7)
+                    frmPayroll.txtDR.Text = Format(OleDBDR.Item(7), "N")
                     frmPayroll.field = OleDBDR.Item(12)
                     If frmPayroll.txtPayMethod.Text = "Monthly" Then
                         frmPayroll.lblRW.Text = "Absent"
+
                     
                     ElseIf frmPayroll.txtPayMethod.Text = "Daily" Then
                         frmPayroll.lblRW.Text = "Regular Worked Days"
@@ -119,12 +120,12 @@
             If payrollType = "Admin" Then
                 With OleDBC
                     .Connection = conn
-                    .CommandText = "select * from tblEmployeesInfo where Field <> 'Weekly'"
+                    .CommandText = "select * from tblEmployeesInfo where Field <> 'Weekly' order by lastname asc"
                 End With
             Else
                 With OleDBC
                     .Connection = conn
-                    .CommandText = "select * from tblEmployeesInfo where Field = 'Weekly'"
+                    .CommandText = "select * from tblEmployeesInfo where Field = 'Weekly' order by lastname asc"
                 End With
             End If
             OleDBDR = OleDBC.ExecuteReader
@@ -168,5 +169,6 @@
 
     Private Sub dgw_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgw.CellContentClick
         AddPayrollCMD()
+        
     End Sub
 End Class

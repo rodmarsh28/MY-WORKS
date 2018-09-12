@@ -14,7 +14,7 @@
                 .Connection = conn
                 .CommandText = "SELECT dbo.tblEmployeesInfo.employeeID,dbo.tblEmployeesInfo.lastname,dbo.tblEmployeesInfo.firstname," & _
                     "dbo.tblEmployeesInfo.middlename,dbo.tblEmployeesInfo.gender,dbo.tblEmployeesInfo.[position],dbo.tblEmployeesInfo.department," & _
-                    "dbo.tblEmployeesInfo.division,dbo.tblEmployeesInfo.workingStatus FROM dbo.tblEmployeesInfo"
+                    "dbo.tblEmployeesInfo.division,dbo.tblEmployeesInfo.workingStatus FROM dbo.tblEmployeesInfo order by lastname asc"
 
             End With
             OleDBDR = OleDBC.ExecuteReader
@@ -53,7 +53,7 @@
                 .CommandText = "SELECT dbo.tblEmployeesInfo.employeeID,dbo.tblEmployeesInfo.lastname,dbo.tblEmployeesInfo.firstname," & _
                     "dbo.tblEmployeesInfo.middlename,dbo.tblEmployeesInfo.gender,dbo.tblEmployeesInfo.[position],dbo.tblEmployeesInfo.department," & _
                     "dbo.tblEmployeesInfo.division,dbo.tblEmployeesInfo.workingStatus FROM dbo.tblEmployeesInfo where employeeID like '%" & txtSearch.Text & "%' " & _
-                    "or lastname like '%" & txtSearch.Text & "%' or firstname like '%" & txtSearch.Text & "%' or middlename like '%" & txtSearch.Text & "%'"
+                    "or lastname like '%" & txtSearch.Text & "%' or firstname like '%" & txtSearch.Text & "%' or middlename like '%" & txtSearch.Text & "%' order by lastname asc"
 
             End With
             OleDBDR = OleDBC.ExecuteReader
@@ -385,5 +385,13 @@
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         SearchEmployees()
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
+
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem2.Click
+
     End Sub
 End Class

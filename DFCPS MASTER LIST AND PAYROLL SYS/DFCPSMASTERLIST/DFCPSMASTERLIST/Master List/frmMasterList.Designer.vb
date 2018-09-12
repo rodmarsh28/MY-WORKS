@@ -208,7 +208,7 @@ Partial Class frmMasterList
         '
         Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2})
         Me.ContextMenuStrip2.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(221, 52)
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(221, 74)
         '
         'ToolStripMenuItem1
         '

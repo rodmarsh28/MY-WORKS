@@ -17,7 +17,7 @@
                     "dbo.tblDesciplinaryAction.typeofViolation,dbo.tblDesciplinaryAction.actionTaken,dbo.tblDesciplinaryAction.punishDateFrom," & _
                     "dbo.tblDesciplinaryAction.punishDateTo FROM dbo.tblDesciplinaryAction INNER JOIN dbo.tblEmployeesInfo ON " & _
                     "dbo.tblEmployeesInfo.employeeID = dbo.tblDesciplinaryAction.employeeID " & _
-                    "where '" & Format(Now, "MM/dd/yyyy") & "' between punishDateFrom and punishDateTo"
+                    "where '" & Format(Now, "MM/dd/yyyy") & "' between punishDateFrom and punishDateTo order by descActionNo desc"
             End With
             OleDBDR = OleDBC.ExecuteReader
             dgw.Rows.Clear()

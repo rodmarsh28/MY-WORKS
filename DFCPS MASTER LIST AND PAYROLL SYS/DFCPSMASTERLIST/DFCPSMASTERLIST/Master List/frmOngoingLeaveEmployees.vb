@@ -15,7 +15,7 @@
                 .CommandText = "SELECT dbo.tblLeave.leaveNo,dbo.tblEmployeesInfo.lastname,dbo.tblEmployeesInfo.firstname,dbo.tblEmployeesInfo.middlename," & _
                                 "dbo.tblEmployeesInfo.[position],dbo.tblEmployeesInfo.department,dbo.tblEmployeesInfo.division,dbo.tblLeave.leaveType,dbo.tblLeave.dateFrom," & _
                                 "dbo.tblLeave.dateTo,dbo.tblLeave.totalDays FROM dbo.tblEmployeesInfo INNER JOIN dbo.tblLeave ON dbo.tblEmployeesInfo.employeeID = dbo.tblLeave.employeeID " & _
-                                "where '" & Format(Now, "MM/dd/yyyy") & "' between datefrom and dateto"
+                                "where '" & Format(Now, "MM/dd/yyyy") & "' between datefrom and dateto order by leaveNo desc"
             End With
             OleDBDR = OleDBC.ExecuteReader
             dgw.Rows.Clear()

@@ -32,18 +32,19 @@ Partial Class frmAllPayrollHistory
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.dgw = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.PrintPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintPayslipToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdatePayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CancelPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.PrintPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PrintPayslipToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CancelPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UpdatePayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.dgw, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -128,7 +129,7 @@ Partial Class frmAllPayrollHistory
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgw.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column7, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
+        Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column7, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
         Me.dgw.EnableHeadersVisualStyles = False
         Me.dgw.Location = New System.Drawing.Point(12, 136)
         Me.dgw.MultiSelect = False
@@ -138,6 +139,41 @@ Partial Class frmAllPayrollHistory
         Me.dgw.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgw.Size = New System.Drawing.Size(979, 306)
         Me.dgw.TabIndex = 75
+        '
+        'ContextMenuStrip2
+        '
+        Me.ContextMenuStrip2.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(61, 4)
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrintPayrollToolStripMenuItem, Me.PrintPayslipToolStripMenuItem, Me.UpdatePayrollToolStripMenuItem, Me.CancelPayrollToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(169, 100)
+        '
+        'PrintPayrollToolStripMenuItem
+        '
+        Me.PrintPayrollToolStripMenuItem.Name = "PrintPayrollToolStripMenuItem"
+        Me.PrintPayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
+        Me.PrintPayrollToolStripMenuItem.Text = "Print Payroll"
+        '
+        'PrintPayslipToolStripMenuItem
+        '
+        Me.PrintPayslipToolStripMenuItem.Name = "PrintPayslipToolStripMenuItem"
+        Me.PrintPayslipToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
+        Me.PrintPayslipToolStripMenuItem.Text = "Print Payslip"
+        '
+        'UpdatePayrollToolStripMenuItem
+        '
+        Me.UpdatePayrollToolStripMenuItem.Name = "UpdatePayrollToolStripMenuItem"
+        Me.UpdatePayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
+        Me.UpdatePayrollToolStripMenuItem.Text = "Update Payroll"
+        '
+        'CancelPayrollToolStripMenuItem
+        '
+        Me.CancelPayrollToolStripMenuItem.Name = "CancelPayrollToolStripMenuItem"
+        Me.CancelPayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
+        Me.CancelPayrollToolStripMenuItem.Text = "Cancel Payroll"
         '
         'Column7
         '
@@ -181,40 +217,12 @@ Partial Class frmAllPayrollHistory
         Me.Column5.ReadOnly = True
         Me.Column5.Width = 180
         '
-        'ContextMenuStrip2
+        'Column6
         '
-        Me.ContextMenuStrip2.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(61, 4)
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrintPayrollToolStripMenuItem, Me.PrintPayslipToolStripMenuItem, Me.UpdatePayrollToolStripMenuItem, Me.CancelPayrollToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(169, 122)
-        '
-        'PrintPayrollToolStripMenuItem
-        '
-        Me.PrintPayrollToolStripMenuItem.Name = "PrintPayrollToolStripMenuItem"
-        Me.PrintPayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
-        Me.PrintPayrollToolStripMenuItem.Text = "Print Payroll"
-        '
-        'PrintPayslipToolStripMenuItem
-        '
-        Me.PrintPayslipToolStripMenuItem.Name = "PrintPayslipToolStripMenuItem"
-        Me.PrintPayslipToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
-        Me.PrintPayslipToolStripMenuItem.Text = "Print Payslip"
-        '
-        'CancelPayrollToolStripMenuItem
-        '
-        Me.CancelPayrollToolStripMenuItem.Name = "CancelPayrollToolStripMenuItem"
-        Me.CancelPayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
-        Me.CancelPayrollToolStripMenuItem.Text = "Cancel Payroll"
-        '
-        'UpdatePayrollToolStripMenuItem
-        '
-        Me.UpdatePayrollToolStripMenuItem.Name = "UpdatePayrollToolStripMenuItem"
-        Me.UpdatePayrollToolStripMenuItem.Size = New System.Drawing.Size(168, 24)
-        Me.UpdatePayrollToolStripMenuItem.Text = "Update Payroll"
+        Me.Column6.HeaderText = "daterange"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        Me.Column6.Visible = False
         '
         'frmAllPayrollHistory
         '
@@ -248,16 +256,17 @@ Partial Class frmAllPayrollHistory
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents dgw As System.Windows.Forms.DataGridView
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ContextMenuStrip2 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents PrintPayrollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PrintPayslipToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CancelPayrollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UpdatePayrollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

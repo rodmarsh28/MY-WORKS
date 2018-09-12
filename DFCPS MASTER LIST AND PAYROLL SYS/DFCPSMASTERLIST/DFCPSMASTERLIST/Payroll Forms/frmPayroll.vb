@@ -55,6 +55,8 @@
     Dim xrdr As String
     Dim xlate As String
     Dim xbp As String
+    Dim xrhd As String
+    Dim xnwhd As String
     Dim xrhp As String
     Dim xnwhp As String
     Dim xlpc As String
@@ -76,6 +78,9 @@
     Dim xdeductions As String
     Dim xnp As String
     Dim rtx As Double
+    Dim sunday As Integer
+    Public rhdays As Integer
+    Public nwhdays As Integer
 
     Sub clear()
         txtregularWorkedDays.Text = "0"
@@ -85,6 +90,8 @@
         txtOvertime.Text = "0"
         txtRDR.Text = "0"
         lblGrossPay.Text = "0.00"
+        txtrhd.Text = 0
+        txtnwhd.Text = 0
 
         txtLate.Text = "0"
         txtSSS.Text = "0.00"
@@ -201,6 +208,20 @@
 
         End Try
     End Sub
+    Sub countsunday()
+        sunday = 0
+        Dim totalday As Integer = dtrTo.Value.Day - dtrFrom.Value.Day
+        Dim i As Integer = 0
+        Dim dates As DateTime = dtrFrom.Value
+        While i <= totalday
+            i = i + 1
+            If dates.DayOfWeek = DayOfWeek.Sunday Then
+                sunday = sunday + 1
+            End If
+            dates = DateAdd(DateInterval.Day, 1, dates)
+        End While
+
+    End Sub
 
     Sub deductions()
         convertZero()
@@ -211,15 +232,51 @@
         Dim days As Integer = System.DateTime.DaysInMonth(years, months)
         Dim fdate As DateTime = dtrTo.Value
         Dim sdate As DateTime = dtrFrom.Value
-        Dim CountSundays As Integer = (1 + dtrTo.Value.Subtract(dtrFrom.Value).Days + (6 + CInt(dtrFrom.Value.DayOfWeek)) Mod 7) / 7
+        'Dim CountSundays As Integer = (1 + dtrTo.Value.Subtract(dtrFrom.Value).Days + (6 + CInt(dtrFrom.Value.DayOfWeek)) Mod 7) / 7
         Dim totgross As Double
+        Dim rhtodays As Double
+        Dim nwhtodays As Double
+        If txtRegularHolidays.Text <> "0" Then
+            rhtodays = txtRegularHolidays.Text / 8
+            If rhtodays <= 1 Then
+                rhtodays = 1
+            ElseIf rhtodays <= 2 Then
+                rhtodays = 2
+            ElseIf rhtodays <= 3 Then
+                rhtodays = 3
+            ElseIf rhtodays <= 4 Then
+                rhtodays = 4
+            ElseIf rhtodays <= 5 Then
+                rhtodays = 5
+            End If
+        End If
+        If txtNonWorkingHolidays.Text <> "0" Then
+            nwhtodays = txtNonWorkingHolidays.Text / 8
+            If nwhtodays <= 1 Then
+                nwhtodays = 1
+            ElseIf nwhtodays <= 2 Then
+                nwhtodays = 2
+            ElseIf nwhtodays <= 3 Then
+                nwhtodays = 3
+            ElseIf nwhtodays <= 4 Then
+                nwhtodays = 4
+            ElseIf nwhtodays <= 5 Then
+                nwhtodays = 5
+            End If
+        End If
         If txtPayMethod.Text = "Daily" Then
+          
             regularWorkedDays = txtregularWorkedDays.Text
-            absent = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text - CountSundays
-
+            absent = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) + 1 - txtregularWorkedDays.Text - sunday - txtrhd.Text - txtnwhd.Text
+            If absent < 0 Then
+                absent = 0
+            End If
         ElseIf txtPayMethod.Text = "Monthly" Then
-            regularWorkedDays = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 2 - CountSundays - txtRegularHolidays.Text
+            regularWorkedDays = DateDiff(DateInterval.Day, dtrFrom.Value, dtrTo.Value) - txtregularWorkedDays.Text + 1 - sunday - txtrhd.Text - txtnwhd.Text
             absent = txtregularWorkedDays.Text
+            If regularWorkedDays < 0 Then
+                regularWorkedDays = 0
+            End If
         ElseIf txtPayMethod.Text = "Weekly" Then
             regularWorkedDays = txtregularWorkedDays.Text
             absent = 7 - txtregularWorkedDays.Text
@@ -235,22 +292,22 @@
         If txtPayMethod.Text = "Daily" Then
             basicpay = txtDR.Text * regularWorkedDays
             latecash = (txtDR.Text / 8 / 60) * late
-            regularholiday = txtDR.Text * regularHolidays
-            nonworkingholiday = txtDR.Text * 0.3 * nonWorkingHolidays
+            regularholiday = txtDR.Text / 8 * regularHolidays + (txtDR.Text * rhdays)
+            nonworkingholiday = txtDR.Text / 8 * 0.3 * nonWorkingHolidays + (txtDR.Text / 8 * nonWorkingHolidays)
             leavepaycash = leavePay
             overtimecash = txtDR.Text / 8 * overtime
             restDayReportAmount = txtDR.Text / 8 * 1.3 * restDayReport
             totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash
         ElseIf txtPayMethod.Text = "Monthly" Then
             basicpay = txtDR.Text / 2
-            absentinamount = txtDR.Text / 26 * absent
+            absentinamount = txtDR.Text / 313 * 12 * absent
             latecash = (txtDR.Text / 26 / 8 / 60) * late
-            regularholiday = txtDR.Text / 313 * 12 * txtRegularHolidays.Text
-            nonworkingholiday = txtDR.Text / 313 * 12 * 0.3 * txtNonWorkingHolidays.Text
+            regularholiday = txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text + (txtDR.Text / 313 * 12 * rhdays)
+            nonworkingholiday = txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text + (txtDR.Text / 313 * 12 * nwhdays)
             leavepaycash = leavePay
             overtimecash = txtDR.Text / 313 * 12 / 8 * overtime
             restDayReportAmount = txtDR.Text / 313 * 12 / 8 * 1.3 * restDayReport
-            totgross = basicpay + leavepaycash + overtimecash + restDayReportAmount - latecash - absentinamount
+            totgross = basicpay + txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text + txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text + leavepaycash + overtimecash + restDayReportAmount - latecash - absentinamount
         End If
         lblGrossPay.Text = Format(totgross, "0.00")
         grossPay = lblGrossPay.Text
@@ -542,6 +599,7 @@
                 dgwItemProcess()
                 MsgBox("Payroll Created Success", MsgBoxStyle.Information, "Success")
                 dgw.Rows.Clear()
+                clear()
                 Me.Close()
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -559,33 +617,35 @@
             xEmployeeID = dgw.Item(0, col).Value
             xtotWorkDays = dgw.Item(2, col).Value
             xabsent = dgw.Item(3, col).Value
-            xregHol = dgw.Item(4, col).Value
-            xnonRegHol = dgw.Item(5, col).Value
-            xlp = dgw.Item(6, col).Value
-            xot = dgw.Item(7, col).Value
-            xrdr = dgw.Item(8, col).Value
-            xlate = dgw.Item(9, col).Value
-            xbp = dgw.Item(10, col).Value
-            xrhp = dgw.Item(11, col).Value
-            xnwhp = dgw.Item(12, col).Value
-            xlpc = dgw.Item(13, col).Value
-            xotp = dgw.Item(14, col).Value
-            xrdrpay = dgw.Item(15, col).Value
-            xlateded = dgw.Item(16, col).Value
-            xca = dgw.Item(17, col).Value
-            xtax = dgw.Item(18, col).Value
-            xsssprem = dgw.Item(19, col).Value
-            xpiprem = dgw.Item(20, col).Value
-            xphprem = dgw.Item(21, col).Value
-            xsssloan = dgw.Item(22, col).Value
-            xpiloan = dgw.Item(23, col).Value
-            xledgerBalance = dgw.Item(24, col).Value
-            xgp = dgw.Item(25, col).Value
-            xdeductions = dgw.Item(26, col).Value
-            xnp = dgw.Item(27, col).Value
-            xsssER = dgw.Item(28, col).Value
-            xpiER = dgw.Item(29, col).Value
-            xphER = dgw.Item(30, col).Value
+            xrhd = dgw.Item(4, col).Value
+            xnwhd = dgw.Item(5, col).Value
+            xregHol = dgw.Item(6, col).Value
+            xnonRegHol = dgw.Item(7, col).Value
+            xlp = dgw.Item(8, col).Value
+            xot = dgw.Item(9, col).Value
+            xrdr = dgw.Item(10, col).Value
+            xlate = dgw.Item(11, col).Value
+            xbp = dgw.Item(12, col).Value
+            xrhp = dgw.Item(13, col).Value
+            xnwhp = dgw.Item(14, col).Value
+            xlpc = dgw.Item(15, col).Value
+            xotp = dgw.Item(16, col).Value
+            xrdrpay = dgw.Item(17, col).Value
+            xlateded = dgw.Item(18, col).Value
+            xca = dgw.Item(19, col).Value
+            xtax = dgw.Item(20, col).Value
+            xsssprem = dgw.Item(21, col).Value
+            xpiprem = dgw.Item(22, col).Value
+            xphprem = dgw.Item(23, col).Value
+            xsssloan = dgw.Item(24, col).Value
+            xpiloan = dgw.Item(25, col).Value
+            xledgerBalance = dgw.Item(26, col).Value
+            xgp = dgw.Item(27, col).Value
+            xdeductions = dgw.Item(28, col).Value
+            xnp = dgw.Item(29, col).Value
+            xsssER = dgw.Item(30, col).Value
+            xpiER = dgw.Item(31, col).Value
+            xphER = dgw.Item(32, col).Value
             saveEmployeesPayroll()
             If frmDateGenerator.isLastDay = True Then
                 saveEmployERContribution()
@@ -608,6 +668,8 @@
                     "','" & xEmployeeID & _
                     "','" & xtotWorkDays & _
                     "','" & xabsent & _
+                    "','" & xrhd & _
+                    "','" & xnwhd & _
                     "','" & xregHol & _
                     "','" & xnonRegHol & _
                     "','" & xlp & _
@@ -687,33 +749,35 @@
         dgw.Item(1, r).Value = txtName.Text
         dgw.Item(2, r).Value = regularWorkedDays
         dgw.Item(3, r).Value = absent
-        dgw.Item(4, r).Value = txtRegularHolidays.Text
-        dgw.Item(5, r).Value = txtNonWorkingHolidays.Text
-        dgw.Item(6, r).Value = txtLeavepay.Text
-        dgw.Item(7, r).Value = txtOvertime.Text
-        dgw.Item(8, r).Value = txtRDR.Text
-        dgw.Item(9, r).Value = txtLate.Text
-        dgw.Item(10, r).Value = Format(basicpay, "0.00")
-        dgw.Item(11, r).Value = Format(regularholiday, "0.00")
-        dgw.Item(12, r).Value = Format(nonworkingholiday, "0.00")
-        dgw.Item(13, r).Value = Format(leavepaycash, "0.00")
-        dgw.Item(14, r).Value = Format(overtimecash, "0.00")
-        dgw.Item(15, r).Value = Format(restDayReportAmount, "0.00")
-        dgw.Item(16, r).Value = Format(latecash, "0.00")
-        dgw.Item(17, r).Value = txtCA.Text
-        dgw.Item(18, r).Value = "0.00"
-        dgw.Item(19, r).Value = txtSSS.Text
-        dgw.Item(20, r).Value = txtPagibig.Text
-        dgw.Item(21, r).Value = txtPhilhealth.Text
-        dgw.Item(22, r).Value = txtSSSLoan.Text
-        dgw.Item(23, r).Value = txtPagibigLoah.Text
-        dgw.Item(24, r).Value = txtLedgerBalance.Text
-        dgw.Item(25, r).Value = lblGrossPay.Text
-        dgw.Item(26, r).Value = lbldeductions.Text
-        dgw.Item(27, r).Value = lblNetPay.Text
-        dgw.Item(28, r).Value = sssER
-        dgw.Item(29, r).Value = pagibigER
-        dgw.Item(30, r).Value = philhealthER
+        dgw.Item(4, r).Value = rhdays
+        dgw.Item(5, r).Value = nwhdays
+        dgw.Item(6, r).Value = txtRegularHolidays.Text
+        dgw.Item(7, r).Value = txtNonWorkingHolidays.Text
+        dgw.Item(8, r).Value = txtLeavepay.Text
+        dgw.Item(9, r).Value = txtOvertime.Text
+        dgw.Item(10, r).Value = txtRDR.Text
+        dgw.Item(11, r).Value = txtLate.Text
+        dgw.Item(12, r).Value = Format(basicpay, "0.00")
+        dgw.Item(13, r).Value = Format(regularholiday, "0.00")
+        dgw.Item(14, r).Value = Format(nonworkingholiday, "0.00")
+        dgw.Item(15, r).Value = Format(leavepaycash, "0.00")
+        dgw.Item(16, r).Value = Format(overtimecash, "0.00")
+        dgw.Item(17, r).Value = Format(restDayReportAmount, "0.00")
+        dgw.Item(18, r).Value = Format(latecash, "0.00")
+        dgw.Item(19, r).Value = txtCA.Text
+        dgw.Item(20, r).Value = "0.00"
+        dgw.Item(21, r).Value = txtSSS.Text
+        dgw.Item(22, r).Value = txtPagibig.Text
+        dgw.Item(23, r).Value = txtPhilhealth.Text
+        dgw.Item(24, r).Value = txtSSSLoan.Text
+        dgw.Item(25, r).Value = txtPagibigLoah.Text
+        dgw.Item(26, r).Value = txtLedgerBalance.Text
+        dgw.Item(27, r).Value = lblGrossPay.Text
+        dgw.Item(28, r).Value = lbldeductions.Text
+        dgw.Item(29, r).Value = lblNetPay.Text
+        dgw.Item(30, r).Value = sssER
+        dgw.Item(31, r).Value = pagibigER
+        dgw.Item(32, r).Value = philhealthER
         dgw.ClearSelection()
 
         lblTotEmp.Text = dgw.RowCount
@@ -802,6 +866,11 @@
 
     End Sub
 
+    Private Sub frmPayroll_FormClosing1(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        dgw.Rows.Clear()
+        clear()
+    End Sub
+
     Private Sub frmPayroll_Load_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If payrollMode = "Update" Then
         ElseIf payrollMode = "Add" Then
@@ -838,8 +907,8 @@
     Private Sub DeleteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteToolStripMenuItem.Click
         For Each row As DataGridViewRow In dgw.SelectedRows
             lblTotEmp.Text = dgw.RowCount - 1
-            totalOT = totalOT - dgw.CurrentRow.Cells(14).Value
-            totalGrossPay = totalGrossPay - dgw.CurrentRow.Cells(25).Value
+            totalOT = totalOT - dgw.CurrentRow.Cells(16).Value
+            totalGrossPay = totalGrossPay - dgw.CurrentRow.Cells(28).Value
             totalDeductions = totalDeductions - dgw.CurrentRow.Cells(26).Value
             totalNetpay = totalNetpay - dgw.CurrentRow.Cells(27).Value
 
@@ -859,4 +928,133 @@
     Private Sub dgw_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgw.CellContentClick
 
     End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        rhdays = 0
+        Try
+            Dim rhd As String = InputBox("How many Regular Holidays Counted ?")
+            If rhd = "" Then
+                rhd = "0"
+            End If
+            rhdays = rhd
+            txtrhd.Text = rhdays
+        Catch ex As Exception
+            MsgBox("Invalid Input", MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        nwhdays = 0
+        Try
+            Dim nwhd As String = InputBox("How many Non Working Holidays Counted ?")
+            If nwhd = "" Then
+                nwhd = "0"
+            End If
+            nwhdays = nwhd
+            txtnwhd.Text = nwhdays
+        Catch ex As Exception
+            MsgBox("Invalid Input", MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+
+
+    Private Sub txtRegularHolidays_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtRegularHolidays.TextChanged
+        Dim rhtodays As Double
+        Try
+            If txtRegularHolidays.Text <> "0" Then
+                rhtodays = txtRegularHolidays.Text / 8
+                If rhtodays <= 1 Then
+                    rhtodays = 1
+                ElseIf rhtodays <= 2 Then
+                    rhtodays = 2
+                ElseIf rhtodays <= 3 Then
+                    rhtodays = 3
+                ElseIf rhtodays <= 4 Then
+                    rhtodays = 4
+                ElseIf rhtodays <= 5 Then
+                    rhtodays = 5
+                End If
+                rhdays = rhtodays
+
+            Else
+                rhtodays = 0
+            End If
+            txtrhd.Text = rhtodays
+        Catch ex As Exception
+        End Try
+    End Sub
+
+ 
+
+   
+
+    Private Sub txtNonWorkingHolidays_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtNonWorkingHolidays.TextChanged
+        Dim nwhtodays As Double
+        Try
+            If txtNonWorkingHolidays.Text <> "0" Then
+                nwhtodays = txtNonWorkingHolidays.Text / 8
+                If nwhtodays <= 1 Then
+                    nwhtodays = 1
+                ElseIf nwhtodays <= 2 Then
+                    nwhtodays = 2
+                ElseIf nwhtodays <= 3 Then
+                    nwhtodays = 3
+                ElseIf nwhtodays <= 4 Then
+                    nwhtodays = 4
+                ElseIf nwhtodays <= 5 Then
+                    nwhtodays = 5
+                End If
+                nwhdays = nwhtodays
+
+            Else
+                nwhtodays = 0
+            End If
+            txtnwhd.Text = nwhtodays
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub txtregularWorkedDays_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtregularWorkedDays.MouseDown
+        txtregularWorkedDays.SelectAll()
+    End Sub
+    Private Sub txtRegularHolidays_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtRegularHolidays.MouseDown
+        txtRegularHolidays.SelectAll()
+    End Sub
+    Private Sub txtNonWorkingHolidays_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtNonWorkingHolidays.MouseDown
+        txtNonWorkingHolidays.SelectAll()
+    End Sub
+
+    Private Sub txtLeavepay_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtLeavepay.MouseDown
+        txtLeavepay.SelectAll()
+    End Sub
+
+    Private Sub txtOvertime_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtOvertime.MouseDown
+        txtOvertime.SelectAll()
+    End Sub
+
+    Private Sub txtRDR_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtRDR.MouseDown
+        txtRDR.SelectAll()
+    End Sub
+
+    Private Sub txtLate_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtLate.MouseDown
+        txtLate.SelectAll()
+    End Sub
+
+    Private Sub txtSSSLoan_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtSSSLoan.MouseDown
+        txtSSSLoan.SelectAll()
+    End Sub
+
+    Private Sub txtPagibigLoah_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtPagibigLoah.MouseDown
+        txtPagibigLoah.SelectAll()
+    End Sub
+
+    Private Sub txtLedgerBalance_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtLedgerBalance.MouseDown
+        txtLedgerBalance.SelectAll()
+    End Sub
+
+    Private Sub txtCA_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtCA.MouseDown
+        txtCA.SelectAll()
+    End Sub
+
+   
 End Class
