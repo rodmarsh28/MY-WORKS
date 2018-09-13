@@ -757,7 +757,11 @@
         dgw.Item(9, r).Value = txtOvertime.Text
         dgw.Item(10, r).Value = txtRDR.Text
         dgw.Item(11, r).Value = txtLate.Text
-        dgw.Item(12, r).Value = Format(basicpay, "0.00")
+        If txtPayMethod.Text = "Daily" Then
+            dgw.Item(12, r).Value = Format(basicpay, "0.00")
+        ElseIf txtPayMethod.Text = "Monthly" Then
+            dgw.Item(12, r).Value = Format(basicpay - regularholiday - nonworkingholiday + txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text, "0.00")
+        End If
         dgw.Item(13, r).Value = Format(regularholiday, "0.00")
         dgw.Item(14, r).Value = Format(nonworkingholiday, "0.00")
         dgw.Item(15, r).Value = Format(leavepaycash, "0.00")
