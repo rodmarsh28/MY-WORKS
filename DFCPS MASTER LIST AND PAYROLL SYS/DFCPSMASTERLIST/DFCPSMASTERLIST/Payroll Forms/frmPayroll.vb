@@ -760,7 +760,7 @@
         If txtPayMethod.Text = "Daily" Then
             dgw.Item(12, r).Value = Format(basicpay, "0.00")
         ElseIf txtPayMethod.Text = "Monthly" Then
-            dgw.Item(12, r).Value = Format(basicpay - regularholiday - nonworkingholiday + txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text, "0.00")
+            dgw.Item(12, r).Value = Format(basicpay - absentinamount - regularholiday + txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text - nonworkingholiday + txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text, "0.00")
         End If
         dgw.Item(13, r).Value = Format(regularholiday, "0.00")
         dgw.Item(14, r).Value = Format(nonworkingholiday, "0.00")
@@ -912,9 +912,9 @@
         For Each row As DataGridViewRow In dgw.SelectedRows
             lblTotEmp.Text = dgw.RowCount - 1
             totalOT = totalOT - dgw.CurrentRow.Cells(16).Value
-            totalGrossPay = totalGrossPay - dgw.CurrentRow.Cells(28).Value
-            totalDeductions = totalDeductions - dgw.CurrentRow.Cells(26).Value
-            totalNetpay = totalNetpay - dgw.CurrentRow.Cells(27).Value
+            totalGrossPay = totalGrossPay - dgw.CurrentRow.Cells(27).Value
+            totalDeductions = totalDeductions - dgw.CurrentRow.Cells(28).Value
+            totalNetpay = totalNetpay - dgw.CurrentRow.Cells(29).Value
 
             lblTotOT.Text = Format(totalOT, "N")
             lblTotGP.Text = Format(totalGrossPay, "N")

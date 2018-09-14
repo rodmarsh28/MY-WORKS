@@ -114,7 +114,7 @@
             c = 0
             With OleDBC
                 .Connection = conn
-                .CommandText = "SELECT payrollID,tblEmployeesInfo.employeeID,lastname,firstname,middlename,rate,position,totalWorkedDays,absent,rhd,nwhd,regHolidays,NonWorkHolidays,leavePay,overtimeHRS," & _
+                .CommandText = "SELECT payrollID,tblEmployeesInfo.employeeID,lastname,firstname,middlename,rate,payMethod,position,totalWorkedDays,absent,rhd,nwhd,regHolidays,NonWorkHolidays,leavePay,overtimeHRS," & _
                     "restdayReportHRS,lateUTMins,basicPay,regHolidayPay,nonWorkHolidayPay,leavePayCash,overtimePay,restdayReportAmount,lateUndertimeDed," & _
                     "cashAdvance,wHoldingTax,sssPrems,piPrems,phPrems,sssLoans,piLoans,ledgerBalance,Deduction,grossPay,Netpay FROM tblPayrollofEmployees " & _
                     "INNER JOIN tblEmployeesInfo ON tblPayrollofEmployees.employeeID = tblEmployeesInfo.employeeID" & _
@@ -129,6 +129,7 @@
                 .Columns.Add("empID")
                 .Columns.Add("name")
                 .Columns.Add("rate")
+                .Columns.Add("paymethod")
                 .Columns.Add("position")
                 .Columns.Add("twd")
                 .Columns.Add("absent")
@@ -173,7 +174,7 @@
                                 OleDBDR.Item(2) & ", " & OleDBDR.Item(3) & " " & OleDBDR.Item(4),
                                 Format(OleDBDR.Item(5), "N"),
                                 OleDBDR.Item(6),
-                                Format(OleDBDR.Item(7), "N"),
+                                OleDBDR.Item(7),
                                 Format(OleDBDR.Item(8), "N"),
                                 Format(OleDBDR.Item(9), "N"),
                                 Format(OleDBDR.Item(10), "N"),
@@ -201,6 +202,7 @@
                                 Format(OleDBDR.Item(32), "N"),
                                 Format(OleDBDR.Item(33), "N"),
                                 Format(OleDBDR.Item(34), "N"),
+                                Format(OleDBDR.Item(35), "N"),
                                 frmMain.lblUsername.Text)
                     
                 End While
@@ -230,7 +232,7 @@
 
             With OleDBC
                 .Connection = conn
-                .CommandText = "SELECT payrollID,tblEmployeesInfo.employeeID,lastname,firstname,middlename,position,rate,dateHired,totalWorkedDays,absent,regHolidays,NonWorkHolidays,leavePay,overtimeHRS," & _
+                .CommandText = "SELECT payrollID,tblEmployeesInfo.employeeID,lastname,firstname,middlename,position,rate,payMethod,dateHired,totalWorkedDays,absent,rhd,nwhd,regHolidays,NonWorkHolidays,leavePay,overtimeHRS," & _
                     "restdayReportHRS,lateUTMins,basicPay,regHolidayPay,nonWorkHolidayPay,leavePayCash,overtimePay,restdayReportAmount,lateUndertimeDed," & _
                     "cashAdvance,wHoldingTax,sssPrems,piPrems,phPrems,sssLoans,piLoans,ledgerBalance,Deduction,grossPay,Netpay FROM tblPayrollofEmployees " & _
                     "INNER JOIN tblEmployeesInfo ON tblPayrollofEmployees.employeeID = tblEmployeesInfo.employeeID" & _
@@ -246,9 +248,12 @@
                 .Columns.Add("name")
                 .Columns.Add("pos")
                 .Columns.Add("rate")
+                .Columns.Add("paymethod")
                 .Columns.Add("dateHired")
                 .Columns.Add("twd")
                 .Columns.Add("absent")
+                .Columns.Add("rhd")
+                .Columns.Add("nwhd")
                 .Columns.Add("rh")
                 .Columns.Add("nwh")
                 .Columns.Add("lp")
@@ -289,9 +294,9 @@
                                 OleDBDR.Item(1),
                                 OleDBDR.Item(2) & ", " & OleDBDR.Item(3) & " " & OleDBDR.Item(4),
                                 OleDBDR.Item(5),
-                                OleDBDR.Item(6),
-                                Format(OleDBDR.Item(7), "MM/dd/yyyy"),
-                                Format(OleDBDR.Item(8), "N"),
+                                Format(OleDBDR.Item(6), "N"),
+                                OleDBDR.Item(7),
+                                Format(OleDBDR.Item(8), "MM/dd/yyyy"),
                                 Format(OleDBDR.Item(9), "N"),
                                 Format(OleDBDR.Item(10), "N"),
                                 Format(OleDBDR.Item(11), "N"),
@@ -317,6 +322,9 @@
                                 Format(OleDBDR.Item(31), "N"),
                                 Format(OleDBDR.Item(32), "N"),
                                 Format(OleDBDR.Item(33), "N"),
+                                Format(OleDBDR.Item(34), "N"),
+                                Format(OleDBDR.Item(35), "N"),
+                                Format(OleDBDR.Item(36), "N"),
                                 frmMain.lblUsername.Text)
                             c = c + 1
                         End While

@@ -365,6 +365,8 @@ Partial Public Class DataSet1
         
         Private columnrate As Global.System.Data.DataColumn
         
+        Private columnpaymethod As Global.System.Data.DataColumn
+        
         Private columnposition As Global.System.Data.DataColumn
         
         Private columntwd As Global.System.Data.DataColumn
@@ -505,6 +507,14 @@ Partial Public Class DataSet1
         Public ReadOnly Property rateColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnrate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property paymethodColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpaymethod
             End Get
         End Property
         
@@ -792,6 +802,7 @@ Partial Public Class DataSet1
                     ByVal empID As String,  _
                     ByVal name As String,  _
                     ByVal rate As String,  _
+                    ByVal paymethod As String,  _
                     ByVal position As String,  _
                     ByVal twd As String,  _
                     ByVal absent As String,  _
@@ -823,7 +834,7 @@ Partial Public Class DataSet1
                     ByVal netpay As String,  _
                     ByVal preparedby As String) As payrollTableRow
             Dim rowpayrollTableRow As payrollTableRow = CType(Me.NewRow,payrollTableRow)
-            Dim columnValuesArray() As Object = New Object() {datarange, _date, payrollID, empID, name, rate, position, twd, absent, rhd, nwhd, rh, nwh, lp, ot, rdr, late, bp, rhp, nwhp, lpc, otp, rdrp, latep, ca, tax, sss, pi, ph, sssl, pil, lb, ded, gp, netpay, preparedby}
+            Dim columnValuesArray() As Object = New Object() {datarange, _date, payrollID, empID, name, rate, paymethod, position, twd, absent, rhd, nwhd, rh, nwh, lp, ot, rdr, late, bp, rhp, nwhp, lpc, otp, rdrp, latep, ca, tax, sss, pi, ph, sssl, pil, lb, ded, gp, netpay, preparedby}
             rowpayrollTableRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowpayrollTableRow)
             Return rowpayrollTableRow
@@ -852,6 +863,7 @@ Partial Public Class DataSet1
             Me.columnempID = MyBase.Columns("empID")
             Me.columnname = MyBase.Columns("name")
             Me.columnrate = MyBase.Columns("rate")
+            Me.columnpaymethod = MyBase.Columns("paymethod")
             Me.columnposition = MyBase.Columns("position")
             Me.columntwd = MyBase.Columns("twd")
             Me.columnabsent = MyBase.Columns("absent")
@@ -902,6 +914,8 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnname)
             Me.columnrate = New Global.System.Data.DataColumn("rate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnrate)
+            Me.columnpaymethod = New Global.System.Data.DataColumn("paymethod", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpaymethod)
             Me.columnposition = New Global.System.Data.DataColumn("position", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnposition)
             Me.columntwd = New Global.System.Data.DataColumn("twd", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -1113,11 +1127,17 @@ Partial Public Class DataSet1
         
         Private columnrate As Global.System.Data.DataColumn
         
+        Private columnpaymethod As Global.System.Data.DataColumn
+        
         Private columndateHired As Global.System.Data.DataColumn
         
         Private columntwd As Global.System.Data.DataColumn
         
         Private columnabsent As Global.System.Data.DataColumn
+        
+        Private columnrhd As Global.System.Data.DataColumn
+        
+        Private columnnwhd As Global.System.Data.DataColumn
         
         Private columnrh As Global.System.Data.DataColumn
         
@@ -1262,6 +1282,14 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property paymethodColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpaymethod
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property dateHiredColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columndateHired
@@ -1281,6 +1309,22 @@ Partial Public Class DataSet1
         Public ReadOnly Property absentColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnabsent
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rhdColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrhd
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property nwhdColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnwhd
             End Get
         End Property
         
@@ -1529,9 +1573,12 @@ Partial Public Class DataSet1
                     ByVal name As String,  _
                     ByVal pos As String,  _
                     ByVal rate As String,  _
+                    ByVal paymethod As String,  _
                     ByVal dateHired As String,  _
                     ByVal twd As String,  _
                     ByVal absent As String,  _
+                    ByVal rhd As String,  _
+                    ByVal nwhd As String,  _
                     ByVal rh As String,  _
                     ByVal nwh As String,  _
                     ByVal lp As String,  _
@@ -1558,7 +1605,7 @@ Partial Public Class DataSet1
                     ByVal netpay As String,  _
                     ByVal preparedby As String) As payslipTableRow
             Dim rowpayslipTableRow As payslipTableRow = CType(Me.NewRow,payslipTableRow)
-            Dim columnValuesArray() As Object = New Object() {datarange, _date, payrollID, empID, name, pos, rate, dateHired, twd, absent, rh, nwh, lp, ot, rdr, late, bp, rhp, nwhp, lpc, otp, rdrp, latep, ca, tax, sss, pi, ph, sssl, pil, lb, ded, gp, netpay, preparedby}
+            Dim columnValuesArray() As Object = New Object() {datarange, _date, payrollID, empID, name, pos, rate, paymethod, dateHired, twd, absent, rhd, nwhd, rh, nwh, lp, ot, rdr, late, bp, rhp, nwhp, lpc, otp, rdrp, latep, ca, tax, sss, pi, ph, sssl, pil, lb, ded, gp, netpay, preparedby}
             rowpayslipTableRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowpayslipTableRow)
             Return rowpayslipTableRow
@@ -1588,9 +1635,12 @@ Partial Public Class DataSet1
             Me.columnname = MyBase.Columns("name")
             Me.columnpos = MyBase.Columns("pos")
             Me.columnrate = MyBase.Columns("rate")
+            Me.columnpaymethod = MyBase.Columns("paymethod")
             Me.columndateHired = MyBase.Columns("dateHired")
             Me.columntwd = MyBase.Columns("twd")
             Me.columnabsent = MyBase.Columns("absent")
+            Me.columnrhd = MyBase.Columns("rhd")
+            Me.columnnwhd = MyBase.Columns("nwhd")
             Me.columnrh = MyBase.Columns("rh")
             Me.columnnwh = MyBase.Columns("nwh")
             Me.columnlp = MyBase.Columns("lp")
@@ -1638,12 +1688,18 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnpos)
             Me.columnrate = New Global.System.Data.DataColumn("rate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnrate)
+            Me.columnpaymethod = New Global.System.Data.DataColumn("paymethod", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpaymethod)
             Me.columndateHired = New Global.System.Data.DataColumn("dateHired", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndateHired)
             Me.columntwd = New Global.System.Data.DataColumn("twd", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntwd)
             Me.columnabsent = New Global.System.Data.DataColumn("absent", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnabsent)
+            Me.columnrhd = New Global.System.Data.DataColumn("rhd", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrhd)
+            Me.columnnwhd = New Global.System.Data.DataColumn("nwhd", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnwhd)
             Me.columnrh = New Global.System.Data.DataColumn("rh", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnrh)
             Me.columnnwh = New Global.System.Data.DataColumn("nwh", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -2299,6 +2355,21 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property paymethod() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablepayrollTable.paymethodColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'paymethod' in table 'payrollTable' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablepayrollTable.paymethodColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property position() As String
             Get
                 Try 
@@ -2821,6 +2892,18 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IspaymethodNull() As Boolean
+            Return Me.IsNull(Me.tablepayrollTable.paymethodColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetpaymethodNull()
+            Me(Me.tablepayrollTable.paymethodColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IspositionNull() As Boolean
             Return Me.IsNull(Me.tablepayrollTable.positionColumn)
         End Function
@@ -3302,6 +3385,21 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property paymethod() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablepayslipTable.paymethodColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'paymethod' in table 'payslipTable' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablepayslipTable.paymethodColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property dateHired() As String
             Get
                 Try 
@@ -3342,6 +3440,36 @@ Partial Public Class DataSet1
             End Get
             Set
                 Me(Me.tablepayslipTable.absentColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rhd() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablepayslipTable.rhdColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rhd' in table 'payslipTable' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablepayslipTable.rhdColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property nwhd() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablepayslipTable.nwhdColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'nwhd' in table 'payslipTable' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablepayslipTable.nwhdColumn) = value
             End Set
         End Property
         
@@ -3806,6 +3934,18 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IspaymethodNull() As Boolean
+            Return Me.IsNull(Me.tablepayslipTable.paymethodColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetpaymethodNull()
+            Me(Me.tablepayslipTable.paymethodColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsdateHiredNull() As Boolean
             Return Me.IsNull(Me.tablepayslipTable.dateHiredColumn)
         End Function
@@ -3838,6 +3978,30 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetabsentNull()
             Me(Me.tablepayslipTable.absentColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsrhdNull() As Boolean
+            Return Me.IsNull(Me.tablepayslipTable.rhdColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetrhdNull()
+            Me(Me.tablepayslipTable.rhdColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsnwhdNull() As Boolean
+            Return Me.IsNull(Me.tablepayslipTable.nwhdColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetnwhdNull()
+            Me(Me.tablepayslipTable.nwhdColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
