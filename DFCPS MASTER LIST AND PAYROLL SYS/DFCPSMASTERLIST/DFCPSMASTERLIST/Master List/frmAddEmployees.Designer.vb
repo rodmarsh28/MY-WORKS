@@ -401,7 +401,7 @@ Partial Class frmAddEmployees
         '
         Me.cmbDedB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbDedB.FormattingEnabled = True
-        Me.cmbDedB.Items.AddRange(New Object() {"No", "Yes"})
+        Me.cmbDedB.Items.AddRange(New Object() {"", "No", "Yes"})
         Me.cmbDedB.Location = New System.Drawing.Point(360, 73)
         Me.cmbDedB.Name = "cmbDedB"
         Me.cmbDedB.Size = New System.Drawing.Size(156, 24)
@@ -420,7 +420,7 @@ Partial Class frmAddEmployees
         '
         Me.txtField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtField.FormattingEnabled = True
-        Me.txtField.Items.AddRange(New Object() {"Weekly", "15 Days"})
+        Me.txtField.Items.AddRange(New Object() {"", "Weekly", "15 Days"})
         Me.txtField.Location = New System.Drawing.Point(103, 171)
         Me.txtField.Name = "txtField"
         Me.txtField.Size = New System.Drawing.Size(129, 24)
@@ -477,7 +477,7 @@ Partial Class frmAddEmployees
         Me.txtStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStatus.FormattingEnabled = True
-        Me.txtStatus.Items.AddRange(New Object() {"Probationary", "Regular", "Inactive"})
+        Me.txtStatus.Items.AddRange(New Object() {"", "Probationary", "Regular", "Inactive"})
         Me.txtStatus.Location = New System.Drawing.Point(103, 147)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.Size = New System.Drawing.Size(129, 23)
@@ -489,7 +489,7 @@ Partial Class frmAddEmployees
         Me.txtPM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtPM.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPM.FormattingEnabled = True
-        Me.txtPM.Items.AddRange(New Object() {"Daily", "Monthly"})
+        Me.txtPM.Items.AddRange(New Object() {"", "Daily", "Monthly"})
         Me.txtPM.Location = New System.Drawing.Point(103, 99)
         Me.txtPM.Name = "txtPM"
         Me.txtPM.Size = New System.Drawing.Size(129, 23)
@@ -730,7 +730,7 @@ Partial Class frmAddEmployees
         Me.txtCS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtCS.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCS.FormattingEnabled = True
-        Me.txtCS.Items.AddRange(New Object() {"Single", "Married", "Widow", "Separated"})
+        Me.txtCS.Items.AddRange(New Object() {"", "Single", "Married", "Widow", "Separated"})
         Me.txtCS.Location = New System.Drawing.Point(335, 184)
         Me.txtCS.Name = "txtCS"
         Me.txtCS.Size = New System.Drawing.Size(121, 23)
@@ -742,7 +742,7 @@ Partial Class frmAddEmployees
         Me.txtGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtGender.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGender.FormattingEnabled = True
-        Me.txtGender.Items.AddRange(New Object() {"Male", "Female"})
+        Me.txtGender.Items.AddRange(New Object() {"", "Male", "Female"})
         Me.txtGender.Location = New System.Drawing.Point(335, 160)
         Me.txtGender.Name = "txtGender"
         Me.txtGender.Size = New System.Drawing.Size(121, 23)

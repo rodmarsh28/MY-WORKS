@@ -121,7 +121,7 @@
                                 "dbo.tblPayrollofEmployees.Deduction,dbo.tblPayrollofEmployees.Netpay,dbo.tblPayroll.totalDeduction," & _
                                 "dbo.tblPayroll.totalGrossPay,dbo.tblPayroll.totalNetpay FROM dbo.tblPayroll INNER JOIN dbo.tblPayrollofEmployees ON dbo.tblPayroll.payrollID = " & _
                                 "dbo.tblPayrollofEmployees.payrollID INNER JOIN dbo.tblEmployee ON dbo.tblEmployee.empid = dbo.tblPayrollofEmployees.empID " & _
-                                " where dbo.tblPayroll.payrollID = '" & dgw.CurrentRow.Cells(0).Value & "'"
+                                " where dbo.tblPayroll.payrollID = '" & dgw.CurrentRow.Cells(0).Value & "' order by tblEmployee.lastname asc"
             End With
             OleDBDR = OleDBC.ExecuteReader
             Dim dt As New DataTable

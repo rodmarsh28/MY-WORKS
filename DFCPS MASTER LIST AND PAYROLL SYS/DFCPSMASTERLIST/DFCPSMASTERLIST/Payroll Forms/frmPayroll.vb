@@ -302,12 +302,12 @@
             basicpay = txtDR.Text / 2
             absentinamount = txtDR.Text / 313 * 12 * absent
             latecash = (txtDR.Text / 26 / 8 / 60) * late
-            regularholiday = txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text + (txtDR.Text / 313 * 12 * txtrhd.Text)
-            nonworkingholiday = txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text + (txtDR.Text / 313 * 12 * txtnwhd.Text)
+            regularholiday = txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text
+            nonworkingholiday = txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text
             leavepaycash = leavePay
             overtimecash = txtDR.Text / 313 * 12 / 8 * overtime
             restDayReportAmount = txtDR.Text / 313 * 12 / 8 * 1.3 * restDayReport
-            totgross = basicpay + txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text + txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text + leavepaycash + overtimecash + restDayReportAmount - latecash - absentinamount
+            totgross = basicpay + regularholiday + nonworkingholiday + leavepaycash + overtimecash + restDayReportAmount - latecash - absentinamount
         End If
         lblGrossPay.Text = Format(totgross, "0.00")
         grossPay = lblGrossPay.Text
@@ -757,11 +757,7 @@
         dgw.Item(9, r).Value = txtOvertime.Text
         dgw.Item(10, r).Value = txtRDR.Text
         dgw.Item(11, r).Value = txtLate.Text
-        If txtPayMethod.Text = "Daily" Then
-            dgw.Item(12, r).Value = Format(basicpay, "0.00")
-        ElseIf txtPayMethod.Text = "Monthly" Then
-            dgw.Item(12, r).Value = Format(basicpay - absentinamount - regularholiday + txtDR.Text / 313 * 12 / 8 * txtRegularHolidays.Text - nonworkingholiday + txtDR.Text / 313 * 12 / 8 * 0.3 * txtNonWorkingHolidays.Text, "0.00")
-        End If
+        dgw.Item(12, r).Value = Format(basicpay, "0.00")
         dgw.Item(13, r).Value = Format(regularholiday, "0.00")
         dgw.Item(14, r).Value = Format(nonworkingholiday, "0.00")
         dgw.Item(15, r).Value = Format(leavepaycash, "0.00")

@@ -182,14 +182,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Reports\ACpremsSummary.vb">
-      <DependentUpon>ACpremsSummary.rpt</DependentUpon>
+    <Compile Include="Reports\Copy of GFLSpremsSummary.vb">
+      <DependentUpon>Copy of GFLSpremsSummary.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reports\GFLS Payroll.vb">
-      <DependentUpon>GFLS Payroll.rpt</DependentUpon>
+    <Compile Include="Reports\GFLSpremsSummary.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GFLSpremsSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ACpremsSummary.vb">
+      <DependentUpon>ACpremsSummary.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -200,11 +206,11 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reports\GFLSpremsSummary.vb">
+    <Compile Include="Reports\GFLS Payroll.vb">
+      <DependentUpon>GFLS Payroll.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GFLSpremsSummary.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reports\Utility Payslip.vb">
       <DependentUpon>Utility Payslip.rpt</DependentUpon>
@@ -277,21 +283,25 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Copy of GFLSpremsSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Copy of GFLSpremsSummary.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GFLSpremsSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GFLSpremsSummary.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ACpremsSummary.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ACpremsSummary.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\GFLS Payroll.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>GFLS Payroll.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Utility Payroll.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Utility Payroll.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\GFLSpremsSummary.rpt">
+    <EmbeddedResource Include="Reports\GFLS Payroll.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>GFLSpremsSummary.vb</LastGenOutput>
+      <LastGenOutput>GFLS Payroll.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Utility Payslip.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

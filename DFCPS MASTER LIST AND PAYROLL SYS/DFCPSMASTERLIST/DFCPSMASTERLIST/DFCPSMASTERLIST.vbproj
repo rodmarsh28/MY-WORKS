@@ -258,6 +258,24 @@
     <Compile Include="Payroll Forms\payrollLabor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="printDialog.Designer.vb">
+      <DependentUpon>printDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="printDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\phPremsPayment.vb">
+      <DependentUpon>phPremsPayment.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\piPremsPayment.vb">
+      <DependentUpon>piPremsPayment.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\Payrollpt2.vb">
       <DependentUpon>Payrollpt2.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -294,10 +312,22 @@
       <DependentUpon>Payslip.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\premsReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>premsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\premsSummary.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>premsSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\sssPremsPayment.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sssPremsPayment.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -362,6 +392,17 @@
     <EmbeddedResource Include="Payroll Forms\payrollLabor.resx">
       <DependentUpon>payrollLabor.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="printDialog.resx">
+      <DependentUpon>printDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\phPremsPayment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>phPremsPayment.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\piPremsPayment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>piPremsPayment.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Payrollpt2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Payrollpt2.vb</LastGenOutput>
@@ -385,9 +426,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Payslip.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\premsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>premsReport.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\premsSummary.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>premsSummary.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\sssPremsPayment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>sssPremsPayment.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

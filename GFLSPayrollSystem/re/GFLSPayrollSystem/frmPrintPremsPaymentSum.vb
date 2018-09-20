@@ -14,12 +14,12 @@
             c = 0
             With OleDBC
                 .Connection = conn
-                .CommandText = "SELECT tblEmployee.EmpID,tblEmployee.lastname,tblEmployee.firstname," & _
-                    "tblEmployee.middlename,tblPayrollofEmployees.sssPrems,tblPayrollofEmployees.piPrems,tblPayrollofEmployees.phPrems," & _
-                    "tblBenefitsPaymentSum.erSSS,tblBenefitsPaymentSum.erPI,tblBenefitsPaymentSum.erPH FROM tblPayrollofEmployees INNER JOIN " & _
-                    "tblEmployee ON tblPayrollofEmployees.EmpID = tblEmployee.EmpID INNER JOIN tblBenefitsPaymentSum ON " & _
-                    "tblPayrollofEmployees.empPayrollTransNo = tblBenefitsPaymentSum.empPayrollTransNo " & _
-                    "where tblPayrollofEmployees.payrollID = '" & dgw.CurrentRow.Cells(0).Value & "'"
+                .CommandText = "SELECT dbo.tblEmployee.empID,dbo.tblEmployee.lastname,dbo.tblEmployee.firstname,dbo.tblEmployee.middlename,dbo.tblEmployee.sss," & _
+                    "dbo.tblEmployee.pagibig,dbo.tblEmployee.philhealth,dbo.tblPayrollofEmployees.sssPrems,dbo.tblBenefitsPaymentSum.erSSS,dbo.tblPayrollofEmployees.piPrems," & _
+                    "dbo.tblBenefitsPaymentSum.erPI,dbo.tblPayrollofEmployees.phPrems,dbo.tblBenefitsPaymentSum.erPH FROM dbo.tblPayrollofEmployees INNER JOIN dbo.tblEmployee " & _
+                    "ON dbo.tblPayrollofEmployees.empID = dbo.tblEmployee.empID INNER JOIN dbo.tblBenefitsPaymentSum ON dbo.tblPayrollofEmployees.empPayrollTransNo = " & _
+                    "dbo.tblBenefitsPaymentSum.empPayrollTransNo " & _
+                    "where tblPayrollofEmployees.payrollID = '" & dgw.CurrentRow.Cells(0).Value & "' and sssPrems <> 0 OR erSSS <> 0 OR piPrems <> 0 OR erPI <> 0 OR phPrems <> 0 OR erph <> 0"
 
 
             End With
@@ -29,27 +29,39 @@
                 .Columns.Add("dateofprems")
                 .Columns.Add("empid")
                 .Columns.Add("name")
+                .Columns.Add("sssNo")
+                .Columns.Add("piNo")
+                .Columns.Add("phNo")
                 .Columns.Add("sssee")
-                .Columns.Add("piee")
-                .Columns.Add("phee")
                 .Columns.Add("ssser")
+                .Columns.Add("totalsss")
+                .Columns.Add("piee")
                 .Columns.Add("pier")
+                .Columns.Add("totalpi")
+                .Columns.Add("phee")
                 .Columns.Add("pher")
+                .Columns.Add("totalph")
                 .Columns.Add("preparedby")
 
             End With
 
             If OleDBDR.HasRows Then
                 While OleDBDR.Read
-                    dt.Rows.Add(dgw.CurrentRow.Cells(1).Value,
+                    dt.Rows.Add(UCase(dgw.CurrentRow.Cells(1).Value),
                                 OleDBDR.Item(0),
                                 OleDBDR.Item(1) & ", " & OleDBDR.Item(2) & " " & OleDBDR.Item(3),
-                                Format(OleDBDR.Item(4), "N"),
-                                Format(OleDBDR.Item(5), "N"),
-                                Format(OleDBDR.Item(6), "N"),
+                                OleDBDR.Item(4),
+                                OleDBDR.Item(5),
+                                OleDBDR.Item(6),
                                 Format(OleDBDR.Item(7), "N"),
                                 Format(OleDBDR.Item(8), "N"),
+                                Format(OleDBDR.Item(7) + OleDBDR.Item(8), "N"),
                                 Format(OleDBDR.Item(9), "N"),
+                                Format(OleDBDR.Item(10), "N"),
+                                Format(OleDBDR.Item(9) + OleDBDR.Item(10), "N"),
+                                Format(OleDBDR.Item(11), "N"),
+                                Format(OleDBDR.Item(12), "N"),
+                                Format(OleDBDR.Item(11) + OleDBDR.Item(12), "N"),
                                 frmMain.lblUsername.Text)
                 End While
             End If

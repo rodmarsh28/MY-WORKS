@@ -114,7 +114,7 @@
                 '                "dbo.tblPayroll.payrollID where '" & Format(frmPayroll.dtrFrom.Value, "MM/dd/yyyy") & "' between dbo.tblPayroll.DATEFROM and " & _
                 '                "dbo.tblPayroll.DATETO and dbo.tblPayrollofEmployees.EMPID  = '" & frmPayroll.txtemID.Text & "' or '" & Format(frmPayroll.dtrTo.Value, "MM/dd/yyyy") & _
                 '                "' between dbo.tblPayroll.DATEFROM and dbo.tblPayroll.DATETO and dbo.tblPayrollofEmployees.EMPID  = '" & frmPayroll.txtemID.Text & "'"
-                .CommandText = "select * from tblEmployee"
+                .CommandText = "select * from tblEmployee order by lastname asc"
             End With
             OleDBDR = OleDBC.ExecuteReader
             dgw.Rows.Clear()
