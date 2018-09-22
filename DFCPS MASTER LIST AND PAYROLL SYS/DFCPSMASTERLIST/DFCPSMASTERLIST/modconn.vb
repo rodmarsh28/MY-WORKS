@@ -16,7 +16,7 @@ Module modconn
     Public payrollType As String
     Public payrollMode As String
     Public Sub ConnectDatabase()
-        strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=dfcpsMasterlistDB;server=localhost"
+        strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=dfcpsMasterlistDB;server=localhost\sqlexpress"
         'strConnString = "Data Source=" & My.Settings.mServer & ";" & _
         '                "Initial Catalog=" & My.Settings.mDBname & ";" & _
         '                "User ID=" & My.Settings.mUserDB & ";" & _

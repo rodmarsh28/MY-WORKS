@@ -120,12 +120,12 @@
             If payrollType = "Admin" Then
                 With OleDBC
                     .Connection = conn
-                    .CommandText = "select * from tblEmployeesInfo where Field <> 'Weekly' order by lastname asc"
+                    .CommandText = "select * from tblEmployeesInfo where Field <> 'Weekly' and workingStatus <> 'Inactive'  order by lastname asc"
                 End With
             Else
                 With OleDBC
                     .Connection = conn
-                    .CommandText = "select * from tblEmployeesInfo where Field = 'Weekly' order by lastname asc"
+                    .CommandText = "select * from tblEmployeesInfo where Field = 'Weekly' and workingStatus <> 'Inactive' order by lastname asc"
                 End With
             End If
             OleDBDR = OleDBC.ExecuteReader

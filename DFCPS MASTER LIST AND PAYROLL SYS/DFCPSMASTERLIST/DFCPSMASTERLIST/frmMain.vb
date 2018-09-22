@@ -107,7 +107,7 @@ Public Class frmMain
         frmAddEmployees.ShowDialog()
     End Sub
 
-    Private Sub DatabaseConnectionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DatabaseConnectionToolStripMenuItem.Click
+    Private Sub DatabaseConnectionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         databaseConnection.ShowDialog()
     End Sub
 

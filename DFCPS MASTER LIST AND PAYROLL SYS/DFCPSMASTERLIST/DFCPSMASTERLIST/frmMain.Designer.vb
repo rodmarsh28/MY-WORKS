@@ -47,7 +47,6 @@ Partial Class frmMain
         Me.ViewAllPayrollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintPremiumsSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConfigurationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DatabaseConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.StatusStrip.SuspendLayout()
@@ -57,57 +56,57 @@ Partial Class frmMain
         'StatusStrip
         '
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel3, Me.lblDate, Me.ToolStripStatusLabel5, Me.ToolStripStatusLabel6, Me.lblTime, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel7, Me.lblUsername})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 406)
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 404)
         Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(1055, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(1055, 24)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
         '
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(34, 17)
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(41, 19)
         Me.ToolStripStatusLabel3.Text = "Date:"
         '
         'lblDate
         '
         Me.lblDate.Name = "lblDate"
-        Me.lblDate.Size = New System.Drawing.Size(63, 17)
+        Me.lblDate.Size = New System.Drawing.Size(83, 19)
         Me.lblDate.Text = "00/00/0000"
         '
         'ToolStripStatusLabel5
         '
         Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
-        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(0, 17)
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(0, 19)
         '
         'ToolStripStatusLabel6
         '
         Me.ToolStripStatusLabel6.Name = "ToolStripStatusLabel6"
-        Me.ToolStripStatusLabel6.Size = New System.Drawing.Size(33, 17)
+        Me.ToolStripStatusLabel6.Size = New System.Drawing.Size(41, 19)
         Me.ToolStripStatusLabel6.Text = "Time:"
         '
         'lblTime
         '
         Me.lblTime.Name = "lblTime"
-        Me.lblTime.Size = New System.Drawing.Size(35, 17)
+        Me.lblTime.Size = New System.Drawing.Size(44, 19)
         Me.lblTime.Text = "00:00"
         '
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(40, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(53, 19)
         Me.ToolStripStatusLabel1.Text = "           "
         '
         'ToolStripStatusLabel7
         '
         Me.ToolStripStatusLabel7.Name = "ToolStripStatusLabel7"
-        Me.ToolStripStatusLabel7.Size = New System.Drawing.Size(33, 17)
+        Me.ToolStripStatusLabel7.Size = New System.Drawing.Size(40, 19)
         Me.ToolStripStatusLabel7.Text = "User:"
         '
         'lblUsername
         '
         Me.lblUsername.Name = "lblUsername"
-        Me.lblUsername.Size = New System.Drawing.Size(51, 17)
+        Me.lblUsername.Size = New System.Drawing.Size(68, 19)
         Me.lblUsername.Text = "Unknown"
         '
         'MenuStrip1
@@ -115,7 +114,7 @@ Partial Class frmMain
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.TransactionToolStripMenuItem, Me.PayrollToolStripMenuItem, Me.ConfigurationToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1055, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1055, 27)
         Me.MenuStrip1.TabIndex = 9
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -123,92 +122,86 @@ Partial Class frmMain
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddEmployeesToolStripMenuItem, Me.BackupDatabaseToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(41, 23)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'AddEmployeesToolStripMenuItem
         '
         Me.AddEmployeesToolStripMenuItem.Name = "AddEmployeesToolStripMenuItem"
-        Me.AddEmployeesToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.AddEmployeesToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.AddEmployeesToolStripMenuItem.Text = "Add Employees"
         '
         'BackupDatabaseToolStripMenuItem
         '
         Me.BackupDatabaseToolStripMenuItem.Name = "BackupDatabaseToolStripMenuItem"
-        Me.BackupDatabaseToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.BackupDatabaseToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.BackupDatabaseToolStripMenuItem.Text = "Backup Database"
         '
         'TransactionToolStripMenuItem
         '
         Me.TransactionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VIEWMASTERLISTToolStripMenuItem, Me.ViewOngoingDesciplinaryActionPunishedToolStripMenuItem, Me.ViewOngoingLeavEmployeesToolStripMenuItem})
         Me.TransactionToolStripMenuItem.Name = "TransactionToolStripMenuItem"
-        Me.TransactionToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
+        Me.TransactionToolStripMenuItem.Size = New System.Drawing.Size(50, 23)
         Me.TransactionToolStripMenuItem.Text = "View"
         '
         'VIEWMASTERLISTToolStripMenuItem
         '
         Me.VIEWMASTERLISTToolStripMenuItem.Name = "VIEWMASTERLISTToolStripMenuItem"
-        Me.VIEWMASTERLISTToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.VIEWMASTERLISTToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
         Me.VIEWMASTERLISTToolStripMenuItem.Text = "Masterlist"
         '
         'ViewOngoingDesciplinaryActionPunishedToolStripMenuItem
         '
         Me.ViewOngoingDesciplinaryActionPunishedToolStripMenuItem.Name = "ViewOngoingDesciplinaryActionPunishedToolStripMenuItem"
-        Me.ViewOngoingDesciplinaryActionPunishedToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ViewOngoingDesciplinaryActionPunishedToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
         Me.ViewOngoingDesciplinaryActionPunishedToolStripMenuItem.Text = "Ongoing Desciplinary Action"
         '
         'ViewOngoingLeavEmployeesToolStripMenuItem
         '
         Me.ViewOngoingLeavEmployeesToolStripMenuItem.Name = "ViewOngoingLeavEmployeesToolStripMenuItem"
-        Me.ViewOngoingLeavEmployeesToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ViewOngoingLeavEmployeesToolStripMenuItem.Size = New System.Drawing.Size(252, 24)
         Me.ViewOngoingLeavEmployeesToolStripMenuItem.Text = "Ongoing Leave Employees"
         '
         'PayrollToolStripMenuItem
         '
         Me.PayrollToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPayrollToolStripMenuItem, Me.ViewAllPayrollToolStripMenuItem, Me.PrintPremiumsSummaryToolStripMenuItem})
         Me.PayrollToolStripMenuItem.Name = "PayrollToolStripMenuItem"
-        Me.PayrollToolStripMenuItem.Size = New System.Drawing.Size(51, 20)
+        Me.PayrollToolStripMenuItem.Size = New System.Drawing.Size(62, 23)
         Me.PayrollToolStripMenuItem.Text = "Payroll"
         '
         'AddPayrollToolStripMenuItem
         '
         Me.AddPayrollToolStripMenuItem.Name = "AddPayrollToolStripMenuItem"
-        Me.AddPayrollToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.AddPayrollToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
         Me.AddPayrollToolStripMenuItem.Text = "Add Payroll"
         '
         'ViewAllPayrollToolStripMenuItem
         '
         Me.ViewAllPayrollToolStripMenuItem.Name = "ViewAllPayrollToolStripMenuItem"
-        Me.ViewAllPayrollToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.ViewAllPayrollToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
         Me.ViewAllPayrollToolStripMenuItem.Text = "All Payroll History"
         '
         'PrintPremiumsSummaryToolStripMenuItem
         '
         Me.PrintPremiumsSummaryToolStripMenuItem.Name = "PrintPremiumsSummaryToolStripMenuItem"
-        Me.PrintPremiumsSummaryToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.PrintPremiumsSummaryToolStripMenuItem.Size = New System.Drawing.Size(234, 24)
         Me.PrintPremiumsSummaryToolStripMenuItem.Text = "Print Premiums Summary"
         '
         'ConfigurationToolStripMenuItem
         '
-        Me.ConfigurationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DatabaseConnectionToolStripMenuItem})
         Me.ConfigurationToolStripMenuItem.Name = "ConfigurationToolStripMenuItem"
-        Me.ConfigurationToolStripMenuItem.Size = New System.Drawing.Size(84, 20)
+        Me.ConfigurationToolStripMenuItem.Size = New System.Drawing.Size(105, 23)
         Me.ConfigurationToolStripMenuItem.Text = "Configuration"
-        '
-        'DatabaseConnectionToolStripMenuItem
-        '
-        Me.DatabaseConnectionToolStripMenuItem.Name = "DatabaseConnectionToolStripMenuItem"
-        Me.DatabaseConnectionToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
-        Me.DatabaseConnectionToolStripMenuItem.Text = "Database Connection"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(59, 23)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'Timer1
         '
+        Me.Timer1.Enabled = True
         '
         'frmMain
         '
@@ -237,7 +230,6 @@ Partial Class frmMain
     Friend WithEvents AddEmployeesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TransactionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ConfigurationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DatabaseConnectionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents VIEWMASTERLISTToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewOngoingDesciplinaryActionPunishedToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
