@@ -98,8 +98,8 @@
             With OleDBC
                 .Connection = conn
                 .CommandText = "SELECT dbo.tblMWSDESC.MWSDESCNO,dbo.tblMWSDESC.[DATE],dbo.tblMWSDESC.[sTO],dbo.tblMWSDESC.[SECTION]," & _
-                    "dbo.tblMWSDESC.DEPARTMENT,dbo.tblMWSDESC.JUSTIFICATION,dbo.tblMWSDESC.PREPAREDBY,dbo.tblMWSDESC.APPROVEDBY,dbo.tblMWSITEM.MATERIALDESC,dbo.tblCOA.ACCOUNTNAME,dbo.tblMWSITEM.UNIT," & _
-                    "dbo.tblMWSITEM.QTY FROM dbo.tblMWSDESC INNER JOIN dbo.tblMWSITEM ON dbo.tblMWSDESC.MWSDESCNO = dbo.tblMWSITEM.MWSDESCNO INNER JOIN dbo.tblCOA ON dbo.tblMWSITEM.ACCNO = dbo.tblCOA.ACCNO " & _
+                    "dbo.tblMWSDESC.DEPARTMENT,dbo.tblMWSDESC.JUSTIFICATION,dbo.tblMWSDESC.PREPAREDBY,dbo.tblMWSDESC.APPROVEDBY,dbo.tblMWSITEM.MATERIALDESC,dbo.tblMWSITEM.MATERIALDESC,dbo.tblMWSITEM.UNIT," & _
+                    "dbo.tblMWSITEM.QTY FROM dbo.tblMWSDESC INNER JOIN dbo.tblMWSITEM ON dbo.tblMWSDESC.MWSDESCNO = dbo.tblMWSITEM.MWSDESCNO " & _
                     "where dbo.tblMWSDESC.MWSDESCNO = '" & dgw.CurrentRow.Cells(1).Value & "'"
             End With
             OleDBDR = OleDBC.ExecuteReader
@@ -154,8 +154,8 @@
                 .Connection = conn
                 .CommandText = "SELECT dbo.tblMISDESC.MISNO,dbo.tblMISDESC.[DATE],dbo.tblMISDESC.MWSREF,dbo.tblMISDESC.[SECTION],dbo.tblMISDESC.DEPARTMENT," & _
                     "dbo.tblMISDESC.REMARKS,dbo.tblMISDESC.ISSUEDBY,dbo.tblMISDESC.APPROVEDBY,dbo.tblMISDESC.RECEIVEDBY,dbo.tblMISITEM.INVTYCODE,dbo.tblMISITEM.MATERIALDESC,dbo.tblMISITEM.TYPE," & _
-                    "dbo.tblCOA.ACCOUNTNAME,dbo.tblMISITEM.UNIT,dbo.tblMISITEM.QTY FROM dbo.tblMISITEM INNER JOIN dbo.tblMISDESC ON dbo.tblMISITEM.MISNO = dbo.tblMISDESC.MISNO INNER JOIN dbo.tblCOA " & _
-                    "ON dbo.tblMISITEM.ACCNO = dbo.tblCOA.ACCNO WHERE dbo.tblMISDESC.MISNO = '" & dgw.CurrentRow.Cells(1).Value & "'"
+                    "dbo.tblMISITEM.TYPE,dbo.tblMISITEM.UNIT,dbo.tblMISITEM.QTY FROM dbo.tblMISITEM INNER JOIN dbo.tblMISDESC ON dbo.tblMISITEM.MISNO = dbo.tblMISDESC.MISNO " & _
+                    "WHERE dbo.tblMISDESC.MISNO = '" & dgw.CurrentRow.Cells(1).Value & "'"
             End With
             OleDBDR = OleDBC.ExecuteReader
             Dim dt As New DataTable
@@ -394,4 +394,9 @@
     End Sub
 
   
+    Private Sub CREATEPRSToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CREATEPRSToolStripMenuItem.Click
+        frmPurchaseRequestSlip.txtPreparedBy.Text = MainForm.LBLNAME.Text
+        frmPurchaseRequestSlip.ShowDialog()
+
+    End Sub
 End Class

@@ -37,6 +37,11 @@ Partial Class frmMaterialReceiving
         Me.txtItemDesc = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgw = New System.Windows.Forms.DataGridView()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DELELTEITEMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -61,11 +66,6 @@ Partial Class frmMaterialReceiving
         Me.Label18 = New System.Windows.Forms.Label()
         Me.txtDelivered = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgw, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -125,19 +125,19 @@ Partial Class frmMaterialReceiving
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.792453!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(395, 230)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(142, 13)
+        Me.Label7.Size = New System.Drawing.Size(140, 13)
         Me.Label7.TabIndex = 26
-        Me.Label7.Text = "SERIAL/MODEL/BRAND"
+        Me.Label7.Text = "ITEM / MATERIAL TYPE"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.792453!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(179, 229)
+        Me.Label6.Location = New System.Drawing.Point(160, 229)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(150, 13)
+        Me.Label6.Size = New System.Drawing.Size(190, 13)
         Me.Label6.TabIndex = 25
-        Me.Label6.Text = "MATERIAL DESCRIPTION"
+        Me.Label6.Text = "ITEM / MATERIAL DESCRIPTION"
         '
         'txtUnit
         '
@@ -203,6 +203,40 @@ Partial Class frmMaterialReceiving
         Me.dgw.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgw.Size = New System.Drawing.Size(876, 277)
         Me.dgw.TabIndex = 0
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "INVENTORY CODE"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "MATERIAL DESCRIPTION"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 300
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "SERIAL/MODEL/BRAND"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.Width = 230
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "UNIT"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 120
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "QUANTITY"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 120
         '
         'ContextMenuStrip1
         '
@@ -428,40 +462,6 @@ Partial Class frmMaterialReceiving
         Me.Label19.Size = New System.Drawing.Size(104, 13)
         Me.Label19.TabIndex = 106
         Me.Label19.Text = "DELIVERED BY :"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "INVENTORY CODE"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "MATERIAL DESCRIPTION"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 300
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "SERIAL/MODEL/BRAND"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 230
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "UNIT"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 120
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "QUANTITY"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 120
         '
         'frmMaterialReceiving
         '

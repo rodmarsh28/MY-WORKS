@@ -53,6 +53,7 @@ Partial Class frmViewIssuedReq
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.CREATEPRSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgw, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -159,9 +160,9 @@ Partial Class frmViewIssuedReq
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VIEWREQUESTToolStripMenuItem, Me.ISSUEREQUESTToolStripMenuItem, Me.CANCELWIDTHRAWALREQUESTToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VIEWREQUESTToolStripMenuItem, Me.ISSUEREQUESTToolStripMenuItem, Me.CREATEPRSToolStripMenuItem, Me.CANCELWIDTHRAWALREQUESTToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(282, 76)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(282, 122)
         '
         'VIEWREQUESTToolStripMenuItem
         '
@@ -304,6 +305,12 @@ Partial Class frmViewIssuedReq
         Me.ContextMenuStrip3.Name = "ContextMenuStrip3"
         Me.ContextMenuStrip3.Size = New System.Drawing.Size(61, 4)
         '
+        'CREATEPRSToolStripMenuItem
+        '
+        Me.CREATEPRSToolStripMenuItem.Name = "CREATEPRSToolStripMenuItem"
+        Me.CREATEPRSToolStripMenuItem.Size = New System.Drawing.Size(281, 24)
+        Me.CREATEPRSToolStripMenuItem.Text = "CREATE PURCHASE REQUEST"
+        '
         'frmViewIssuedReq
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -357,4 +364,5 @@ Partial Class frmViewIssuedReq
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CANCELWIDTHRAWALREQUESTToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RETURNITEMISSUEDToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CREATEPRSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

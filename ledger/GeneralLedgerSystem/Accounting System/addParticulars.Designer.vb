@@ -54,23 +54,23 @@ Partial Class addParticulars
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(15, 53)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(93, 13)
+        Me.Label1.Size = New System.Drawing.Size(113, 16)
         Me.Label1.TabIndex = 13
         Me.Label1.Text = "PARTICULARS"
         '
         'txtParticulars
         '
-        Me.txtParticulars.Location = New System.Drawing.Point(114, 50)
+        Me.txtParticulars.Location = New System.Drawing.Point(134, 50)
         Me.txtParticulars.Name = "txtParticulars"
-        Me.txtParticulars.Size = New System.Drawing.Size(339, 78)
+        Me.txtParticulars.Size = New System.Drawing.Size(319, 78)
         Me.txtParticulars.TabIndex = 14
         Me.txtParticulars.Text = ""
         '
         'txtAmount
         '
-        Me.txtAmount.Location = New System.Drawing.Point(114, 135)
+        Me.txtAmount.Location = New System.Drawing.Point(134, 135)
         Me.txtAmount.Name = "txtAmount"
-        Me.txtAmount.Size = New System.Drawing.Size(115, 20)
+        Me.txtAmount.Size = New System.Drawing.Size(95, 20)
         Me.txtAmount.TabIndex = 15
         '
         'Label2
@@ -79,7 +79,7 @@ Partial Class addParticulars
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(48, 138)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(60, 13)
+        Me.Label2.Size = New System.Drawing.Size(73, 16)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "AMOUNT"
         '

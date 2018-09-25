@@ -11,7 +11,7 @@
     Dim REMAININGSTOCKS As Integer
     Public totalAcquisitionCost As Double
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        frmFindMaterials.mode = "mis"
+        mode = "mis"
         frmFindMaterials.dgw.Columns(4).HeaderCell.Value = "STOCKS ON HAND"
         frmFindMaterials.dgw.Columns(4).DefaultCellStyle.Format = ""
         frmFindMaterials.ShowDialog()
@@ -102,10 +102,8 @@
                     "','" & txtMisNo.Text & _
                     "','" & ITEMDESC & _
                     "','" & SERIAL & _
-                    "','" & DEBIT & _
                     "','" & UNIT & _
                     "','" & QTY  & "')"
-
                 .ExecuteNonQuery()
             End With
         Catch ex As Exception
@@ -157,9 +155,8 @@
             INVTYCODE = dgw.Item(0, col).Value
             ITEMDESC = dgw.Item(1, col).Value
             SERIAL = dgw.Item(2, col).Value
-            DEBIT = dgw.Item(3, col).Value
-            UNIT = dgw.Item(4, col).Value
-            QTY = dgw.Item(5, col).Value
+            UNIT = dgw.Item(3, col).Value
+            QTY = dgw.Item(4, col).Value
             saveItem()
             stocksUpdate()
             col = col + 1
@@ -188,8 +185,8 @@
                 .Connection = conn
                 .CommandText = "SELECT dbo.tblMISDESC.MISNO,dbo.tblMISDESC.[DATE],dbo.tblMISDESC.MWSREF,dbo.tblMISDESC.[SECTION],dbo.tblMISDESC.DEPARTMENT," & _
                     "dbo.tblMISDESC.REMARKS,dbo.tblMISDESC.ISSUEDBY,dbo.tblMISDESC.APPROVEDBY,dbo.tblMISDESC.RECEIVEDBY,dbo.tblMISITEM.INVTYCODE,dbo.tblMISITEM.MATERIALDESC,dbo.tblMISITEM.TYPE," & _
-                    "dbo.tblCOA.ACCOUNTNAME,dbo.tblMISITEM.UNIT,dbo.tblMISITEM.QTY FROM dbo.tblMISITEM INNER JOIN dbo.tblMISDESC ON dbo.tblMISITEM.MISNO = dbo.tblMISDESC.MISNO INNER JOIN dbo.tblCOA " & _
-                    "ON dbo.tblMISITEM.ACCNO = dbo.tblCOA.ACCNO WHERE dbo.tblMISDESC.MISNO = '" & txtMisNo.Text & "'"
+                    "dbo.tblMISITEM.TYPE,dbo.tblMISITEM.UNIT,dbo.tblMISITEM.QTY FROM dbo.tblMISITEM INNER JOIN dbo.tblMISDESC ON dbo.tblMISITEM.MISNO = dbo.tblMISDESC.MISNO " & _
+                    "WHERE dbo.tblMISDESC.MISNO = '" & txtMisNo.Text & "'"
             End With
             OleDBDR = OleDBC.ExecuteReader
             Dim dt As New DataTable

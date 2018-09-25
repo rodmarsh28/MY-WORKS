@@ -57,7 +57,6 @@ Partial Class frmMaterialsIssuance
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
@@ -195,7 +194,7 @@ Partial Class frmMaterialsIssuance
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgw.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column1, Me.Column5, Me.Column2, Me.Column3, Me.Column4})
+        Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column1, Me.Column5, Me.Column3, Me.Column4})
         Me.dgw.ContextMenuStrip = Me.ContextMenuStrip1
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
@@ -366,27 +365,21 @@ Partial Class frmMaterialsIssuance
         Me.Column1.HeaderText = "ITEM / MATERIAL DESCRIPTION"
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 300
+        Me.Column1.Width = 350
         '
         'Column5
         '
         Me.Column5.HeaderText = "ITEM / MATERIAL TYPE"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Width = 200
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "DEBIT TO (ACCOUNT)"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 160
+        Me.Column5.Width = 250
         '
         'Column3
         '
         Me.Column3.HeaderText = "UNIT"
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
+        Me.Column3.Width = 160
         '
         'Column4
         '
@@ -464,7 +457,6 @@ Partial Class frmMaterialsIssuance
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

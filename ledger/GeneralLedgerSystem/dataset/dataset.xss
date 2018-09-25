@@ -19,7 +19,7 @@
     <Shape ID="DesignTable:CHEQUEPRINTTABLE" ZOrder="4" X="1239" Y="114" Height="105" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
     <Shape ID="DesignTable:PAYSLIPTABLE" ZOrder="3" X="1321" Y="312" Height="257" Width="186" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:PAYROLLTABLE" ZOrder="2" X="1106" Y="649" Height="257" Width="185" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
-    <Shape ID="DesignTable:PURCHASEDREPORTTABLE" ZOrder="1" X="355" Y="611" Height="178" Width="236" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="174" />
+    <Shape ID="DesignTable:PURCHASEDREPORTTABLE" ZOrder="1" X="355" Y="611" Height="199" Width="236" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="195" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

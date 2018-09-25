@@ -44,34 +44,7 @@
             MsgBox(ex.Message)
         End Try
     End Sub
-    Sub autoCompleteIDNo()
-        Try
-            Dim col As New AutoCompleteStringCollection
-
-            If conn.State = ConnectionState.Open Then
-                OleDBC.Dispose()
-                conn.Close()
-            End If
-            If conn.State <> ConnectionState.Open Then
-                ConnectDatabase()
-            End If
-            With OleDBC
-                .Connection = conn
-                .CommandText = "SELECT Distinct IDNO from tblPCV "
-            End With
-            OleDBDR = OleDBC.ExecuteReader
-            If OleDBDR.HasRows Then
-                While OleDBDR.Read
-                    col.Add(OleDBDR.Item(0))
-                End While
-                txtIDNo.AutoCompleteSource = AutoCompleteSource.CustomSource
-                txtIDNo.AutoCompleteCustomSource = col
-                txtIDNo.AutoCompleteMode = AutoCompleteMode.Suggest
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
+  
     Sub autoCompleteSection()
         Try
             Dim col As New AutoCompleteStringCollection
@@ -343,7 +316,7 @@
     Private Sub frmPettyCashVoucher_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         generatePCVNo()
         autoCompletePayee()
-        autoCompleteIDNo()
+
         autoCompleteSection()
         autoCompleteDepartment()
     End Sub
@@ -359,5 +332,10 @@
 
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtRefNo.TextChanged
 
+    End Sub
+
+    Private Sub MetroButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MetroButton1.Click
+        mode = "PCV"
+        InputAccount.ShowDialog()
     End Sub
 End Class

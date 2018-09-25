@@ -24,12 +24,14 @@ Partial Class frmAddReqOfDept
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtTo = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgw = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DELETEITEMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -55,9 +57,6 @@ Partial Class frmAddReqOfDept
         Me.txtAPPROVEDBY = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.LBLMWSNO = New System.Windows.Forms.TextBox()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgw, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -112,14 +111,6 @@ Partial Class frmAddReqOfDept
         Me.dgw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgw.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column3, Me.Column4})
         Me.dgw.ContextMenuStrip = Me.ContextMenuStrip1
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.150944!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgw.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgw.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgw.GridColor = System.Drawing.Color.LightGray
         Me.dgw.Location = New System.Drawing.Point(3, 15)
@@ -128,6 +119,27 @@ Partial Class frmAddReqOfDept
         Me.dgw.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgw.Size = New System.Drawing.Size(899, 296)
         Me.dgw.TabIndex = 0
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "MATERIAL DESCRIPTION"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 500
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "UNIT"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 150
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "QUANTITY"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 120
         '
         'ContextMenuStrip1
         '
@@ -358,31 +370,11 @@ Partial Class frmAddReqOfDept
         Me.LBLMWSNO.Size = New System.Drawing.Size(123, 21)
         Me.LBLMWSNO.TabIndex = 60
         '
-        'Column1
-        '
-        Me.Column1.HeaderText = "MATERIAL DESCRIPTION"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 500
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "UNIT"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 150
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "QUANTITY"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 120
-        '
         'frmAddReqOfDept
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(950, 653)
         Me.Controls.Add(Me.LBLMWSNO)
         Me.Controls.Add(Me.txtAPPROVEDBY)

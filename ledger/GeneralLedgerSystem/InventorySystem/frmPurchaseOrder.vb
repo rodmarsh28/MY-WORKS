@@ -452,7 +452,7 @@
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        frmFindMaterials.mode = "po"
+        mode = "po"
         frmFindMaterials.dgw.Columns(4).HeaderCell.Value = "UNIT PRICE"
         frmFindMaterials.dgw.Columns(4).DefaultCellStyle.Format = "c"
         frmFindMaterials.ShowDialog()
@@ -522,7 +522,7 @@
     End Sub
 
     Private Sub MetroButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        InputAccount.mode = "PO"
+        mode = "PO"
         InputAccount.ShowDialog()
 
     End Sub

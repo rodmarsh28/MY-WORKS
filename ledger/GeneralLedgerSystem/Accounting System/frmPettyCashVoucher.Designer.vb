@@ -122,9 +122,9 @@ Partial Class frmPettyCashVoucher
         '
         Me.txtSection.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtSection.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSection.Location = New System.Drawing.Point(96, 168)
+        Me.txtSection.Location = New System.Drawing.Point(131, 168)
         Me.txtSection.Name = "txtSection"
-        Me.txtSection.Size = New System.Drawing.Size(200, 21)
+        Me.txtSection.Size = New System.Drawing.Size(165, 21)
         Me.txtSection.TabIndex = 4
         '
         'Label4
@@ -141,15 +141,15 @@ Partial Class frmPettyCashVoucher
         '
         Me.txtPayee.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtPayee.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPayee.Location = New System.Drawing.Point(96, 123)
+        Me.txtPayee.Location = New System.Drawing.Point(131, 123)
         Me.txtPayee.Name = "txtPayee"
-        Me.txtPayee.Size = New System.Drawing.Size(200, 21)
+        Me.txtPayee.Size = New System.Drawing.Size(165, 21)
         Me.txtPayee.TabIndex = 2
         '
         'dtpDate
         '
         Me.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDate.Location = New System.Drawing.Point(96, 100)
+        Me.dtpDate.Location = New System.Drawing.Point(131, 100)
         Me.dtpDate.Name = "dtpDate"
         Me.dtpDate.Size = New System.Drawing.Size(91, 20)
         Me.dtpDate.TabIndex = 1
@@ -159,7 +159,7 @@ Partial Class frmPettyCashVoucher
         Me.txtPCVNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtPCVNo.Enabled = False
         Me.txtPCVNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPCVNo.Location = New System.Drawing.Point(96, 53)
+        Me.txtPCVNo.Location = New System.Drawing.Point(131, 53)
         Me.txtPCVNo.Name = "txtPCVNo"
         Me.txtPCVNo.Size = New System.Drawing.Size(119, 21)
         Me.txtPCVNo.TabIndex = 127
@@ -276,10 +276,11 @@ Partial Class frmPettyCashVoucher
         'txtIDNo
         '
         Me.txtIDNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtIDNo.Enabled = False
         Me.txtIDNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIDNo.Location = New System.Drawing.Point(96, 145)
+        Me.txtIDNo.Location = New System.Drawing.Point(131, 145)
         Me.txtIDNo.Name = "txtIDNo"
-        Me.txtIDNo.Size = New System.Drawing.Size(146, 21)
+        Me.txtIDNo.Size = New System.Drawing.Size(130, 21)
         Me.txtIDNo.TabIndex = 3
         '
         'Label6
@@ -288,9 +289,9 @@ Partial Class frmPettyCashVoucher
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(16, 148)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(43, 16)
+        Me.Label6.Size = New System.Drawing.Size(116, 16)
         Me.Label6.TabIndex = 150
-        Me.Label6.Text = "ID # :"
+        Me.Label6.Text = "ACC DEBIT TO:"
         '
         'Label7
         '
@@ -354,7 +355,7 @@ Partial Class frmPettyCashVoucher
         Me.txtRefNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtRefNo.Enabled = False
         Me.txtRefNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRefNo.Location = New System.Drawing.Point(96, 74)
+        Me.txtRefNo.Location = New System.Drawing.Point(131, 74)
         Me.txtRefNo.Name = "txtRefNo"
         Me.txtRefNo.Size = New System.Drawing.Size(119, 21)
         Me.txtRefNo.TabIndex = 152
@@ -373,7 +374,7 @@ Partial Class frmPettyCashVoucher
         '
         Me.MetroButton1.BackgroundImage = CType(resources.GetObject("MetroButton1.BackgroundImage"), System.Drawing.Image)
         Me.MetroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.MetroButton1.Location = New System.Drawing.Point(248, 145)
+        Me.MetroButton1.Location = New System.Drawing.Point(266, 145)
         Me.MetroButton1.Name = "MetroButton1"
         Me.MetroButton1.Size = New System.Drawing.Size(27, 21)
         Me.MetroButton1.TabIndex = 153

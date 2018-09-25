@@ -12,6 +12,7 @@ Module modconn
     Public da As New SqlDataAdapter
     Public ds As DataSet
     Public conn As New SqlConnection
+    Public mode As String
     Public strConnString As String
     Public Sub ConnectDatabase()
         'strConnString = "Persist Security Info=False;Integrated Security=true;Initial Catalog=generalLedgerDB;server=(local)"

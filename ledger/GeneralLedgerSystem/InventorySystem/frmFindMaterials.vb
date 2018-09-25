@@ -1,5 +1,5 @@
 ﻿Public Class frmFindMaterials
-    Public mode As String
+
     Public debitTo As String
 
     Sub showAllMaterials()
@@ -107,7 +107,7 @@
     End Sub
 
     Private Sub frmFindMaterials_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        InputAccount.mode = "FM"
+      
     End Sub
 
     Private Sub dgw_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgw.CellDoubleClick
@@ -208,7 +208,7 @@
         '    MessageBox.Show("You must enter a type to Continue")
         '    Exit Sub
         'End If
-        InputAccount.ShowDialog()
+        Try     
         Dim qty As String = InputBox("How Many you Want to Issue ?", "Please Enter Quantity")
         If qty = " " Or qty = "" Then
             MessageBox.Show("You must enter a Quantity to Continue")
@@ -224,15 +224,17 @@
                 frmMaterialsIssuance.dgw.Item(0, frmMaterialsIssuance.rows).Value = dgw.CurrentRow.Cells(0).Value
                 frmMaterialsIssuance.dgw.Item(1, frmMaterialsIssuance.rows).Value = dgw.CurrentRow.Cells(1).Value
                 frmMaterialsIssuance.dgw.Item(2, frmMaterialsIssuance.rows).Value = dgw.CurrentRow.Cells(2).Value
-                frmMaterialsIssuance.dgw.Item(3, frmMaterialsIssuance.rows).Value = debitTo
-                frmMaterialsIssuance.dgw.Item(4, frmMaterialsIssuance.rows).Value = dgw.CurrentRow.Cells(3).Value
-                frmMaterialsIssuance.dgw.Item(5, frmMaterialsIssuance.rows).Value = qty
-                dgw.CurrentRow.Cells(5).Value = dgw.CurrentRow.Cells(5).Value - qty
+
+                    frmMaterialsIssuance.dgw.Item(3, frmMaterialsIssuance.rows).Value = dgw.CurrentRow.Cells(3).Value
+                    frmMaterialsIssuance.dgw.Item(4, frmMaterialsIssuance.rows).Value = qty
+                    dgw.CurrentRow.Cells(4).Value = dgw.CurrentRow.Cells(4).Value - qty
                 frmMaterialsIssuance.rows = frmMaterialsIssuance.dgw.RowCount
                 Me.Close()
             End If
         End If
-
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
 
@@ -241,7 +243,5 @@
         Me.Close()
     End Sub
 
-    Private Sub dgw_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgw.CellContentClick
-
-    End Sub
+   
 End Class

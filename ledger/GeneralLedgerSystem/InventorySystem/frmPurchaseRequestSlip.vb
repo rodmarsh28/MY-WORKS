@@ -270,7 +270,7 @@
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        frmFindMaterials.mode = "prs"
+        mode = "prs"
         frmFindMaterials.dgw.Columns(5).HeaderCell.Value = "STOCKS ON HAND"
         frmFindMaterials.dgw.Columns(5).DefaultCellStyle.Format = ""
         frmFindMaterials.ShowDialog()

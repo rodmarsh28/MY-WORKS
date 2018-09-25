@@ -1,5 +1,4 @@
 ﻿Public Class InputAccount
-    Public mode As String
     'Private Sub InputAccount_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
     '    If e.KeyCode = Keys.Enter Then
     '        frmFindMaterials.debitTo = txtInput.Text
@@ -52,9 +51,10 @@
         If dgwAcc.SelectedRows.Count > 0 Then
             If mode = "FM" Then
                 frmFindMaterials.debitTo = dgwAcc.CurrentRow.Cells(0).Value
-                Me.Hide()
-            
+            ElseIf mode = "PCV" Then
+                frmPettyCashVoucher.txtIDNo.Text = dgwAcc.CurrentRow.Cells(0).Value
             End If
+            Me.Hide()
         Else
             MsgBox("PLEASE SELECT ACC FIRST", MsgBoxStyle.Critical, "ERROR")
         End If
@@ -110,7 +110,9 @@
             If mode = "FM" Then
                 frmFindMaterials.debitTo = dgwAcc.CurrentRow.Cells(0).Value
                 Me.Hide()
-          
+            ElseIf mode = "PCV" Then
+                frmPettyCashVoucher.txtIDNo.Text = dgwAcc.CurrentRow.Cells(0).Value
+
             End If
         Else
             MsgBox("PLEASE SELECT ACC FIRST", MsgBoxStyle.Critical, "ERROR")
@@ -126,4 +128,6 @@
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         Me.Close()
     End Sub
+
+    
 End Class

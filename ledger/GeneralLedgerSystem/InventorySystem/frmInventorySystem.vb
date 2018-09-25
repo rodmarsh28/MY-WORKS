@@ -171,7 +171,6 @@
     End Sub
 
     Private Sub PEREMPLOYEEACQUISITIONREPORTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PEREMPLOYEEACQUISITIONREPORTToolStripMenuItem.Click
-        frmTransactionReportForMember.CheckBox1.Checked = True
-        frmTransactionReportForMember.Show()
+        dateReportViewer.ShowDialog()
     End Sub
 End Class

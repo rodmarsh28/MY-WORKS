@@ -192,7 +192,7 @@
                         "','" & txtAddress.Text & _
                         "','" & txtRemarks.Text & _
                         "','" & txtReceived.Text & _
-                        "','" & txtDelivered.Text & "','" & LessVat & "')"
+                        "','" & txtDelivered.Text & "')"
                     .ExecuteNonQuery()
                 End With
                 dgwItemProcess()
@@ -402,9 +402,9 @@
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        frmFindMaterials.mode = "mrs"
-        frmFindMaterials.dgw.Columns(4).HeaderCell.Value = "UNIT PRICE"
-        frmFindMaterials.dgw.Columns(4).DefaultCellStyle.Format = "c"
+        mode = "mrs"
+        frmFindMaterials.dgw.Columns(4).HeaderCell.Value = "STOCK ONHAND"
+        frmFindMaterials.dgw.Columns(4).DefaultCellStyle.Format = "###,###"
         frmFindMaterials.ShowDialog()
         'lblTotal.Text = "TOTAL FOR THIS PURCHASE ORDER :  ₱ " & totalAmount.ToString("n2")
         dgw.ClearSelection()
@@ -439,7 +439,6 @@
     Private Sub DELELTEITEMToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DELELTEITEMToolStripMenuItem.Click
 
         For Each row As DataGridViewRow In dgw.SelectedRows
-            totalAmount = totalAmount - dgw.CurrentRow.Cells(7).Value
             haveDatabase()
             dgw.Rows.Remove(row)
             rows = rows - 1
